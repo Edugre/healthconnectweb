@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros - HealthConnect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --matcha: #9DBF9E;
+            --sky-blue: #87CEEB;
+            --white: #FFFFFF;
+            --dark-text: #2C3E50;
+            --light-bg: #F8F9FA;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            line-height: 1.8;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--matcha), var(--sky-blue));
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--white);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .hero-about {
+            background: linear-gradient(135deg, rgba(157, 191, 158, 0.9), rgba(135, 206, 235, 0.9)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%239DBF9E" width="1200" height="400"/></svg>');
+            padding: 5rem 5%;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-about h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-about p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-alt {
+            background: var(--light-bg);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: var(--matcha);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section h3 {
+            font-size: 1.8rem;
+            color: var(--sky-blue);
+            margin: 2rem 0 1rem;
+        }
+
+        .content-box {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .mission-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border-left: 5px solid var(--matcha);
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mission-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .mission-card h4 {
+            color: var(--sky-blue);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--matcha), var(--sky-blue));
+            color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+        }
+
+        .ford-section {
+            background: linear-gradient(135deg, rgba(157, 191, 158, 0.1), rgba(135, 206, 235, 0.1));
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 3px solid var(--sky-blue);
+        }
+
+        .ford-logo {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--sky-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .values-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--matcha), var(--sky-blue));
+            padding: 4rem 5%;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            padding: 1rem 3rem;
+            background: var(--white);
+            color: var(--matcha);
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        footer {
+            background: var(--dark-text);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(157, 191, 158, 0.2), rgba(135, 206, 235, 0.2));
+            padding: 2rem;
+            border-left: 5px solid var(--sky-blue);
+            border-radius: 10px;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-about h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🏥 HealthConnect</div>
+        <div class="nav-links">
+            <a href="#quienes-somos">Quiénes Somos</a>
+            <a href="#mision">Misión</a>
+            <a href="#impacto">Impacto</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <section class="hero-about">
+        <h1>Navegando Juntos Hacia un Futuro Más Saludable</h1>
+        <p>Rompiendo barreras, construyendo puentes hacia la atención médica accesible</p>
+    </section>
+
+    <section class="section" id="quienes-somos">
+        <h2>Quiénes Somos</h2>
+        <div class="content-box">
+            <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">
+                HealthConnect es una plataforma impulsada por inteligencia artificial dedicada a transformar el acceso a la atención médica para comunidades desatendidas. Nacimos de una necesidad urgente: millones de familias latinas, inmigrantes y personas sin seguro enfrentan barreras insuperables al buscar atención médica de calidad.
+            </p>
+            <p style="font-size: 1.2rem;">
+                Somos un equipo de tecnólogos, profesionales de la salud y defensores comunitarios unidos por una visión compartida: un sistema de salud donde el origen, el idioma o el estatus de seguro nunca sean obstáculos para recibir atención.
+            </p>
+        </div>
+
+        <div class="ford-section">
+            <div class="ford-logo">🏆 Ford Philanthropy Challenge</div>
+            <p style="font-size: 1.2rem; text-align: center; max-width: 800px; margin: 0 auto;">
+                Estamos orgullosamente compitiendo en el <strong>Ford Philanthropy Challenge</strong>, una iniciativa que apoya innovaciones que transforman comunidades. Esta oportunidad nos impulsa a escalar nuestro impacto y llevar atención médica equitativa a quienes más lo necesitan.
+            </p>
+        </div>
+    </section>
+
+    <section class="section section-alt" id="mision">
+        <h2>Nuestra Misión</h2>
+        <div class="quote-box">
+            "Eliminar las barreras que separan a las comunidades vulnerables de la atención médica que merecen, empoderándolas con tecnología, información y apoyo personalizado."
+        </div>
+
+        <div class="mission-grid">
+            <div class="mission-card">
+                <div class="icon">👨‍👩‍👧‍👦</div>
+                <h4>Familias Latinas e Inmigrantes</h4>
+                <p>Conectamos a familias con servicios médicos culturalmente sensibles, eliminando la confusión y el miedo que a menudo acompañan la búsqueda de atención.</p>
+            </div>
+
+            <div class="mission-card">
+                <div class="icon">🌐</div>
+                <h4>Superar la Barrera del Idioma</h4>
+                <p>Ofrecemos conexiones directas con clínicas y doctores que hablan tu idioma, desde español hasta criollo, asegurando comunicación clara y comprensión total.</p>
+            </div>
+
+            <div class="mission-card">
+                <div class="icon">🛡️</div>
+                <h4>Personas Sin Seguro</h4>
+                <p>Identificamos opciones asequibles y programas comunitarios para quienes no tienen seguro, garantizando que nadie se quede sin atención por falta de cobertura.</p>
+            </div>
+
+            <div class="mission-card">
+                <div class="icon">📋</div>
+                <h4>Simplificar las Pólizas de Seguro</h4>
+                <p>Nuestros agentes AI traducen el lenguaje complejo de las aseguradoras en información clara y accionable, terminando con la sobresaturación de información.</p>
+            </div>
+
+            <div class="mission-card">
+                <div class="icon">🎯</div>
+                <h4>Organización Personalizada</h4>
+                <p>Ayudamos a organizar servicios médicos adaptados a las necesidades específicas de cada paciente, coordinando citas, especialistas y seguimiento.</p>
+            </div>
+
+            <div class="mission-card">
+                <div class="icon">🤝</div>
+                <h4>Apoyo Durante Todo el Proceso</h4>
+                <p>Ofrecemos acompañamiento continuo desde la búsqueda inicial hasta la recuperación, asegurando que nunca te sientas solo en tu camino hacia la salud.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="impacto">
+        <h2>Nuestro Compromiso con el Impacto</h2>
+        
+        <h3>Abordando Objetivos de Desarrollo Sostenible</h3>
+        <div class="values-list">
+            <div class="value-item">
+                <div class="value-icon">🏥</div>
+                <div>
+                    <strong>SDG 3: Salud y Bienestar</strong>
+                    <p>Garantizamos acceso a servicios de salud esenciales de calidad para todos.</p>
+                </div>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">⚖️</div>
+                <div>
+                    <strong>SDG 10: Reducción de Desigualdades</strong>
+                    <p>Eliminamos disparidades en el acceso a la atención médica entre comunidades.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 3rem;">Cómo Generamos Impacto</h3>
+        <div class="content-box">
+            <div class="values-list">
+                <div class="value-item">
+                    <div class="value-icon">💡</div>
+                    <div>
+                        <strong>Educación y Empoderamiento</strong>
+                        <p>Transformamos información compleja en conocimiento accesible.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🔗</div>
+                    <div>
+                        <strong>Conexiones Significativas</strong>
+                        <p>Vinculamos pacientes con proveedores que entienden sus necesidades culturales.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">💰</div>
+                    <div>
+                        <strong>Transparencia Económica</strong>
+                        <p>Revelamos costos reales y opciones asequibles sin sorpresas.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🤖</div>
+                    <div>
+                        <strong>Tecnología Humanizada</strong>
+                        <p>Usamos AI para hacer la atención médica más accesible, no más intimidante.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="cta-section" id="contacto">
+        <h2>Únete a Nuestra Misión</h2>
+        <p>
+            Ya seas un paciente buscando atención, un proveedor médico comprometido con la equidad, 
+            o un aliado que cree en nuestro trabajo, queremos conectar contigo.
+        </p>
+        <button class="cta-button" onclick="alert('¡Gracias por tu interés! Pronto nos pondremos en contacto.')">Contáctanos</button>
+        <p style="margin-top: 2rem; font-size: 1rem;">
+            📧 info@healthconnect.org | 🌐 www.healthconnect.org
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 HealthConnect. Construyendo puentes hacia la salud equitativa.</p>
+        <p style="margin-top: 1rem;">Participante orgulloso del Ford Philanthropy Challenge 2024</p>
+    </footer>
+</body>
+</html>
