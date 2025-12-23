@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #D1FAE5;
+  --bg-secondary: #F8FAFC;
+  --text-primary: #334155;
+  --cta-primary: #0F766E;
+  --cta-secondary: #0F766E;
+  --cta-secondary-bg: #D1FAE5;
+  --success: #22C55E;
+  --error: #F87171;
+  --badge: #FACC15;
+  --white: #FFFFFF;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-primary);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
