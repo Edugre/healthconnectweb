@@ -7,7 +7,9 @@ export default function PageTitle() {
   const { t } = useLanguage();
 
   useEffect(() => {
-    document.title = t.pageTitle;
+    if (typeof window !== 'undefined') {
+      document.title = t.pageTitle;
+    }
   }, [t.pageTitle]);
 
   return null;
