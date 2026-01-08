@@ -16,7 +16,7 @@ interface Story {
 }
 
 export default function Stories() {
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const [selectedStory, setSelectedStory] = useState<Story | null>(null);
   const [showFullTranscript, setShowFullTranscript] = useState(false);
 
@@ -416,7 +416,7 @@ export default function Stories() {
                     {story.situation}
                   </h3>
                   <p className="text-gray-600 text-base italic leading-relaxed border-l-4 border-[#0F766E] pl-4">
-                    "{story.preview}"
+                    &ldquo;{story.preview}&rdquo;
                   </p>
                 </>
               )}
@@ -460,7 +460,7 @@ export default function Stories() {
                 {!showFullTranscript ? (
                   <div className="animate-fadeIn max-w-3xl mx-auto">
                     <p className="text-2xl text-gray-700 italic mb-8 leading-relaxed border-l-4 border-[#0F766E] pl-6">
-                      "{selectedStory.preview}"
+                      &ldquo;{selectedStory.preview}&rdquo;
                     </p>
                     <p className="text-lg text-gray-800 leading-relaxed">
                       {selectedStory.full}

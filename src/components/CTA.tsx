@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, Globe, X } from 'lucide-react';
+import { Mail, X } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function CTA() {
