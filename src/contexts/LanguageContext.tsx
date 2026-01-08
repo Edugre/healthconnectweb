@@ -14,32 +14,29 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('es');
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
+  const [language, setLanguageState] = useState<Language>(() => {
     if (typeof window !== 'undefined') {
       const savedLanguage = localStorage.getItem('language') as Language;
       if (savedLanguage && (savedLanguage === 'es' || savedLanguage === 'en')) {
-        setLanguageState(savedLanguage);
+        return savedLanguage;
       }
     }
-  }, []);
+    return 'es';
+  });
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     if (typeof window !== 'undefined') {
       localStorage.setItem('language', lang);
-      document.documentElement.lang = lang;
     }
   };
 
+  // Set document language on mount and when language changes
   useEffect(() => {
-    if (mounted && typeof window !== 'undefined') {
+    if (typeof window !== 'undefined') {
       document.documentElement.lang = language;
     }
-  }, [language, mounted]);
+  }, [language]);
 
   const t = translations[language] as Translations;
 

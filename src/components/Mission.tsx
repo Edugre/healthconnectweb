@@ -34,7 +34,7 @@ export default function Mission() {
       </div>
 
       <div className="w-full mt-4 flex-shrink-0 space-y-1">
-        {missionItems.map((item, index) => {
+        {missionItems.map((item) => {
           const isExpanded = expandedItem === item.key;
           return (
             <div
