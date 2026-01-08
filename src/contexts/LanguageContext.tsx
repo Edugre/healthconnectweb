@@ -32,11 +32,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  // Set initial document language on mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
       document.documentElement.lang = language;
     }
-  }, [language]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const t = translations[language] as Translations;
 
