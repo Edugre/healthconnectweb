@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 import { Language, translations } from '@/lib/translations';
 
 type Translations = typeof translations.es;
@@ -18,8 +18,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (typeof window !== 'undefined') {
       const savedLanguage = localStorage.getItem('language') as Language;
       if (savedLanguage && (savedLanguage === 'es' || savedLanguage === 'en')) {
+        document.documentElement.lang = savedLanguage;
         return savedLanguage;
       }
+      document.documentElement.lang = 'es';
     }
     return 'es';
   });
@@ -31,14 +33,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       document.documentElement.lang = lang;
     }
   };
-
-  // Set initial document language on mount
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      document.documentElement.lang = language;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const t = translations[language] as Translations;
 
