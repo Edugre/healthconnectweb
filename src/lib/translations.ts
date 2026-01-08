@@ -6,7 +6,9 @@ export const translations = {
       about: "Quiénes Somos",
       mission: "Misión",
       impact: "Impacto",
-      contact: "Formulario"
+      contact: "Formulario",
+      stories: "Historias",
+      home: "Inicio"
     },
     hero: {
       title: "Navegando Juntos Hacia un Futuro Más Saludable",
@@ -96,6 +98,11 @@ export const translations = {
       text: "© 2024 HealthConnect. Construyendo puentes hacia la salud equitativa.",
       ford: "Participante orgulloso del Ford Philanthropy Challenge 2024"
     },
+    stories: {
+      title: "Historias",
+      subtitle: "Próximamente: Historias reales de nuestra comunidad",
+      placeholder: "Esta sección contendrá historias inspiradoras de personas que han navegado el sistema de salud. El contenido se agregará pronto."
+    },
     pageTitle: "Sobre Nosotros - HealthConnect"
   },
   en: {
@@ -103,7 +110,9 @@ export const translations = {
       about: "About Us",
       mission: "Mission",
       impact: "Impact",
-      contact: "Form"
+      contact: "Form",
+      stories: "Stories",
+      home: "Home"
     },
     hero: {
       title: "Navigating Together Towards a Healthier Future",
@@ -192,6 +201,11 @@ export const translations = {
     footer: {
       text: "© 2024 HealthConnect. Building bridges to equitable health.",
       ford: "Proud participant in the Ford Philanthropy Challenge 2024"
+    },
+    stories: {
+      title: "Stories",
+      subtitle: "Coming Soon: Real stories from our community",
+      placeholder: "This section will feature inspiring stories from people who have navigated the healthcare system. Content will be added soon."
     },
     pageTitle: "About Us - HealthConnect"
   }
