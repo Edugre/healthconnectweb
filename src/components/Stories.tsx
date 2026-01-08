@@ -1,7 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface Story {
   id: number;
@@ -15,8 +15,20 @@ interface Story {
 }
 
 export default function Stories() {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const [selectedStory, setSelectedStory] = useState<Story | null>(null);
+
+  // Handle Escape key to close modal
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && selectedStory) {
+        setSelectedStory(null);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [selectedStory]);
 
   const stories = [
     {
