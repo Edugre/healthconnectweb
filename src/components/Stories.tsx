@@ -5,8 +5,6 @@ import { useState, useEffect } from 'react';
 
 interface Story {
   id: number;
-  name: string;
-  age: number;
   situation: string;
   preview: string;
   full: string;
@@ -30,88 +28,82 @@ export default function Stories() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [selectedStory]);
 
-  const stories = [
+  const stories: Story[] = [
+    // Interview 1: Prefers natural remedies, father was heart patient
     {
       id: 1,
-      name: language === 'es' ? 'María' : 'Maria',
-      age: 24,
-      situation: language === 'es' ? 'Embarazada sin seguro' : 'Pregnant without insurance',
-      preview: language === 'es' 
-        ? 'Como estoy embarazada y no tengo seguro, todavía no he ido al médico. No quiero recibir una factura.'
-        : 'Since I\'m pregnant and don\'t have insurance, I haven\'t gone to the doctor yet. I don\'t want to get a bill.',
-      full: language === 'es'
-        ? 'María tiene un hijo asmático que tenía Medicaid en Nueva York, donde la atención era gratuita. Ahora embarazada y sin seguro en Florida, evita ir al médico por miedo a las facturas. Busca clínicas por Google, llamando para preguntar cuáles aceptan su seguro y cuáles tienen disponibilidad. Para ella, lo más importante son las reseñas, el servicio al cliente y los tiempos de espera cortos. Sueña con un sistema más accesible donde no haya tanto papeleo para aplicar.'
-        : 'Maria has an asthmatic son who had Medicaid in New York, where care was free. Now pregnant and uninsured in Florida, she avoids going to the doctor for fear of bills. She searches for clinics on Google, calling to ask which ones accept her insurance and have availability. For her, reviews, customer service, and short wait times matter most. She dreams of a more accessible system with less paperwork.',
-      color: 'from-emerald-50 to-teal-50',
-      accent: 'bg-emerald-500'
-    },
-    {
-      id: 2,
-      name: language === 'es' ? 'Ana' : 'Ana',
-      age: 19,
-      situation: language === 'es' ? 'Estudiante universitaria' : 'College student',
-      preview: language === 'es'
-        ? 'Mi mamá viene aquí, así que sé que estaré bien. Los doctores han sido amables y todos son confiables.'
-        : 'Because my mom goes here, I know I\'ll be okay. The doctors have been nice and everybody\'s trustworthy.',
-      full: language === 'es'
-        ? 'Ana es estudiante universitaria con horarios flexibles. Su madre descubrió esta clínica y ahora ambas confían en ella. Los doctores se toman su tiempo para explicar todo: qué medicamentos toma y cómo la afectarán. A diferencia de los hospitales donde esperas mucho y el personal está agotado, aquí se sienten acomodadas y atendidas con paciencia. Para Ana, tener un lugar confiable donde la traten con respeto es lo más importante.'
-        : 'Ana is a college student with flexible schedules. Her mother discovered this clinic and now both trust it. The doctors take their time to explain everything: what medications she\'s taking and how they\'ll affect her. Unlike hospitals where you wait a lot and staff are exhausted, here they feel accommodated and treated with patience. For Ana, having a reliable place where she\'s treated with respect is most important.',
-      color: 'from-cyan-50 to-blue-50',
-      accent: 'bg-cyan-500'
-    },
-    {
-      id: 3,
-      name: language === 'es' ? 'Laura' : 'Laura',
-      age: 22,
-      situation: language === 'es' ? 'Sin seguro después de los 21' : 'Uninsured after 21',
-      preview: language === 'es'
-        ? 'Hay veces que tienes algún problema y dices: "No voy a ir al médico, mejor me quedo en casa y que se me pase".'
-        : 'Sometimes you have a problem and you say: "I\'m not going to the doctor, I\'ll just stay home and let it pass".',
-      full: language === 'es'
-        ? 'Laura perdió su Medicaid al cumplir 21 años. Ahora enfrenta un tratamiento de conducto que debe pagar de su bolsillo. Su familia siempre tuvo Medicaid por ser de bajos recursos, pero ella quedó fuera del sistema. Ha visto personas que se ponen muy graves, algunas incluso mueren, por no ir al médico y evitar endeudarse de por vida. Conoce casos como el de Jorge, quien tiene enormes deudas hospitalarias por emergencias. Laura está en proceso de encontrar un seguro asequible, confiando en las recomendaciones de su familia.'
-        : 'Laura lost her Medicaid when she turned 21. Now she faces a root canal she must pay out of pocket. Her family always had Medicaid for being low-income, but she was left out of the system. She\'s seen people get very sick, some even die, from avoiding the doctor to prevent lifelong debt. She knows cases like Jorge\'s, who has enormous hospital debts from emergencies. Laura is in the process of finding affordable insurance, trusting her family\'s recommendations.',
-      color: 'from-purple-50 to-pink-50',
-      accent: 'bg-purple-500'
-    },
-    {
-      id: 4,
-      name: language === 'es' ? 'Patricia' : 'Patricia',
-      age: 28,
       situation: language === 'es' ? 'Prefiere remedios naturales' : 'Prefers natural remedies',
       preview: language === 'es'
         ? 'Si puedo esperar, lo haré. O si es un resfriado común, usaré remedios naturales. No quiero ir al médico por todo.'
         : 'If I can wait it out, I will. Or like a common cold, I\'ll just use natural remedies. I don\'t want to go to the doctor for everything.',
       full: language === 'es'
-        ? 'Patricia se mudó recientemente de Maryland a Florida y está entre trabajos, sin seguro médico. El costo de la atención la detiene de ir al doctor a menos que sea absolutamente necesario. Tuvo un pediatra en Maryland que mantuvo incluso de adulta porque le daba opciones naturales además de medicamentos. Busca clínicas convenientes, cerca de casa, sin barreras de idioma y con costos razonables. Valora la transparencia: doctores que explican las condiciones y ofrecen alternativas antes de prescribir medicamentos.'
-        : 'Patricia recently moved from Maryland to Florida and is between jobs, without health insurance. The cost of care stops her from going to the doctor unless absolutely necessary. She had a pediatrician in Maryland she kept even as an adult because he gave her natural options alongside medications. She looks for convenient clinics, close to home, without language barriers and with reasonable costs. She values transparency: doctors who explain conditions and offer alternatives before prescribing medications.',
+        ? 'Mi padre era paciente del corazón, así que íbamos al hospital general cercano. Él tenía Medicare. Para mí personalmente, no voy al doctor. Si puedo esperar, lo haré. O para un resfriado común, solo uso remedios naturales. No quiero ir al doctor por todo. El costo de la atención médica definitivamente nos detiene a mí o a mi familia de obtener atención. Me mudé recientemente aquí desde Maryland, así que soy nueva en el área. Usualmente estoy trabajando, así que generalmente tengo seguro médico, pero no tengo seguro médico ahora mismo porque no estoy trabajando. Tuve un pediatra en Maryland que seguí viendo después de ser adulta porque me sentía cómoda con él. Era un buen doctor. No trataba de prescribir medicinas. Nos decía, esto es lo que está pasando contigo. Puedes tomar una medicina o beber más agua o té de jengibre o algo más natural. La conveniencia, las barreras del idioma y el costo son importantes para mí.'
+        : 'My father was a heart patient, so we would just go to the nearby general hospital. He had Medicare. For me personally, I don\'t go to the doctor. If I can wait it out, I will. Or like a common cold, I\'ll just use natural remedies. I don\'t want to go to the doctor for everything. The cost of healthcare definitely stops me or my family from getting care. I recently moved down here from Maryland, so I\'m new to the area. I usually am working, so I usually have health insurance, but I don\'t have health insurance right now because I\'m not working. I had a pediatrician in Maryland that I kept seeing even as an adult because I felt comfortable with him. He was a good doctor. He didn\'t try to prescribe medicines. He would tell us, this is what\'s happening with you. You can take a medicine or drink more water or ginger tea or something more natural. Convenience, language barriers, and cost are important to me.',
+      color: 'from-emerald-50 to-teal-50',
+      accent: 'bg-emerald-500'
+    },
+    // Interview 2: Pregnant with asthmatic son
+    {
+      id: 2,
+      situation: language === 'es' ? 'Embarazada sin seguro' : 'Pregnant without insurance',
+      preview: language === 'es'
+        ? 'Como estoy embarazada y no tengo seguro, todavía no he ido al médico. No quiero recibir una factura.'
+        : 'Since I\'m pregnant and don\'t have insurance, I haven\'t gone to the doctor yet. I don\'t want to get a bill.',
+      full: language === 'es'
+        ? 'Mi hijo es asmático, así que usualmente voy al ER. En Nueva York él tenía Medicaid y era gratis para él. Ahora, como estoy embarazada y no tengo seguro, todavía no he ido al médico. No quiero recibir una factura. El costo de la atención médica definitivamente nos detiene. Usualmente busco en Google para encontrar clínicas y llamo para preguntar cuáles aceptan mi seguro o el de él y si tienen disponibilidad. Busco las reseñas, si son buenas, el servicio al cliente, si te tratan bien, si te atienden rápido o si tardan mucho. El tiempo de espera es importante para mí. Tengo auto, así que el transporte no es problema.'
+        : 'My son is asthmatic, so I usually just go to the ER. In New York he had Medicaid and it was free for him. Now, since I\'m pregnant and don\'t have insurance, I haven\'t gone to the doctor yet. I don\'t want to get a bill. The cost of healthcare definitely stops us. I usually use Google to find clinics and call to ask which ones accept my insurance or his insurance and if they\'re available. I look for reviews, if they\'re good, customer service, if they treat you nicely, if they take care of you fast or if they take long. Wait time is important for me. I have a car, so transportation isn\'t a problem.',
+      color: 'from-cyan-50 to-blue-50',
+      accent: 'bg-cyan-500'
+    },
+    // Interview 3: College student, trusts clinic because mom goes there
+    {
+      id: 3,
+      situation: language === 'es' ? 'Estudiante universitaria' : 'College student',
+      preview: language === 'es'
+        ? 'Como mi mamá viene aquí, sé que estaré bien. Los doctores han sido amables y todos son confiables.'
+        : 'Because my mom goes here, I know I\'ll be okay. The doctors have been nice and everybody\'s trustworthy.',
+      full: language === 'es'
+        ? 'He estado viniendo aquí por como un año porque mi mamá vino aquí primero. El costo no nos ha detenido porque si es caro, no importa, si lo necesitas, lo pagas. No es difícil encontrar clínicas para mí porque vengo aquí. Como mi mamá viene aquí, sé que estaré bien. Los doctores aquí han sido amables y todos son confiables. Estoy en la universidad, así que no es tan difícil para mí. Puedo escoger mis días, así que es bastante flexible. No he tenido problemas para entender las instrucciones médicas. Me lo explican todo. Explican qué medicamentos estoy tomando y cómo me afectarán.'
+        : 'I\'ve been coming here for like a year because my mom came here first. Cost hasn\'t stopped us because if it\'s expensive, it doesn\'t matter, if you need it, you pay. It\'s not hard to find clinics for me because I come here. Because my mom goes here, I know I\'ll be okay. The doctors here have been nice and everybody\'s trustworthy. I\'m in college, so it\'s not that hard for me. I get to pick my days, so it\'s pretty flexible. I haven\'t had trouble understanding medical instructions. They break it down for me. They explain what medications I\'m taking and how they\'ll affect me.',
+      color: 'from-purple-50 to-pink-50',
+      accent: 'bg-purple-500'
+    },
+    // Interview 4: Lost father to heart conditions
+    {
+      id: 4,
+      situation: language === 'es' ? 'Perdió a su padre' : 'Lost father to heart conditions',
+      preview: language === 'es'
+        ? 'La última vez que estuve en un hospital fue cuando mi padre murió frente a mí.'
+        : 'The last time I was in a hospital was when my dad died in front of me.',
+      full: language === 'es'
+        ? 'La última vez que estuve en un hospital fue cuando mi padre murió frente a mí. Tenía muchos problemas. Estaba muy estresado y enojado. No quería ir a terapia. El estrés puede matar. Tenía muchas condiciones del corazón. Intentaron diálisis en el último minuto, pero su cuerpo no lo soportó. Por más de diez años, cada mañana y cada noche, tomaba entre nueve y doce medicamentos. Usualmente vamos a urgencias. Para casos reales, vas a un hospital grande. Necesitaba ir al ICU, y las urgencias no tienen ICUs.'
+        : 'The last time I was in a hospital was when my dad died in front of me. He had a lot of issues. He was very stressed and angry. He didn\'t want to go to therapy. Stress can kill you. He had a lot of heart conditions. They tried dialysis at the last minute, but his body couldn\'t take it. For more than ten years, every morning and every night, he took around nine to twelve medications. We usually go to urgent care. For real issues, you go to a big hospital. He had to go to the ICU, and urgent care doesn\'t have ICUs.',
       color: 'from-green-50 to-lime-50',
       accent: 'bg-green-500'
     },
+    // Interview 5: FIU student, was uninsured for a month
     {
       id: 5,
-      name: language === 'es' ? 'Sofía' : 'Sofia',
-      age: 25,
       situation: language === 'es' ? 'Estudiante universitaria' : 'University student',
       preview: language === 'es'
         ? 'Durante un mes sin seguro, no fui al dentista porque no podía pagarlo. El Centro de Salud de FIU fue increíble porque es gratis.'
         : 'During a month without insurance, I didn\'t go to the dentist because I couldn\'t afford it. FIU\'s Student Health Center was amazing because it\'s free.',
       full: language === 'es'
-        ? 'Sofía perdió a su padre por problemas cardíacos y estrés. Ella misma ha enfrentado periodos sin seguro donde tuvo que depender del Centro de Salud estudiantil de FIU, que fue rápido y gratuito, aunque solo funciona en horario laboral. Su mayor frustración es encontrar doctores que acepten su seguro básico. Prefiere doctoras porque las siente más pacientes y comprensivas. Valora la limpieza, el servicio al cliente y que el personal realmente se preocupe. Su deseo: transparencia en los tiempos de espera.'
-        : 'Sofia lost her father to heart problems and stress. She herself has faced periods without insurance where she had to rely on FIU\'s Student Health Center, which was fast and free, though only open during business hours. Her biggest frustration is finding doctors who accept her basic insurance. She prefers female doctors because she finds them more patient and understanding. She values cleanliness, customer service, and staff who genuinely care. Her wish: transparency in wait times.',
+        ? 'Sí, el costo de la atención médica nos ha detenido. Hubo momentos específicos donde queríamos hacer cosas médicamente, procedimientos donde tuvimos que esperar más tiempo para ahorrar dinero. Personalmente, hubo un período cuando estuve sin seguro por un mes. Durante ese tiempo, no fui al dentista porque no podía pagarlo. El Centro de Salud estudiantil de FIU fue realmente increíble porque es gratis o está incluido en la matrícula. Fue asombroso, súper fácil y súper rápido. Mi única crítica es que no hay formulario en línea. Lo más difícil es encontrar uno que acepte mi seguro. Mi mamá y yo tenemos un seguro muy básico. Funciona, pero es limitado. Me siento más cómoda con doctoras mujeres. Tienden a ser más pacientes, maternales, y me hacen sentir más tranquila. La limpieza importa mucho. El servicio al cliente también es enorme.'
+        : 'Yes, the cost of healthcare has stopped us. There have been specific times where there were things we wanted to do medically, procedures where we had to wait longer to save money. Speaking personally, there was a period when I was uninsured for about a month. During that time, I didn\'t go to the dentist because I couldn\'t afford it. FIU\'s Student Health Center was really great because it\'s free or included through tuition. It was amazing, super easy and super-fast. My only critique is that there\'s no online form. The hardest part is finding one that accepts my insurance. My mom and I have very basic insurance. It works, but it\'s limited. I feel more comfortable with female doctors. They tend to be more patient, motherly, and make me feel more at ease. Cleanliness matters a lot. Customer service is also huge.',
       color: 'from-amber-50 to-orange-50',
       accent: 'bg-amber-500'
     },
+    // Interview 6: Lost Medicaid at 21, needs root canal
     {
       id: 6,
-      name: language === 'es' ? 'Carmen' : 'Carmen',
-      age: 45,
-      situation: language === 'es' ? 'Maestra con dos maestrías' : 'Teacher with two master\'s degrees',
+      situation: language === 'es' ? 'Sin seguro después de los 21' : 'Uninsured after 21',
       preview: language === 'es'
-        ? 'Trabajo para el distrito escolar de Broward. Tengo una licenciatura y dos maestrías, y aún así no puedo costear atención médica.'
-        : 'I work for Broward County School Board. I have a bachelor\'s degree and two master\'s degrees, and I still can\'t afford healthcare.',
+        ? 'Hay veces que tienes algún problema y dices: "No voy a ir al médico, mejor me quedo en casa y que se me pase".'
+        : 'Sometimes you have a problem and you say: "I\'m not going to the doctor, I\'ll just stay home and let it pass".',
       full: language === 'es'
-        ? 'Carmen es maestra con dos maestrías pero no puede costear atención médica. Perdió su Medicaid cuando su hija cumplió 18, a pesar de que ella la sigue manteniendo. Sin tiroides y con historial de insuficiencia renal, casi muere durante COVID. Pasó un año completo sin cobertura porque perdió el periodo de inscripción en el trabajo. Se hospitalizó sin seguro, ignorando las facturas porque no puede pagarlas. Esta clínica le da medicamentos directamente, incluyendo tratamiento para diabetes y salud mental. Aquí encontró atención asequible los sábados, algo imposible en otros lugares.'
-        : 'Carmen is a teacher with two master\'s degrees but can\'t afford healthcare. She lost her Medicaid when her daughter turned 18, even though she still supports her. Without a thyroid and with a history of kidney failure, she almost died during COVID. She spent an entire year without coverage because she missed open enrollment at work. She was hospitalized without insurance, ignoring the bills because she can\'t pay them. This clinic gives her medications directly, including diabetes and mental health treatment. Here she found affordable care on Saturdays, impossible elsewhere.',
+        ? 'En mi familia siempre hemos tenido Medicaid y otras ayudas. Yo ahora, como ya cumplí 21 años, ya no tengo Medicaid. Tuve un empaste. Ahora me tengo que hacer un tratamiento de conducto y eso sí tengo que pagarlo. Mi familia es de bajos recursos, por eso nos lo daban. Ahora tengo que buscar un seguro por mi cuenta. Sí, el costo de la atención médica nos ha impedido recibir atención. Hay veces que tienes algún problema y dices: "No voy a ir al médico, mejor me quedo en casa y que se me pase". Hemos visto mucha gente que hace eso. Hay personas que se ponen muy graves y algunas incluso mueren por no ir al médico, porque se endeudan de por vida. Conozco casos como Jorge que tiene mucha deuda con los hospitales.'
+        : 'In my family we\'ve always had Medicaid and other assistance. Now that I turned 21, I no longer have Medicaid. I had a filling. Now I have to get a root canal and I have to pay for that. My family is low-income, that\'s why they gave it to us. Now I have to find insurance on my own. Yes, the cost of healthcare has prevented us from getting care. Sometimes you have a problem and you say: "I\'m not going to the doctor, I\'ll just stay home and let it pass". We\'ve seen a lot of people who do that. There are people who get very sick and some even die from not going to the doctor, because they go into debt for life. I know cases like Jorge who has a lot of debt with hospitals.',
       color: 'from-rose-50 to-red-50',
       accent: 'bg-rose-500'
     }
@@ -138,11 +130,12 @@ export default function Stories() {
             >
               <div className="flex items-start gap-4 mb-4">
                 <div className={`w-16 h-16 ${story.accent} rounded-full flex items-center justify-center text-white text-2xl font-bold flex-shrink-0`}>
-                  {story.name[0]}
+                  P{story.id}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-[#0F766E]">{story.name}</h3>
-                  <p className="text-sm text-[#475569] font-medium">{story.age} {language === 'es' ? 'años' : 'years old'}</p>
+                  <h3 className="text-2xl font-bold text-[#0F766E]">
+                    {language === 'es' ? 'Participante' : 'Participant'} {story.id}
+                  </h3>
                   <p className="text-sm text-[#059669] font-semibold mt-1">{story.situation}</p>
                 </div>
               </div>
@@ -167,14 +160,14 @@ export default function Stories() {
             >
               <div className="flex items-start gap-6 mb-6">
                 <div className={`w-20 h-20 ${selectedStory.accent} rounded-full flex items-center justify-center text-white text-3xl font-bold flex-shrink-0`}>
-                  {selectedStory.name[0]}
+                  P{selectedStory.id}
                 </div>
                 <div>
                   <h2 className="text-3xl md:text-4xl font-bold text-[#0F766E] mb-2">
-                    {selectedStory.name}
+                    {language === 'es' ? 'Participante' : 'Participant'} {selectedStory.id}
                   </h2>
                   <p className="text-lg text-[#475569] font-medium">
-                    {selectedStory.age} {language === 'es' ? 'años' : 'years old'} • {selectedStory.situation}
+                    {selectedStory.situation}
                   </p>
                 </div>
               </div>
