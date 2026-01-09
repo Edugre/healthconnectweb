@@ -380,15 +380,23 @@ export default function Stories() {
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-          {stories.map((story) => (
+          {stories.map((story) => {
+            const isShareCard = story.id === 9;
+            const cardClassName = `bg-gradient-to-br ${story.color} rounded-3xl shadow-xl p-8 ${
+              isShareCard 
+                ? 'cursor-default border-4 border-[#0F766E]' 
+                : 'cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 border-white/50 group'
+            } overflow-hidden relative`;
+            
+            return (
             <div
               key={story.id}
               onClick={() => {
-                if (story.id === 9) return;
+                if (isShareCard) return;
                 setSelectedStory(story);
                 setShowFullTranscript(false);
               }}
-              className={`bg-gradient-to-br ${story.color} rounded-3xl shadow-xl p-8 ${story.id === 9 ? 'cursor-default border-4 border-[#0F766E]' : 'cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 border-white/50 group'} overflow-hidden relative`}
+              className={cardClassName}
             >
               {story.id === 9 ? (
                 <>
@@ -408,7 +416,7 @@ export default function Stories() {
               ) : (
                 <>
                   {/* Darker overlay on hover */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-3xl z-0" />
+                  <div className="absolute inset-0 group-hover:bg-black/20 transition-all duration-300 rounded-3xl z-0" />
                   
                   {/* Content with higher z-index */}
                   <div className="relative z-10">
@@ -435,7 +443,8 @@ export default function Stories() {
                 </>
               )}
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {selectedStory && selectedStory.id !== 9 && (
