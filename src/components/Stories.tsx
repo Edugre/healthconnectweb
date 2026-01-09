@@ -32,6 +32,7 @@ export default function Stories() {
   }, [selectedStory]);
 
   const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfT2FpxHL6k0ijmawaJmSLG2M56J_M2zxPR7mKxZH0IQYUNvw/viewform?embedded=true';
+  const SHARE_STORY_ID = 9;
   const handleShareStory = () => {
     window.open(GOOGLE_FORM_URL, '_blank');
   };
@@ -380,17 +381,25 @@ export default function Stories() {
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-          {stories.map((story) => (
+          {stories.map((story) => {
+            const isShareCard = story.id === SHARE_STORY_ID;
+            const cardClassName = `bg-gradient-to-br ${story.color} rounded-3xl shadow-xl p-8 ${
+              isShareCard 
+                ? 'cursor-default border-4 border-[#0F766E]' 
+                : 'cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 border-white/50 group'
+            } overflow-hidden relative`;
+            
+            return (
             <div
               key={story.id}
               onClick={() => {
-                if (story.id === 9) return;
+                if (isShareCard) return;
                 setSelectedStory(story);
                 setShowFullTranscript(false);
               }}
-              className={`bg-gradient-to-br ${story.color} rounded-3xl shadow-xl p-8 ${story.id === 9 ? 'cursor-default border-4 border-[#0F766E]' : 'cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 border-white/50'} overflow-hidden relative`}
+              className={cardClassName}
             >
-              {story.id === 9 ? (
+              {isShareCard ? (
                 <>
                   <div className="mb-6">
                     <h3 className="text-3xl font-bold text-[#0F766E] mb-3">
@@ -407,21 +416,36 @@ export default function Stories() {
                 </>
               ) : (
                 <>
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="inline-block px-4 py-1 bg-[#0F766E] text-white text-sm font-bold rounded-full">
-                      {language === 'es' ? 'Entrevista' : 'Interview'} {story.id}
-                    </span>
+                  {/* Darker overlay on hover */}
+                  <div className="absolute inset-0 group-hover:bg-black/20 transition-all duration-300" />
+                  
+                  {/* Content positioned above overlay */}
+                  <div className="relative">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="inline-block px-4 py-1 bg-[#0F766E] text-white text-sm font-bold rounded-full">
+                        {language === 'es' ? 'Entrevista' : 'Interview'} {story.id}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-[#0F766E] mb-4 leading-tight">
+                      {story.situation}
+                    </h3>
+                    <p className="text-gray-600 text-base italic leading-relaxed border-l-4 border-[#0F766E] pl-4 mb-4">
+                      &ldquo;{story.preview}&rdquo;
+                    </p>
+                    
+                    {/* Read More indicator */}
+                    <div className="flex items-center gap-2 text-[#0F766E] font-bold text-sm mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span>{language === 'es' ? 'Leer más' : 'Read more'}</span>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-[#0F766E] mb-4 leading-tight">
-                    {story.situation}
-                  </h3>
-                  <p className="text-gray-600 text-base italic leading-relaxed border-l-4 border-[#0F766E] pl-4">
-                    &ldquo;{story.preview}&rdquo;
-                  </p>
                 </>
               )}
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {selectedStory && selectedStory.id !== 9 && (
