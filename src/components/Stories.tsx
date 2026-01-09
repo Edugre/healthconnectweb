@@ -450,8 +450,8 @@ export default function Stories() {
 
         {selectedStory && selectedStory.id !== 9 && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[2000] flex items-center justify-center p-4 pt-24" onClick={() => setSelectedStory(null)}>
-            <div className="bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
-              <div className="p-8 bg-gradient-to-r from-[#0F766E] to-[#059669] text-white flex justify-between items-center">
+            <div className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
+              <div className="p-6 bg-gradient-to-r from-[#0F766E] to-[#059669] text-white flex justify-between items-center">
                 <div>
                   <span className="inline-block px-3 py-1 bg-white/20 text-white text-sm font-bold rounded-full mb-2">
                     {language === 'es' ? 'Entrevista' : 'Interview'} {selectedStory.id}
@@ -480,7 +480,7 @@ export default function Stories() {
                 </button>
               </div>
 
-              <div className="p-10 overflow-y-auto flex-1 bg-white">
+              <div className="p-6 overflow-y-auto flex-1 bg-white">
                 {!showFullTranscript ? (
                   <div className="animate-fadeIn max-w-3xl mx-auto">
                     <p className="text-2xl text-gray-700 italic mb-8 leading-relaxed border-l-4 border-[#0F766E] pl-6">
