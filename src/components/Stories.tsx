@@ -449,7 +449,7 @@ export default function Stories() {
         </div>
 
         {selectedStory && selectedStory.id !== 9 && (
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setSelectedStory(null)}>
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 pt-24" onClick={() => setSelectedStory(null)}>
             <div className="bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
               <div className="p-8 bg-gradient-to-r from-[#0F766E] to-[#059669] text-white flex justify-between items-center">
                 <div>
