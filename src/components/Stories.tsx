@@ -399,7 +399,7 @@ export default function Stories() {
               }}
               className={cardClassName}
             >
-              {story.id === 9 ? (
+              {isShareCard ? (
                 <>
                   <div className="mb-6">
                     <h3 className="text-3xl font-bold text-[#0F766E] mb-3">
@@ -417,10 +417,10 @@ export default function Stories() {
               ) : (
                 <>
                   {/* Darker overlay on hover */}
-                  <div className="absolute inset-0 group-hover:bg-black/20 transition-all duration-300 z-0" />
+                  <div className="absolute inset-0 group-hover:bg-black/20 transition-all duration-300" />
                   
                   {/* Content with higher z-index */}
-                  <div className="relative z-10">
+                  <div className="relative">
                     <div className="flex items-center gap-3 mb-4">
                       <span className="inline-block px-4 py-1 bg-[#0F766E] text-white text-sm font-bold rounded-full">
                         {language === 'es' ? 'Entrevista' : 'Interview'} {story.id}
