@@ -419,7 +419,7 @@ export default function Stories() {
                   {/* Darker overlay on hover */}
                   <div className="absolute inset-0 group-hover:bg-black/20 transition-all duration-300" />
                   
-                  {/* Content with higher z-index */}
+                  {/* Content positioned above overlay */}
                   <div className="relative">
                     <div className="flex items-center gap-3 mb-4">
                       <span className="inline-block px-4 py-1 bg-[#0F766E] text-white text-sm font-bold rounded-full">
