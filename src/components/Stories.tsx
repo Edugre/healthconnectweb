@@ -32,6 +32,7 @@ export default function Stories() {
   }, [selectedStory]);
 
   const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfT2FpxHL6k0ijmawaJmSLG2M56J_M2zxPR7mKxZH0IQYUNvw/viewform?embedded=true';
+  const SHARE_STORY_ID = 9;
   const handleShareStory = () => {
     window.open(GOOGLE_FORM_URL, '_blank');
   };
@@ -381,7 +382,7 @@ export default function Stories() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
           {stories.map((story) => {
-            const isShareCard = story.id === 9;
+            const isShareCard = story.id === SHARE_STORY_ID;
             const cardClassName = `bg-gradient-to-br ${story.color} rounded-3xl shadow-xl p-8 ${
               isShareCard 
                 ? 'cursor-default border-4 border-[#0F766E]' 
@@ -416,7 +417,7 @@ export default function Stories() {
               ) : (
                 <>
                   {/* Darker overlay on hover */}
-                  <div className="absolute inset-0 group-hover:bg-black/20 transition-all duration-300 rounded-3xl z-0" />
+                  <div className="absolute inset-0 group-hover:bg-black/20 transition-all duration-300 z-0" />
                   
                   {/* Content with higher z-index */}
                   <div className="relative z-10">
