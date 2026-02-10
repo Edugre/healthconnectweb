@@ -12,7 +12,8 @@ export const translations = {
     },
     hero: {
       title: "Navegando Juntos Hacia un Futuro Más Saludable",
-      subtitle: "Rompiendo barreras, construyendo puentes hacia la atención médica accesible"
+      subtitle: "Rompiendo barreras, construyendo puentes hacia la atención médica accesible",
+      storiesButton: "Conoce las Historias"
     },
     about: {
       title: "Quiénes Somos",
@@ -91,12 +92,12 @@ export const translations = {
                         "Completamente anónimo. No se requiere información personal.",
                         "Tu voz ayuda a romper barreras y mejorar el acceso para otros."
                     ],
-                    button: "Comparte Mi Historia",
+                    button: "Comparte tu Historia",
                     contactMessage: "Si eres un paciente buscando atención, un proveedor médico comprometido con la equidad, o un aliado que cree en nuestro trabajo, queremos conectar contigo."
                 },
     footer: {
-      text: "© 2024 HealthConnect. Construyendo puentes hacia la salud equitativa.",
-      ford: "Participante orgulloso del Ford Philanthropy Challenge 2024"
+      text: "© 2026 HealthConnect. Construyendo puentes hacia la salud equitativa.",
+      ford: "Participante orgulloso del Ford Philanthropy Challenge 2025"
     },
     stories: {
       title: "Historias",
@@ -116,7 +117,8 @@ export const translations = {
     },
     hero: {
       title: "Navigating Together Towards a Healthier Future",
-      subtitle: "Breaking barriers, building bridges to accessible healthcare"
+      subtitle: "Breaking barriers, building bridges to accessible healthcare",
+      storiesButton: "Discover the Stories"
     },
     about: {
       title: "About Us",
@@ -195,12 +197,12 @@ export const translations = {
                         "Completely anonymous. No personal information required.",
                         "Your voice helps break barriers and improve access for others."
                     ],
-                    button: "Share My Story",
+                    button: "Share your Story",
                     contactMessage: "Whether you're a patient seeking care, a healthcare provider committed to equity, or an ally who believes in our work, we want to connect with you."
                 },
     footer: {
-      text: "© 2024 HealthConnect. Building bridges to equitable health.",
-      ford: "Proud participant in the Ford Philanthropy Challenge 2024"
+      text: "© 2026 HealthConnect. Building bridges to equitable health.",
+      ford: "Proud participant in the Ford Philanthropy Challenge 2025"
     },
     stories: {
       title: "Stories",

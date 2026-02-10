@@ -1,16 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Hero() {
   const { t } = useLanguage();
-
-  const scrollToCTA = () => {
-    const element = document.getElementById('contacto');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section className="relative h-screen flex flex-col justify-center items-center text-center text-white px-[5%] pt-20 md:pt-24 overflow-hidden">
@@ -36,12 +30,12 @@ export default function Hero() {
         <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto mb-8 drop-shadow-md">
           {t.hero.subtitle}
         </p>
-        <button
-          onClick={scrollToCTA}
-          className="px-8 md:px-12 py-3 md:py-4 bg-[#0F766E] text-white border-none rounded-full text-lg md:text-xl font-semibold cursor-pointer transition-all hover:-translate-y-1 hover:shadow-2xl hover:bg-[#0d5d57] drop-shadow-lg"
+        <Link
+          href="/historias"
+          className="inline-block px-8 md:px-12 py-3 md:py-4 bg-[#0F766E] text-white no-underline rounded-full text-lg md:text-xl font-semibold transition-all hover:-translate-y-1 hover:shadow-2xl hover:bg-[#0d5d57] drop-shadow-lg"
         >
-          {t.cta.button}
-        </button>
+          {t.hero.storiesButton}
+        </Link>
       </div>
     </section>
   );
