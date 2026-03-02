@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediBridge — Find Affordable Healthcare in Miami</title>
+  <meta name="description" content="MediBridge connects uninsured and underinsured Miami residents with free and sliding-scale clinics, pharmacies, and mental health services near them."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">M</div>
+        MediBridge
+      </a>
+      <ul class="nav-links">
+        <li><a href="buscar.html">Find Care</a></li>
+        <li><a href="problematica.html">The Problem</a></li>
+        <li><a href="para-clinicas.html">For Clinics</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="buscar.html" class="btn btn-primary btn-sm">Find Care Near Me</a>
+      </div>
+      <button class="nav-hamburger" id="menuBtn" aria-label="Menu">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 14a6 6 0 110-12 6 6 0 010 12zm0-9a1 1 0 100 2 1 1 0 000-2z"/></svg>
+        Miami, Florida — Free for Patients
+      </div>
+      <h1>Find <em>affordable care</em><br/>near you — in minutes.</h1>
+      <p class="hero-sub">MediBridge connects you with free clinics, low-cost pharmacies, and mental health services in Miami. No insurance? No problem.</p>
+
+      <!-- SEARCH BOX -->
+      <div class="search-box" id="heroSearch">
+        <div class="search-field">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <div>
+            <label for="zipInput">ZIP Code</label>
+            <input type="text" id="zipInput" placeholder="e.g. 33125" maxlength="5"/>
+          </div>
+        </div>
+        <div class="search-field">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          <div>
+            <label for="serviceSelect">I need</label>
+            <select id="serviceSelect">
+              <option value="">Any service</option>
+              <option value="clinic">Primary Care</option>
+              <option value="mental-health">Mental Health / Therapy</option>
+              <option value="pharmacy">Pharmacy / Medications</option>
+              <option value="dental">Dental</option>
+              <option value="womens">Women's Health</option>
+            </select>
+          </div>
+        </div>
+        <div class="search-btn-wrap">
+          <button class="btn btn-primary btn-lg" onclick="doSearch()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="M21 21l-4.35-4.35"/></svg>
+            Search
+          </button>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;">
+        <a href="buscar.html" style="color:rgba(255,255,255,0.65); font-size:13px; display:inline-flex; align-items:center; gap:6px; text-decoration:none; transition:color 0.18s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"/></svg>
+          Advanced search with more filters →
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>50+</strong>
+          <span>Miami clinics listed</span>
+        </div>
+        <div class="hero-stat">
+          <strong>$0</strong>
+          <span>Cost for patients</span>
+        </div>
+        <div class="hero-stat">
+          <strong>3 min</strong>
+          <span>Average time to match</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="background: var(--gray-100);">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Find care in 3 simple steps</h2>
+    <p class="section-sub">No forms. No confusion. Just answers — in your language.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Tell us what you need</h3>
+        <p>Select your service type, ZIP code, and insurance situation. Takes 30 seconds.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>See your matches</h3>
+        <p>We show you ranked clinics with real availability, wait times, and cost information.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Get connected</h3>
+        <p>Call directly, get directions, or follow the clinic for future updates. Simple.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED CLINICS -->
+<section class="section">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:0;">
+      <div>
+        <div class="section-label">Featured in Miami</div>
+        <h2 class="section-title">Top-matched clinics near you</h2>
+      </div>
+      <a href="buscar.html" class="btn btn-secondary">See all clinics →</a>
+    </div>
+    <div class="clinic-grid" id="featuredClinics">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <strong>44,000+</strong>
+        <p>Adults die annually in the US due to lack of health insurance</p>
+      </div>
+      <div class="stat-item">
+        <strong>38%</strong>
+        <p>of Americans delay care because of cost</p>
+      </div>
+      <div class="stat-item">
+        <strong>1 in 4</strong>
+        <p>Miami-Dade residents are uninsured or underinsured</p>
+      </div>
+      <div class="stat-item">
+        <strong>$0</strong>
+        <p>Cost for patients to use MediBridge, always</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY VOICES -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Community Voices</div>
+    <h2 class="section-title">Real patients. Real stories.</h2>
+    <p class="section-sub">From our interviews with patients at Miami community clinics.</p>
+    <div class="quotes-grid">
+      <div class="quote-card">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">I didn't know I could see a doctor without insurance. I thought the ER was my only option. Now I have a regular primary care doctor who speaks Spanish.</p>
+        <div class="quote-author">
+          <div class="quote-avatar"></div>
+          <div class="quote-author-info">
+            <strong>María, 34</strong>
+            <span>Little Havana, Miami</span>
+          </div>
+        </div>
+      </div>
+      <div class="quote-card">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">I needed medication every month and I couldn't afford it. I found out through this clinic that there's a program where I get it for free. Changed my life.</p>
+        <div class="quote-author">
+          <div class="quote-avatar"></div>
+          <div class="quote-author-info">
+            <strong>Carlos, 52</strong>
+            <span>Hialeah, Miami</span>
+          </div>
+        </div>
+      </div>
+      <div class="quote-card">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">Mental health is still taboo in my family, but I found a free therapist who speaks Creole. For the first time I felt understood and not judged.</p>
+        <div class="quote-author">
+          <div class="quote-avatar"></div>
+          <div class="quote-author-info">
+            <strong>Nadège, 28</strong>
+            <span>Little Haiti, Miami</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE COVER -->
+<section class="section" style="background: var(--gray-100);">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="section-label" style="margin:0 auto 16px;">What We Cover</div>
+      <h2 class="section-title">Every type of care you need</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:20px;">
+      <div class="step" style="padding:24px 16px;">
+        <div style="font-size:32px; margin-bottom:12px;"></div>
+        <h3 style="font-size:15px;">Primary Care</h3>
+        <p style="font-size:13px;">General checkups, chronic conditions, preventative care</p>
+      </div>
+      <div class="step" style="padding:24px 16px;">
+        <div style="font-size:32px; margin-bottom:12px;"></div>
+        <h3 style="font-size:15px;">Free Medications</h3>
+        <p style="font-size:13px;">On-site dispensing, free generics, medication programs</p>
+      </div>
+      <div class="step" style="padding:24px 16px;">
+        <div style="font-size:32px; margin-bottom:12px;"></div>
+        <h3 style="font-size:15px;">Mental Health</h3>
+        <p style="font-size:13px;">Free therapy, psychiatry, crisis support, counseling</p>
+      </div>
+      <div class="step" style="padding:24px 16px;">
+        <div style="font-size:32px; margin-bottom:12px;"></div>
+        <h3 style="font-size:15px;">Dental</h3>
+        <p style="font-size:13px;">Cleanings, extractions, sliding-scale dental care</p>
+      </div>
+      <div class="step" style="padding:24px 16px;">
+        <div style="font-size:32px; margin-bottom:12px;"></div>
+        <h3 style="font-size:15px;">Women's Health</h3>
+        <p style="font-size:13px;">OB-GYN, family planning, prenatal care</p>
+      </div>
+      <div class="step" style="padding:24px 16px;">
+        <div style="font-size:32px; margin-bottom:12px;"></div>
+        <h3 style="font-size:15px;">Vaccinations</h3>
+        <p style="font-size:13px;">Free immunizations, flu shots, travel vaccines</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR CLINICS TEASER -->
+<section class="for-clinics">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;">
+      <div>
+        <div class="section-label" style="background:rgba(255,255,255,0.1); color:var(--green-200);">For Healthcare Providers</div>
+        <h2 class="section-title" style="color:white;">Reach patients who need you.</h2>
+        <p style="color:rgba(255,255,255,0.7); font-size:17px; line-height:1.7; margin-bottom:32px;">List your clinic for free. Get pre-screened, Medicaid-eligible patients matched directly to your services. Reduce no-shows. Improve outcomes.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="para-clinicas.html" class="btn btn-primary btn-lg">List Your Clinic Free</a>
+          <a href="para-clinicas.html" class="btn btn-secondary btn-lg" style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:white;">See pricing</a>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:20px 24px; display:flex; align-items:center; gap:16px;">
+          <div style="font-size:28px;"></div>
+          <div>
+            <strong style="display:block; color:white; font-size:15px;">More visibility</strong>
+            <span style="font-size:13px; color:rgba(255,255,255,0.6);">Appear in searches by qualifying patients in your area</span>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:20px 24px; display:flex; align-items:center; gap:16px;">
+          <div style="font-size:28px;"></div>
+          <div>
+            <strong style="display:block; color:white; font-size:15px;">Pre-screened leads</strong>
+            <span style="font-size:13px; color:rgba(255,255,255,0.6);">Patients matched to your eligibility criteria before they arrive</span>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:20px 24px; display:flex; align-items:center; gap:16px;">
+          <div style="font-size:28px;"></div>
+          <div>
+            <strong style="display:block; color:white; font-size:15px;">No long-term contracts</strong>
+            <span style="font-size:13px; color:rgba(255,255,255,0.6);">Start free. Upgrade when you see the results.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="color:white; text-decoration:none;">
+          <div class="nav-logo-icon">M</div>
+          MediBridge
+        </a>
+        <p>Connecting Miami's underserved communities with free and affordable healthcare. Always free for patients.</p>
+      </div>
+      <div class="footer-col">
+        <h4>For Patients</h4>
+        <ul>
+          <li><a href="buscar.html">Find a Clinic</a></li>
+          <li><a href="buscar.html?type=pharmacy">Free Medications</a></li>
+          <li><a href="buscar.html?type=mental-health">Mental Health</a></li>
+          <li><a href="buscar.html?type=dental">Dental Care</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>For Clinics</h4>
+        <ul>
+          <li><a href="para-clinicas.html">List Your Clinic</a></li>
+          <li><a href="para-clinicas.html#pricing">Pricing</a></li>
+          <li><a href="para-clinicas.html#how">How It Works</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="problematica.html">The Problem</a></li>
+          <li><a href="problematica.html#research">Our Research</a></li>
+          <li><a href="mailto:hello@medibridge.care">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 MediBridge. All rights reserved. Miami, FL.</span>
+      <div style="display:flex; gap:16px;">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">En Español</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+  // Hero search
+  function doSearch() {
+    const zip = document.getElementById('zipInput').value;
+    const service = document.getElementById('serviceSelect').value;
+    let url = 'buscar.html';
+    const params = new URLSearchParams();
+    if (zip) params.set('zip', zip);
+    if (service) params.set('type', service);
+    if (params.toString()) url += '?' + params.toString();
+    window.location.href = url;
+  }
+  document.getElementById('zipInput').addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
+</script>
+</body>
+</html>
