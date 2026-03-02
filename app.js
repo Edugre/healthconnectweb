@@ -3,7 +3,7 @@
 //  Clinic data, card generation, filtering
 // =============================================
 
-// ──── CLINIC DATA (inline, no fetch needed) ────
+//  CLINIC DATA (inline, no fetch needed) 
 const clinicsData = [
     {
         id: "jessie-trice",
@@ -167,7 +167,7 @@ const clinicsData = [
     }
 ];
 
-// ──── HELPERS ────
+//  HELPERS 
 const availabilityConfig = {
     green: { dot: 'dot-green', label: 'Available Today' },
     yellow: { dot: 'dot-yellow', label: 'Limited Slots' },
@@ -175,20 +175,20 @@ const availabilityConfig = {
 };
 
 const typeEmoji = {
-    clinic: '🏥',
-    'mental-health': '🧠',
-    pharmacy: '💊'
+    clinic: '',
+    'mental-health': '',
+    pharmacy: ''
 };
 
-// ──── BUILD CLINIC CARD ────
+//  BUILD CLINIC CARD 
 function buildCard(c) {
     const avail = availabilityConfig[c.availability] || availabilityConfig.green;
-    const emoji = typeEmoji[c.type[0]] || '🏥';
+    const emoji = typeEmoji[c.type[0]] || '';
 
     const badges = [
-        c.featured ? `<span class="badge badge-ai">⭐ Featured</span>` : '',
-        c.meds_onsite ? `<span class="badge badge-green">💊 Meds</span>` : '',
-        c.free_therapy ? `<span class="badge badge-green">🧠 Free Therapy</span>` : '',
+        c.featured ? `<span class="badge badge-ai"> Featured</span>` : '',
+        c.meds_onsite ? `<span class="badge badge-green"> Meds</span>` : '',
+        c.free_therapy ? `<span class="badge badge-green"> Free Therapy</span>` : '',
     ].join('');
 
     const tags = c.specialty.slice(0, 3).map(s => `<span class="tag">${s}</span>`).join('');
@@ -219,7 +219,7 @@ function buildCard(c) {
             id="follow-${c.id}"
             onclick="handleFollow(event, '${c.id}')"
           >
-            ${isFollowing(c.id) ? '✅ Following' : '+ Follow'}
+            ${isFollowing(c.id) ? ' Following' : '+ Follow'}
           </button>
         </div>
       </div>
@@ -227,7 +227,7 @@ function buildCard(c) {
   `;
 }
 
-// ──── FOLLOW SYSTEM (localStorage) ────
+//  FOLLOW SYSTEM (localStorage) 
 function isFollowing(id) {
     const follows = JSON.parse(localStorage.getItem('mb_follows') || '[]');
     return follows.includes(id);
@@ -244,13 +244,13 @@ function handleFollow(e, id) {
         btn.classList.remove('following');
     } else {
         follows.push(id);
-        btn.textContent = '✅ Following';
+        btn.textContent = ' Following';
         btn.classList.add('following');
     }
     localStorage.setItem('mb_follows', JSON.stringify(follows));
 }
 
-// ──── RENDER FUNCTIONS ────
+//  RENDER FUNCTIONS 
 function renderClinics(data, containerId = 'resultsClinics') {
     const el = document.getElementById(containerId);
     if (!el) return;
@@ -272,7 +272,7 @@ function renderFeatured() {
     el.innerHTML = featured.map(buildCard).join('');
 }
 
-// ──── FILTERING (buscar.html) ────
+//  FILTERING (buscar.html) 
 function applyFilters() {
     const query = (document.getElementById('searchQuery')?.value || '').toLowerCase();
     const type = document.getElementById('filterType')?.value || '';
@@ -316,7 +316,7 @@ function applyFilters() {
     renderClinics(results, 'resultsClinics');
 }
 
-// ──── INIT ────
+//  INIT 
 document.addEventListener('DOMContentLoaded', () => {
     renderFeatured();
     // buscar.html auto-init handled inline
