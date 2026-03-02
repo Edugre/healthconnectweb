@@ -1,0 +1,298 @@
+[
+    {
+        "id": "jessie-trice",
+        "name": "Jessie Trice Community Health Center",
+        "type": [
+            "clinic",
+            "pharmacy",
+            "mental-health"
+        ],
+        "specialty": [
+            "Primary Care",
+            "Dental",
+            "Mental Health",
+            "OB-GYN"
+        ],
+        "address": "5361 NW 22nd Ave, Miami, FL 33142",
+        "zip": "33142",
+        "phone": "(305) 637-3030",
+        "languages": [
+            "English",
+            "Spanish",
+            "Haitian Creole"
+        ],
+        "insurance": [
+            "Medicaid",
+            "Medicare",
+            "Sliding Scale",
+            "Uninsured"
+        ],
+        "meds_onsite": true,
+        "free_therapy": true,
+        "sliding_scale": true,
+        "availability": "green",
+        "wait_time": "Same day",
+        "hours": "Mon–Fri 8am–5pm",
+        "description": "FQHC serving Miami-Dade with comprehensive primary care, dental, and behavioral health services. Sliding-scale fees available.",
+        "featured": true,
+        "followers": 142,
+        "lat": 25.8067,
+        "lng": -80.2175
+    },
+    {
+        "id": "camillus-health",
+        "name": "Camillus Health Concern",
+        "type": [
+            "clinic",
+            "pharmacy"
+        ],
+        "specialty": [
+            "Primary Care",
+            "HIV/AIDS",
+            "Substance Abuse"
+        ],
+        "address": "336 NW 5th St, Miami, FL 33128",
+        "zip": "33128",
+        "phone": "(305) 577-4848",
+        "languages": [
+            "English",
+            "Spanish"
+        ],
+        "insurance": [
+            "Medicaid",
+            "Uninsured",
+            "Sliding Scale"
+        ],
+        "meds_onsite": true,
+        "free_therapy": false,
+        "sliding_scale": true,
+        "availability": "yellow",
+        "wait_time": "2–3 days",
+        "hours": "Mon–Fri 7:30am–4pm",
+        "description": "Serving the homeless and uninsured population of Miami with compassionate, comprehensive healthcare since 1976.",
+        "featured": true,
+        "followers": 98,
+        "lat": 25.7741,
+        "lng": -80.1977
+    },
+    {
+        "id": "neighborhood-health",
+        "name": "Neighborhood Health Partnership",
+        "type": [
+            "clinic"
+        ],
+        "specialty": [
+            "Primary Care",
+            "Pediatrics",
+            "Women's Health"
+        ],
+        "address": "3850 Bird Rd, Miami, FL 33146",
+        "zip": "33146",
+        "phone": "(305) 662-8011",
+        "languages": [
+            "English",
+            "Spanish"
+        ],
+        "insurance": [
+            "Medicaid",
+            "Medicare",
+            "Sliding Scale",
+            "Uninsured"
+        ],
+        "meds_onsite": false,
+        "free_therapy": false,
+        "sliding_scale": true,
+        "availability": "green",
+        "wait_time": "Next day",
+        "hours": "Mon–Sat 8am–6pm",
+        "description": "Community health center providing affordable primary care for the whole family in the heart of Miami.",
+        "featured": false,
+        "followers": 67,
+        "lat": 25.7388,
+        "lng": -80.2811
+    },
+    {
+        "id": "miami-dade-mental-health",
+        "name": "Miami Center for Mental Health",
+        "type": [
+            "mental-health"
+        ],
+        "specialty": [
+            "Therapy",
+            "Psychiatry",
+            "Crisis Support",
+            "Substance Abuse"
+        ],
+        "address": "1490 NW 7th St, Miami, FL 33125",
+        "zip": "33125",
+        "phone": "(305) 643-5000",
+        "languages": [
+            "English",
+            "Spanish"
+        ],
+        "insurance": [
+            "Medicaid",
+            "Uninsured",
+            "Sliding Scale"
+        ],
+        "meds_onsite": false,
+        "free_therapy": true,
+        "sliding_scale": true,
+        "availability": "yellow",
+        "wait_time": "3–5 days",
+        "hours": "Mon–Fri 9am–6pm",
+        "description": "Comprehensive behavioral health services including free therapy sessions for qualifying low-income residents.",
+        "featured": true,
+        "followers": 211,
+        "lat": 25.7738,
+        "lng": -80.2197
+    },
+    {
+        "id": "borinquen-health",
+        "name": "Borinquen Health Care Center",
+        "type": [
+            "clinic",
+            "pharmacy"
+        ],
+        "specialty": [
+            "Primary Care",
+            "Dental",
+            "Pediatrics",
+            "Chiropractic"
+        ],
+        "address": "3601 W Flagler St, Miami, FL 33134",
+        "zip": "33134",
+        "phone": "(305) 576-6611",
+        "languages": [
+            "English",
+            "Spanish"
+        ],
+        "insurance": [
+            "Medicaid",
+            "Medicare",
+            "Sliding Scale",
+            "Uninsured"
+        ],
+        "meds_onsite": true,
+        "free_therapy": false,
+        "sliding_scale": true,
+        "availability": "green",
+        "wait_time": "Same day",
+        "hours": "Mon–Fri 8am–7pm, Sat 9am–3pm",
+        "description": "FQHC offering comprehensive care including dental and chiropractic services. Medications available at reduced cost.",
+        "featured": false,
+        "followers": 183,
+        "lat": 25.7668,
+        "lng": -80.2554
+    },
+    {
+        "id": "planned-parenthood-miami",
+        "name": "Planned Parenthood – Miami",
+        "type": [
+            "clinic"
+        ],
+        "specialty": [
+            "Women's Health",
+            "STI Testing",
+            "OB-GYN",
+            "Family Planning"
+        ],
+        "address": "1901 SW 1st St, Miami, FL 33135",
+        "zip": "33135",
+        "phone": "(305) 285-9535",
+        "languages": [
+            "English",
+            "Spanish"
+        ],
+        "insurance": [
+            "Medicaid",
+            "Sliding Scale",
+            "Uninsured"
+        ],
+        "meds_onsite": true,
+        "free_therapy": false,
+        "sliding_scale": true,
+        "availability": "green",
+        "wait_time": "Next day",
+        "hours": "Mon–Fri 8am–5pm",
+        "description": "Comprehensive reproductive and sexual health services. Sliding-scale fees and Medicaid accepted.",
+        "featured": false,
+        "followers": 329,
+        "lat": 25.7707,
+        "lng": -80.2175
+    },
+    {
+        "id": "miami-free-clinic",
+        "name": "Miami Free Clinic",
+        "type": [
+            "clinic",
+            "pharmacy"
+        ],
+        "specialty": [
+            "Primary Care",
+            "Dental",
+            "Vision"
+        ],
+        "address": "7800 SW 57th Ave, South Miami, FL 33143",
+        "zip": "33143",
+        "phone": "(305) 665-5433",
+        "languages": [
+            "English",
+            "Spanish",
+            "Haitian Creole"
+        ],
+        "insurance": [
+            "Uninsured"
+        ],
+        "meds_onsite": true,
+        "free_therapy": false,
+        "sliding_scale": false,
+        "availability": "red",
+        "wait_time": "1–2 weeks",
+        "hours": "Tue & Thu 6pm–9pm",
+        "description": "Volunteer-run free clinic serving uninsured residents. Free medications provided through sample programs and donations.",
+        "featured": false,
+        "followers": 445,
+        "lat": 25.7071,
+        "lng": -80.2885
+    },
+    {
+        "id": "douglas-gardens",
+        "name": "Douglas Gardens Community Mental Health",
+        "type": [
+            "mental-health"
+        ],
+        "specialty": [
+            "Therapy",
+            "Psychiatry",
+            "Elder Care",
+            "Crisis Intervention"
+        ],
+        "address": "5757 NW 2nd Ave, Miami, FL 33127",
+        "zip": "33127",
+        "phone": "(305) 754-6022",
+        "languages": [
+            "English",
+            "Spanish",
+            "Yiddish",
+            "Russian"
+        ],
+        "insurance": [
+            "Medicaid",
+            "Medicare",
+            "Sliding Scale",
+            "Uninsured"
+        ],
+        "meds_onsite": false,
+        "free_therapy": true,
+        "sliding_scale": true,
+        "availability": "yellow",
+        "wait_time": "5–7 days",
+        "hours": "Mon–Fri 8am–5pm",
+        "description": "Community mental health center with a long history of serving diverse Miami communities including elderly and low-income populations.",
+        "featured": false,
+        "followers": 156,
+        "lat": 25.8188,
+        "lng": -80.2104
+    }
+]

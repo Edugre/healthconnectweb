@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clinic Profile — MediBridge</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="index.html" class="nav-logo">
+                    <div class="nav-logo-icon">M</div>
+                    MediBridge
+                </a>
+                <ul class="nav-links">
+                    <li><a href="buscar.html">Find Care</a></li>
+                    <li><a href="problematica.html">The Problem</a></li>
+                    <li><a href="para-clinicas.html">For Clinics</a></li>
+                </ul>
+                <div class="nav-cta">
+                    <a href="buscar.html" class="btn btn-primary btn-sm">Find Care Near Me</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <div style="background:var(--gray-100); border-bottom:1px solid var(--gray-200); padding:10px 0;">
+        <div class="container">
+            <span style="font-size:13px; color:var(--gray-500);">
+                <a href="index.html" style="color:var(--gray-500); text-decoration:none;">Home</a> /
+                <a href="buscar.html" style="color:var(--gray-500); text-decoration:none;">Find Care</a> /
+                <span id="breadcrumbName" style="color:var(--gray-700);">Clinic</span>
+            </span>
+        </div>
+    </div>
+
+    <!-- PROFILE HERO -->
+    <div class="profile-hero" id="profileHero">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-avatar" id="profileAvatar">🏥</div>
+                <div class="profile-info">
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;" id="profileBadges"></div>
+                    <h1 id="profileName">Clinic Name</h1>
+                    <p id="profileAddress">Address</p>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn btn-primary" id="followBtn" onclick="toggleFollow()">
+                        🔔 Follow for Updates
+                    </button>
+                    <a id="callBtn" href="#" class="btn btn-dark btn-lg">📞 Call Now</a>
+                </div>
+            </div>
+
+            <!-- AVAILABILITY BAR -->
+            <div style="display:flex; gap:24px; margin-top:32px; flex-wrap:wrap;">
+                <div
+                    style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:12px; padding:14px 20px; display:flex; align-items:center; gap:12px;">
+                    <div class="dot" id="availDot"></div>
+                    <div>
+                        <strong style="display:block; font-size:14px;" id="availLabel">Availability</strong>
+                        <span style="font-size:12px; opacity:0.7;" id="waitLabel">Wait time</span>
+                    </div>
+                </div>
+                <div
+                    style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:12px; padding:14px 20px;">
+                    <strong style="display:block; font-size:14px;" id="profileHours">Hours</strong>
+                    <span style="font-size:12px; opacity:0.7;">Operating hours</span>
+                </div>
+                <div
+                    style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:12px; padding:14px 20px;">
+                    <strong style="display:block; font-size:14px;" id="followerCount">— followers</strong>
+                    <span style="font-size:12px; opacity:0.7;">Following this clinic</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROFILE BODY -->
+    <div class="section-sm">
+        <div class="container">
+            <div class="profile-grid">
+                <!-- LEFT: Details -->
+                <div>
+                    <div class="info-card">
+                        <h3>About This Clinic</h3>
+                        <p id="profileDesc" style="font-size:15px; color:var(--gray-600); line-height:1.8;"></p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Services Offered</h3>
+                        <div class="services-list" id="profileServices"></div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Languages Spoken</h3>
+                        <div class="services-list" id="profileLanguages"></div>
+                    </div>
+
+                    <div class="info-card" id="medsCard" style="display:none;">
+                        <h3>💊 Free / Low-Cost Medications</h3>
+                        <p style="font-size:14px; color:var(--gray-600); line-height:1.7;">This clinic provides
+                            medications on-site at no cost or reduced cost. Many FQHCs participate in the 340B drug
+                            pricing program, allowing them to obtain medications at significantly lower prices and pass
+                            savings to patients.</p>
+                        <div
+                            style="margin-top:16px; background:var(--green-50); border:1px solid var(--green-200); border-radius:10px; padding:14px 16px; font-size:13px; color:var(--green-800);">
+                            ✅ Ask staff about the <strong>340B program</strong> and what medications are available at
+                            discharge.
+                        </div>
+                    </div>
+
+                    <div class="info-card" id="therapyCard" style="display:none;">
+                        <h3>🧠 Free Mental Health Services</h3>
+                        <p style="font-size:14px; color:var(--gray-600); line-height:1.7;">This clinic offers free or
+                            sliding-scale therapy and counseling sessions. Services may include individual therapy,
+                            group sessions, psychiatry, and crisis support. Income verification may be required.</p>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Contact + Map -->
+                <div>
+                    <div class="info-card">
+                        <h3>Contact & Location</h3>
+                        <div class="info-row">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <div>
+                                <strong id="contactPhone">Phone</strong>
+                                <span>Call to confirm availability</span>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                    d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <circle cx="12" cy="11" r="3" stroke-linecap="round" />
+                            </svg>
+                            <div>
+                                <strong id="contactAddr">Address</strong>
+                                <span>Miami, FL</span>
+                            </div>
+                        </div>
+                        <a id="mapLink" href="#" target="_blank" class="btn btn-secondary"
+                            style="width:100%; justify-content:center; margin-top:12px;">
+                            🗺 Get Directions
+                        </a>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Insurance Accepted</h3>
+                        <div class="services-list" id="profileInsurance"></div>
+                        <div
+                            style="margin-top:16px; background:var(--green-50); border:1px solid var(--green-200); border-radius:10px; padding:12px 14px; font-size:12px; color:var(--green-800);">
+                            💡 <strong>No insurance?</strong> This clinic may still serve you. Call to ask about
+                            sliding-scale or free care.
+                        </div>
+                    </div>
+
+                    <!-- FOLLOW CTA -->
+                    <div class="info-card"
+                        style="background:var(--green-900); color:white; border-color:var(--green-700);">
+                        <h3 style="color:white; border-color:rgba(255,255,255,0.15);">🔔 Follow This Clinic</h3>
+                        <p style="font-size:14px; opacity:0.8; margin-bottom:16px;">Get notified when they announce new
+                            services, free clinics days, or vaccine events.</p>
+                        <input type="email" id="followEmail" placeholder="Your email address"
+                            style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.1); color:white; font-size:14px; outline:none; margin-bottom:10px;" />
+                        <button onclick="subscribeFollow()" class="btn btn-primary"
+                            style="width:100%; justify-content:center;">Subscribe to Updates</button>
+                        <p id="followSuccess"
+                            style="display:none; color:var(--green-300); font-size:13px; margin-top:10px; text-align:center;">
+                            ✅ You're subscribed! We'll notify you of updates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RELATED CLINICS -->
+    <div style="background:var(--gray-100); padding:48px 0;">
+        <div class="container">
+            <h2 style="font-size:22px; font-weight:700; margin-bottom:24px;">Similar clinics nearby</h2>
+            <div class="clinic-grid" id="relatedClinics"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="border-top:none; padding-top:0;">
+                <a href="index.html" class="nav-logo" style="color:white; text-decoration:none;">
+                    <div class="nav-logo-icon">M</div>
+                    MediBridge
+                </a>
+                <span style="font-size:13px;">© 2025 MediBridge — Miami, FL.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id') || 'jessie-trice';
+            const clinic = clinicsData.find(c => c.id === id) || clinicsData[0];
+            renderProfile(clinic);
+        });
+
+        function renderProfile(c) {
+            document.title = c.name + ' — MediBridge';
+            document.getElementById('breadcrumbName').textContent = c.name;
+            document.getElementById('profileName').textContent = c.name;
+            document.getElementById('profileAddress').textContent = c.address;
+            document.getElementById('profileDesc').textContent = c.description;
+            document.getElementById('profileHours').textContent = c.hours;
+            document.getElementById('followerCount').textContent = c.followers + ' followers';
+            document.getElementById('contactPhone').textContent = c.phone;
+            document.getElementById('contactAddr').textContent = c.address;
+            document.getElementById('callBtn').href = 'tel:' + c.phone.replace(/\D/g, '');
+            document.getElementById('mapLink').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(c.address);
+
+            // Avatar emoji
+            const emojiMap = { 'clinic': '🏥', 'mental-health': '🧠', 'pharmacy': '💊' };
+            const primaryType = c.type[0];
+            document.getElementById('profileAvatar').textContent = emojiMap[primaryType] || '🏥';
+
+            // Availability
+            const dot = document.getElementById('availDot');
+            const availColors = { green: '#22c55e', yellow: '#f59e0b', red: '#ef4444' };
+            const availLabels = { green: 'Available Today', yellow: 'Limited Availability', red: 'Limited / Waitlist' };
+            dot.style.background = availColors[c.availability];
+            dot.style.width = '12px';
+            dot.style.height = '12px';
+            dot.style.borderRadius = '50%';
+            document.getElementById('availLabel').textContent = availLabels[c.availability];
+            document.getElementById('waitLabel').textContent = 'Wait: ' + c.wait_time;
+
+            // Badges
+            const badgesEl = document.getElementById('profileBadges');
+            if (c.featured) badgesEl.innerHTML += '<span class="badge badge-ai">⭐ Featured</span>';
+            if (c.meds_onsite) badgesEl.innerHTML += '<span class="badge badge-green">💊 Meds On-Site</span>';
+            if (c.free_therapy) badgesEl.innerHTML += '<span class="badge badge-green">🧠 Free Therapy</span>';
+            if (c.sliding_scale) badgesEl.innerHTML += '<span class="badge badge-gray">Sliding-Scale</span>';
+
+            // Services
+            const servEl = document.getElementById('profileServices');
+            c.specialty.forEach(s => { servEl.innerHTML += `<span class="tag">${s}</span>`; });
+
+            // Languages
+            const langEl = document.getElementById('profileLanguages');
+            c.languages.forEach(l => { langEl.innerHTML += `<span class="tag">${l}</span>`; });
+
+            // Insurance
+            const insEl = document.getElementById('profileInsurance');
+            c.insurance.forEach(i => { insEl.innerHTML += `<span class="badge badge-green" style="font-size:12px; padding:5px 12px;">${i}</span>`; });
+
+            // Show special cards
+            if (c.meds_onsite) document.getElementById('medsCard').style.display = 'block';
+            if (c.free_therapy) document.getElementById('therapyCard').style.display = 'block';
+
+            // Related (other clinics)
+            const related = clinicsData.filter(cl => cl.id !== c.id).slice(0, 3);
+            const relEl = document.getElementById('relatedClinics');
+            related.forEach(cl => { relEl.innerHTML += buildCard(cl); });
+        }
+
+        function toggleFollow() {
+            const btn = document.getElementById('followBtn');
+            if (btn.classList.contains('following')) {
+                btn.classList.remove('following');
+                btn.textContent = '🔔 Follow for Updates';
+            } else {
+                btn.classList.add('following');
+                btn.textContent = '✅ Following';
+                btn.style.background = 'rgba(255,255,255,0.2)';
+            }
+        }
+
+        function subscribeFollow() {
+            const email = document.getElementById('followEmail').value;
+            if (!email) { alert('Please enter your email.'); return; }
+            document.getElementById('followSuccess').style.display = 'block';
+            document.getElementById('followEmail').value = '';
+        }
+    </script>
+</body>
+
+</html>

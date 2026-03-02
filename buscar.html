@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Care — MediBridge Miami</title>
+    <meta name="description"
+        content="Search free clinics, sliding-scale providers, mental health services, and pharmacies with free medications in Miami." />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="index.html" class="nav-logo">
+                    <div class="nav-logo-icon">M</div>
+                    MediBridge
+                </a>
+                <ul class="nav-links">
+                    <li><a href="buscar.html" class="active">Find Care</a></li>
+                    <li><a href="problematica.html">The Problem</a></li>
+                    <li><a href="para-clinicas.html">For Clinics</a></li>
+                </ul>
+                <div class="nav-cta">
+                    <a href="para-clinicas.html" class="btn btn-secondary btn-sm">List Your Clinic</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SEARCH HERO -->
+    <div class="search-hero">
+        <div class="container">
+            <h1>Find Care Near You</h1>
+            <p>Clinics, pharmacies, and mental health services in Miami — filtered for you.</p>
+            <div class="search-bar-full">
+                <input type="text" id="searchQuery" placeholder="Search by clinic name or service..." />
+                <button class="btn btn-primary btn-lg" onclick="applyFilters()">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" />
+                        <path stroke-linecap="round" d="M21 21l-4.35-4.35" />
+                    </svg>
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="section-sm">
+        <div class="container">
+            <!-- FILTERS -->
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <label>Type of Care</label>
+                    <select id="filterType" onchange="applyFilters()">
+                        <option value="">All types</option>
+                        <option value="clinic">🏥 Primary Care</option>
+                        <option value="mental-health">🧠 Mental Health</option>
+                        <option value="pharmacy">💊 Pharmacy / Meds</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>ZIP Code</label>
+                    <input type="text" id="filterZip" placeholder="e.g. 33125" maxlength="5" oninput="applyFilters()" />
+                </div>
+                <div class="filter-group">
+                    <label>Insurance</label>
+                    <select id="filterInsurance" onchange="applyFilters()">
+                        <option value="">Any</option>
+                        <option value="Uninsured">No insurance</option>
+                        <option value="Medicaid">Medicaid</option>
+                        <option value="Sliding Scale">Sliding-scale</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Language</label>
+                    <select id="filterLang" onchange="applyFilters()">
+                        <option value="">Any language</option>
+                        <option value="Spanish">Spanish / Español</option>
+                        <option value="Haitian Creole">Haitian Creole</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Availability</label>
+                    <select id="filterAvail" onchange="applyFilters()">
+                        <option value="">Any</option>
+                        <option value="green">🟢 Available today</option>
+                        <option value="yellow">🟡 Within a week</option>
+                    </select>
+                </div>
+                <label class="filter-toggle">
+                    <input type="checkbox" id="filterMeds" onchange="applyFilters()" />
+                    Meds on-site
+                </label>
+                <label class="filter-toggle">
+                    <input type="checkbox" id="filterTherapy" onchange="applyFilters()" />
+                    Free therapy
+                </label>
+                <label class="filter-toggle">
+                    <input type="checkbox" id="filterSliding" onchange="applyFilters()" />
+                    Sliding-scale
+                </label>
+            </div>
+
+            <!-- AI MATCH BANNER -->
+            <div id="aiMatchBanner"
+                style="background:linear-gradient(135deg,var(--green-900),var(--green-700)); color:white; border-radius:16px; padding:20px 24px; display:flex; align-items:center; gap:16px; margin-bottom:24px;">
+                <div style="font-size:28px;">🤖</div>
+                <div style="flex:1;">
+                    <strong style="display:block; font-size:15px;">AI Match Active</strong>
+                    <span style="font-size:13px; opacity:0.8;">Results ranked by best fit for uninsured and Medicaid
+                        patients in Miami.</span>
+                </div>
+                <span class="badge badge-green" style="flex-shrink:0;">8 matches</span>
+            </div>
+
+            <p class="results-count" id="resultsCount">Showing all 8 clinics in Miami</p>
+
+            <!-- RESULTS GRID -->
+            <div class="clinic-grid" id="resultsClinics">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- EMPTY STATE -->
+            <div id="emptyState" style="display:none; text-align:center; padding:60px 20px; color:var(--gray-500);">
+                <div style="font-size:48px; margin-bottom:16px;">🔍</div>
+                <h3 style="font-size:20px; font-weight:700; color:var(--gray-700); margin-bottom:8px;">No clinics found
+                </h3>
+                <p>Try adjusting your filters or expanding your search area.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="border-top:none; padding-top:0;">
+                <a href="index.html" class="nav-logo" style="color:white; text-decoration:none;">
+                    <div class="nav-logo-icon">M</div>
+                    MediBridge
+                </a>
+                <span style="font-size:13px;">© 2025 MediBridge — Miami, FL. Free for patients always.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Pre-fill from URL params
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('type')) document.getElementById('filterType').value = params.get('type');
+            if (params.get('zip')) document.getElementById('filterZip').value = params.get('zip');
+            renderClinics(clinicsData);
+            applyFilters();
+        });
+    </script>
+</body>
+
+</html>
