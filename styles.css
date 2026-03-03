@@ -32,10 +32,10 @@
   --font-body: 'Inter', sans-serif;
   --font-display: 'Plus Jakarta Sans', sans-serif;
 
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 32px;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 16px;
   --radius-full: 999px;
 
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -120,8 +120,6 @@ body {
 
 .btn-primary:hover {
   background: var(--green-600);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 28px rgba(31, 122, 77, 0.30);
 }
 
 .btn-secondary {
@@ -142,7 +140,6 @@ body {
 
 .btn-dark:hover {
   background: var(--gray-800);
-  transform: translateY(-1px);
 }
 
 .btn-lg {
@@ -188,7 +185,7 @@ body {
   width: 36px;
   height: 36px;
   background: var(--green-500);
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -209,7 +206,7 @@ body {
   font-size: 14px;
   font-weight: 500;
   padding: 8px 14px;
-  border-radius: 6px;
+  border-radius: 4px;
   transition: all 0.18s;
 }
 
@@ -284,7 +281,7 @@ body {
   font-size: 13px;
   font-weight: 600;
   padding: 6px 16px;
-  border-radius: 6px;
+  border-radius: 4px;
   margin-bottom: 28px;
   backdrop-filter: blur(8px);
 }
@@ -375,7 +372,7 @@ body {
   flex-wrap: wrap;
 }
 
-.hero-stat {}
+
 
 .hero-stat strong {
   display: block;
@@ -409,8 +406,6 @@ body {
 
 .step:hover {
   border-color: var(--green-300);
-  box-shadow: var(--shadow-green);
-  transform: translateY(-3px);
 }
 
 .step-num {
@@ -493,9 +488,8 @@ body {
 }
 
 .clinic-card:hover {
-  border-color: var(--green-300);
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-3px);
+  border-color: var(--green-400);
+  box-shadow: var(--shadow-md);
 }
 
 .clinic-card-header {
@@ -634,7 +628,7 @@ body {
   font-size: 12px;
   font-weight: 600;
   padding: 6px 14px;
-  border-radius: 6px;
+  border-radius: 4px;
   border: 1.5px solid var(--gray-200);
   background: var(--white);
   cursor: pointer;
@@ -840,7 +834,7 @@ body {
 }
 
 .pricing-card:hover {
-  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .pricing-tier {
