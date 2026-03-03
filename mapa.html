@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Clinics Near Me — MediBridge</title>
+    <meta name="description"
+        content="Real-time clinic locator for Miami. Find hospitals, clinics, pharmacies, dentists, and mental health providers near your location." />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --green-900: #0a2e1a;
+            --green-800: #0f4028;
+            --green-700: #155234;
+            --green-600: #1a6640;
+            --green-500: #1f7a4d;
+            --green-400: #25a063;
+            --green-300: #3dc47d;
+            --green-200: #7ddba9;
+            --green-100: #c2f0d9;
+            --green-50: #eafaf2;
+            --black: #0a0a0a;
+            --gray-900: #111;
+            --gray-800: #1c1c1c;
+            --gray-700: #2e2e2e;
+            --gray-500: #6b6b6b;
+            --gray-300: #c2c2c2;
+            --gray-200: #e0e0e0;
+            --gray-100: #f4f4f4;
+            --white: #fff;
+            --green-dim: rgba(31, 122, 77, 0.10);
+            --green-border: rgba(31, 122, 77, 0.28);
+            --font: 'Inter', sans-serif;
+            --font-display: 'Plus Jakarta Sans', sans-serif;
+            --radius: 6px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--black);
+            color: var(--white);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* NAV */
+        .nav {
+            background: rgba(255, 255, 255, 0.97);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 0 24px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 20px;
+            color: var(--black);
+        }
+
+        .nav-logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--green-500);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-500);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 7px 12px;
+            border-radius: 4px;
+            transition: all 0.15s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green-600);
+            background: var(--green-50);
+        }
+
+        .nav-links a.active {
+            color: var(--green-600);
+            font-weight: 700;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-sm {
+            padding: 7px 16px;
+            background: var(--green-500);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* APP LAYOUT */
+        .app {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 360px;
+            flex-shrink: 0;
+            background: var(--gray-900);
+            border-right: 1px solid rgba(255, 255, 255, 0.07);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            flex-shrink: 0;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 13px 8px;
+            background: none;
+            border: none;
+            color: var(--gray-500);
+            font-family: var(--font);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            cursor: pointer;
+            transition: all 0.15s;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+        }
+
+        .tab.active {
+            color: var(--green-400);
+            border-bottom-color: var(--green-500);
+            background: var(--green-dim);
+        }
+
+        .tab:hover:not(.active) {
+            color: var(--white);
+        }
+
+        /* PANELS */
+        .panel {
+            display: none;
+            flex-direction: column;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .panel.active {
+            display: flex;
+        }
+
+        .panel-inner {
+            padding: 16px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .panel-inner::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .panel-inner::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+        }
+
+        /* LOCATE BUTTON */
+        .locate-btn {
+            width: 100%;
+            padding: 11px 16px;
+            background: var(--green-500);
+            border: none;
+            border-radius: var(--radius);
+            color: white;
+            font-family: var(--font);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            transition: background 0.15s;
+        }
+
+        .locate-btn:hover {
+            background: var(--green-600);
+        }
+
+        .locate-btn:disabled {
+            opacity: 0.5;
+            cursor: wait;
+        }
+
+        .locate-btn svg {
+            flex-shrink: 0;
+        }
+
+        /* STATUS PILLS */
+        .loc-pill {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 12px;
+            background: var(--green-dim);
+            border: 1px solid var(--green-border);
+            border-radius: var(--radius);
+            margin-bottom: 12px;
+            font-size: 11px;
+            color: var(--green-300);
+            font-weight: 600;
+        }
+
+        .loc-pill.visible {
+            display: flex;
+        }
+
+        .loc-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--green-400);
+            border-radius: 50%;
+            flex-shrink: 0;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .error-pill {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 12px;
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            border-radius: var(--radius);
+            margin-bottom: 12px;
+            font-size: 11px;
+            color: #fca5a5;
+            font-weight: 500;
+        }
+
+        .error-pill.visible {
+            display: flex;
+        }
+
+        /* DIVIDER */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 14px 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .divider span {
+            font-size: 10px;
+            color: var(--gray-500);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* FORM FIELDS */
+        .field {
+            margin-bottom: 12px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--green-400);
+            margin-bottom: 5px;
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            background: var(--gray-800);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius);
+            color: var(--white);
+            padding: 9px 12px;
+            font-family: var(--font);
+            font-size: 13px;
+            height: 38px;
+            transition: border-color 0.15s;
+            appearance: none;
+        }
+
+        .field input:focus,
+        .field select:focus {
+            outline: none;
+            border-color: var(--green-500);
+            box-shadow: 0 0 0 3px rgba(31, 122, 77, 0.12);
+        }
+
+        .field select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2325a063' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 32px;
+        }
+
+        .field select option {
+            background: var(--gray-800);
+            color: var(--white);
+        }
+
+        .search-btn {
+            width: 100%;
+            padding: 11px;
+            background: transparent;
+            border: 1.5px solid var(--green-500);
+            border-radius: var(--radius);
+            color: var(--green-400);
+            font-family: var(--font);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s;
+            margin-top: 4px;
+        }
+
+        .search-btn:hover {
+            background: var(--green-500);
+            color: white;
+        }
+
+        /* RESULTS */
+        .results-header {
+            padding: 10px 16px 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .results-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--gray-500);
+        }
+
+        .results-count {
+            font-size: 11px;
+            color: var(--green-400);
+            font-weight: 600;
+        }
+
+        .results-list {
+            overflow-y: auto;
+            flex-shrink: 0;
+            max-height: 290px;
+        }
+
+        .results-list::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .results-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 2px;
+        }
+
+        .clinic-card {
+            padding: 11px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+            transition: background 0.12s;
+            display: flex;
+            gap: 11px;
+            align-items: flex-start;
+        }
+
+        .clinic-card:hover {
+            background: var(--green-dim);
+        }
+
+        .clinic-card.active-card {
+            background: var(--green-dim);
+            border-left: 2px solid var(--green-500);
+        }
+
+        .card-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 5px;
+            background: var(--gray-800);
+            border: 1px solid var(--green-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 14px;
+            color: var(--green-400);
+        }
+
+        .card-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .card-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 2px;
+        }
+
+        .card-type {
+            font-size: 11px;
+            color: var(--gray-500);
+            margin-bottom: 3px;
+        }
+
+        .card-dist {
+            font-size: 11px;
+            color: var(--green-400);
+            font-weight: 600;
+        }
+
+        /* LOADING */
+        .loading-state {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            gap: 12px;
+        }
+
+        .loading-state.visible {
+            display: flex;
+        }
+
+        .spinner {
+            width: 26px;
+            height: 26px;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-top-color: var(--green-500);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-text {
+            font-size: 11px;
+            color: var(--gray-500);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .empty-state {
+            padding: 28px 16px;
+            text-align: center;
+        }
+
+        .empty-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+
+        .empty-icon svg {
+            color: var(--gray-500);
+        }
+
+        .empty-text {
+            font-size: 12px;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        /* MAP */
+        #map {
+            flex: 1;
+        }
+
+        /* LEAFLET OVERRIDES */
+        .leaflet-popup-content-wrapper {
+            background: var(--gray-900) !important;
+            border: 1px solid var(--green-border) !important;
+            border-radius: 8px !important;
+            color: var(--white) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7) !important;
+        }
+
+        .leaflet-popup-tip {
+            background: var(--gray-900) !important;
+        }
+
+        .leaflet-popup-content {
+            margin: 14px 16px !important;
+            min-width: 200px;
+        }
+
+        .popup-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--green-400);
+            margin-bottom: 4px;
+            font-family: var(--font-display);
+        }
+
+        .popup-type {
+            font-size: 11px;
+            color: var(--gray-500);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .popup-row {
+            font-size: 12px;
+            color: #ccc;
+            margin-bottom: 4px;
+            display: flex;
+            gap: 6px;
+            line-height: 1.5;
+        }
+
+        .popup-row .lbl {
+            color: var(--gray-500);
+            min-width: 48px;
+            font-size: 11px;
+        }
+
+        .popup-dist {
+            font-size: 11px;
+            color: var(--green-400);
+            font-weight: 600;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .leaflet-control-zoom a {
+            background: var(--gray-800) !important;
+            color: var(--green-400) !important;
+            border-color: rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .leaflet-control-attribution {
+            background: rgba(0, 0, 0, 0.6) !important;
+            color: var(--gray-500) !important;
+            font-size: 9px !important;
+        }
+
+        .leaflet-control-attribution a {
+            color: var(--green-400) !important;
+        }
+
+        /* DATA SOURCE NOTE */
+        .data-note {
+            padding: 8px 16px;
+            font-size: 10px;
+            color: var(--gray-700);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            flex-shrink: 0;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: 45%;
+            }
+
+            .app {
+                flex-direction: column;
+            }
+
+            #map {
+                flex: 1;
+                min-height: 55vh;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-icon">M</div>
+            MediBridge
+        </a>
+        <ul class="nav-links">
+            <li><a href="buscar.html">Directory</a></li>
+            <li><a href="mapa.html" class="active">Live Map</a></li>
+            <li><a href="problematica.html">The Problem</a></li>
+            <li><a href="para-clinicas.html">For Clinics</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="registro-paciente.html" class="btn-sm">Register Free</a>
+        </div>
+    </nav>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('normal')">Quick Search</button>
+                <button class="tab" onclick="switchTab('specialized')">Specialized</button>
+            </div>
+
+            <!-- QUICK SEARCH PANEL -->
+            <div class="panel active" id="panel-normal">
+                <div class="panel-inner">
+
+                    <button class="locate-btn" id="locate-btn-normal" onclick="useMyLocation('normal')">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round"
+                                d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        </svg>
+                        Use My Current Location
+                    </button>
+
+                    <div class="loc-pill" id="loc-pill-normal">
+                        <div class="loc-dot"></div>
+                        <span id="loc-text-normal">Locating...</span>
+                    </div>
+                    <div class="error-pill" id="error-normal">
+                        <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span id="error-text-normal">Location unavailable</span>
+                    </div>
+
+                    <div class="divider"><span>or enter manually</span></div>
+
+                    <div class="field">
+                        <label>City or Address</label>
+                        <input type="text" id="manual-location" placeholder="e.g. Miami, FL" />
+                    </div>
+
+                    <div class="field">
+                        <label>Search Radius</label>
+                        <select id="radius-normal">
+                            <option value="1000">1 km — Walking distance</option>
+                            <option value="2000">2 km</option>
+                            <option value="5000" selected>5 km</option>
+                            <option value="10000">10 km</option>
+                            <option value="20000">20 km</option>
+                        </select>
+                    </div>
+
+                    <button class="search-btn" onclick="searchClinics('normal')">Search All Nearby Clinics</button>
+                </div>
+
+                <div class="loading-state" id="loading-normal">
+                    <div class="spinner"></div>
+                    <div class="loading-text">Searching nearby...</div>
+                </div>
+                <div id="results-normal" style="display:flex;flex-direction:column;flex-shrink:0;">
+                    <div class="empty-state" id="empty-normal">
+                        <div class="empty-icon"><svg width="22" height="22" fill="none" stroke="currentColor"
+                                stroke-width="1.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                    d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            </svg></div>
+                        <div class="empty-text">Use your location or type an address to find clinics, pharmacies, and
+                            health centers near you.</div>
+                    </div>
+                </div>
+                <div class="data-note">Real-time data via OpenStreetMap. Results reflect publicly registered facilities.
+                </div>
+            </div>
+
+            <!-- SPECIALIZED PANEL -->
+            <div class="panel" id="panel-specialized">
+                <div class="panel-inner">
+
+                    <button class="locate-btn" id="locate-btn-spec" onclick="useMyLocation('specialized')">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round"
+                                d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        </svg>
+                        Use My Current Location
+                    </button>
+
+                    <div class="loc-pill" id="loc-pill-spec">
+                        <div class="loc-dot"></div>
+                        <span id="loc-text-spec">Locating...</span>
+                    </div>
+                    <div class="error-pill" id="error-spec">
+                        <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span id="error-text-spec">Location unavailable</span>
+                    </div>
+
+                    <div class="divider"><span>or enter manually</span></div>
+
+                    <div class="field">
+                        <label>City or Address</label>
+                        <input type="text" id="manual-location-spec" placeholder="e.g. Miami, FL" />
+                    </div>
+
+                    <div class="field">
+                        <label>Specialty / Type</label>
+                        <select id="specialty">
+                            <option value="all">All Medical Facilities</option>
+                            <option value="hospital">Hospital</option>
+                            <option value="clinic">Clinic / Health Center</option>
+                            <option value="doctors">Doctor's Office</option>
+                            <option value="dentist">Dentist</option>
+                            <option value="pharmacy">Pharmacy</option>
+                            <option value="physiotherapist">Physiotherapist</option>
+                            <option value="optometrist">Optometrist</option>
+                            <option value="psychiatrist">Psychiatrist / Mental Health</option>
+                            <option value="gynaecologist">Gynecologist</option>
+                            <option value="paediatrician">Pediatrician</option>
+                            <option value="emergency">Emergency / Urgent Care</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Search Radius</label>
+                        <select id="radius-spec">
+                            <option value="1000">1 km</option>
+                            <option value="2000">2 km</option>
+                            <option value="5000" selected>5 km</option>
+                            <option value="10000">10 km</option>
+                            <option value="20000">20 km</option>
+                        </select>
+                    </div>
+
+                    <button class="search-btn" onclick="searchClinics('specialized')">Search Specialized
+                        Clinics</button>
+                </div>
+
+                <div class="loading-state" id="loading-spec">
+                    <div class="spinner"></div>
+                    <div class="loading-text">Searching nearby...</div>
+                </div>
+                <div id="results-spec" style="display:flex;flex-direction:column;flex-shrink:0;">
+                    <div class="empty-state" id="empty-spec">
+                        <div class="empty-icon"><svg width="22" height="22" fill="none" stroke="currentColor"
+                                stroke-width="1.5" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <path stroke-linecap="round" d="M3 9h18M9 21V9" />
+                            </svg></div>
+                        <div class="empty-text">Select a specialty and search to find specialized providers near you.
+                        </div>
+                    </div>
+                </div>
+                <div class="data-note">Real-time data via OpenStreetMap. Results reflect publicly registered facilities.
+                </div>
+            </div>
+        </div>
+
+        <!-- MAP -->
+        <div id="map"></div>
+    </div>
+
+    <script>
+        // ── STATE ──
+        let map, userMarker, clinicMarkers = [], radiusCircle;
+        let userCoords = null;
+        let allClinics = [];
+
+        // ── TYPE CONFIG ──
+        const typeLabels = {
+            hospital: 'Hospital', clinic: 'Clinic / Health Center',
+            health_centre: 'Health Center', doctors: "Doctor's Office",
+            dentist: 'Dentist', pharmacy: 'Pharmacy',
+            physiotherapist: 'Physiotherapist', optometrist: 'Optometrist',
+            psychiatrist: 'Mental Health', gynaecologist: 'Gynecologist',
+            paediatrician: 'Pediatrician', emergency: 'Emergency / Urgent Care'
+        };
+
+        const typeLetters = {
+            hospital: 'H', clinic: 'C', health_centre: 'C', doctors: 'Dr',
+            dentist: 'D', pharmacy: 'Rx', physiotherapist: 'PT',
+            optometrist: 'Op', psychiatrist: 'Ps', gynaecologist: 'Gyn',
+            paediatrician: 'Ped', emergency: 'ER', default: '+'
+        };
+
+        // ── MAP INIT ──
+        function initMap(lat, lng) {
+            if (map) { map.setView([lat, lng], 14); return; }
+            map = L.map('map').setView([lat, lng], 14);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/">CARTO</a>',
+                subdomains: 'abcd', maxZoom: 19
+            }).addTo(map);
+        }
+
+        function placeUserMarker(lat, lng) {
+            if (userMarker) map.removeLayer(userMarker);
+            const icon = L.divIcon({
+                html: `<div style="width:14px;height:14px;background:#1f7a4d;border-radius:50%;border:3px solid #0a0a0a;box-shadow:0 0 0 3px rgba(31,122,77,0.4);"></div>`,
+                iconSize: [14, 14], iconAnchor: [7, 7], className: ''
+            });
+            userMarker = L.marker([lat, lng], { icon, zIndexOffset: 1000 }).addTo(map).bindPopup('<div class="popup-name">Your Location</div>');
+        }
+
+        function drawRadius(lat, lng, radius) {
+            if (radiusCircle) map.removeLayer(radiusCircle);
+            radiusCircle = L.circle([lat, lng], {
+                radius, color: '#1f7a4d', weight: 1, opacity: 0.3,
+                fillColor: '#1f7a4d', fillOpacity: 0.04
+            }).addTo(map);
+        }
+
+        function clearMarkers() {
+            clinicMarkers.forEach(m => map.removeLayer(m));
+            clinicMarkers = [];
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', (i === 0 && tab === 'normal') || (i === 1 && tab === 'specialized')));
+            document.getElementById('panel-normal').classList.toggle('active', tab === 'normal');
+            document.getElementById('panel-specialized').classList.toggle('active', tab === 'specialized');
+        }
+
+        // ── GPS ──
+        function useMyLocation(panel) {
+            const btn = document.getElementById(panel === 'normal' ? 'locate-btn-normal' : 'locate-btn-spec');
+            const pill = document.getElementById(panel === 'normal' ? 'loc-pill-normal' : 'loc-pill-spec');
+            const pillText = document.getElementById(panel === 'normal' ? 'loc-text-normal' : 'loc-text-spec');
+            const errPill = document.getElementById(panel === 'normal' ? 'error-normal' : 'error-spec');
+
+            btn.disabled = true;
+            btn.innerHTML = '<div style="width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-top-color:white;border-radius:50%;animation:spin 0.8s linear infinite;"></div> Locating...';
+            pill.classList.remove('visible');
+            errPill.classList.remove('visible');
+
+            if (!navigator.geolocation) {
+                showError(panel, 'Geolocation not supported by your browser');
+                resetBtn(btn);
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    userCoords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+                    pillText.textContent = `${userCoords.lat.toFixed(4)}, ${userCoords.lng.toFixed(4)}`;
+                    pill.classList.add('visible');
+                    btn.disabled = false;
+                    btn.innerHTML = '<svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Location Found';
+                    initMap(userCoords.lat, userCoords.lng);
+                    placeUserMarker(userCoords.lat, userCoords.lng);
+                    map.setView([userCoords.lat, userCoords.lng], 14);
+                    searchClinics(panel);
+                },
+                () => { showError(panel, 'Could not get location. Please allow GPS access.'); resetBtn(btn); },
+                { enableHighAccuracy: true, timeout: 10000 }
+            );
+        }
+
+        function resetBtn(btn) {
+            btn.disabled = false;
+            btn.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg> Use My Current Location';
+        }
+
+        function showError(panel, msg) {
+            const ep = document.getElementById(panel === 'normal' ? 'error-normal' : 'error-spec');
+            document.getElementById(panel === 'normal' ? 'error-text-normal' : 'error-text-spec').textContent = msg;
+            ep.classList.add('visible');
+        }
+
+        // ── GEOCODE ──
+        async function geocodeAddress(address) {
+            const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1`;
+            const res = await fetch(url, { headers: { 'Accept-Language': 'en' } });
+            const data = await res.json();
+            return data.length > 0 ? { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) } : null;
+        }
+
+        // ── OVERPASS SEARCH ──
+        async function searchClinics(panel) {
+            const isSpec = panel === 'specialized';
+            const radius = parseInt(document.getElementById(isSpec ? 'radius-spec' : 'radius-normal').value);
+            const specialty = isSpec ? document.getElementById('specialty').value : 'all';
+            const manual = document.getElementById(isSpec ? 'manual-location-spec' : 'manual-location').value.trim();
+
+            let coords = userCoords;
+
+            if (!coords && manual) {
+                showLoading(panel, true);
+                coords = await geocodeAddress(manual);
+                if (!coords) {
+                    showLoading(panel, false);
+                    showError(panel, 'Address not found. Try again.');
+                    return;
+                }
+                initMap(coords.lat, coords.lng);
+                placeUserMarker(coords.lat, coords.lng);
+                map.setView([coords.lat, coords.lng], 14);
+            }
+
+            if (!coords) {
+                showError(panel, 'Please use your location or enter an address.');
+                return;
+            }
+
+            showLoading(panel, true);
+            clearMarkers();
+            drawRadius(coords.lat, coords.lng, radius);
+
+            const amenities = buildQuery(specialty, coords.lat, coords.lng, radius);
+            const query = `[out:json][timeout:25];(${amenities});out center;`;
+
+            try {
+                const res = await fetch('https://overpass-api.de/api/interpreter', {
+                    method: 'POST',
+                    body: 'data=' + encodeURIComponent(query)
+                });
+                const data = await res.json();
+                const clinics = parseResults(data.elements, coords);
+                allClinics = clinics;
+                renderResults(clinics, panel);
+                placePins(clinics, panel);
+                showLoading(panel, false);
+            } catch (e) {
+                showLoading(panel, false);
+                showError(panel, 'Search failed. Check your connection and try again.');
+            }
+        }
+
+        function buildQuery(specialty, lat, lng, radius) {
+            const bb = `(around:${radius},${lat},${lng})`;
+            if (specialty === 'all') {
+                return ['hospital', 'clinic', 'doctors', 'dentist', 'health_centre'].flatMap(a =>
+                    [`node[amenity=${a}]${bb}`, `way[amenity=${a}]${bb}`]
+                ).join('');
+            }
+            const am = {
+                hospital: 'hospital', clinic: 'clinic', doctors: 'doctors', dentist: 'dentist',
+                pharmacy: 'pharmacy', physiotherapist: 'physiotherapist', optometrist: 'optometrist',
+                psychiatrist: 'doctors', gynaecologist: 'doctors', paediatrician: 'doctors', emergency: 'hospital'
+            }[specialty] || specialty;
+            return `node[amenity=${am}]${bb};way[amenity=${am}]${bb};`;
+        }
+
+        function parseResults(elements, origin) {
+            return elements.map(el => {
+                const lat = el.lat || el.center?.lat;
+                const lng = el.lon || el.center?.lon;
+                if (!lat || !lng) return null;
+                const t = el.tags || {};
+                return {
+                    id: el.id, name: t.name || t['name:en'] || 'Unnamed Facility',
+                    type: t.amenity || t.healthcare || 'clinic',
+                    lat, lng, dist: haversine(origin.lat, origin.lng, lat, lng),
+                    phone: t.phone || t['contact:phone'] || null,
+                    website: t.website || t['contact:website'] || null,
+                    address: [t['addr:housenumber'], t['addr:street'], t['addr:city']].filter(Boolean).join(' ') || null,
+                    hours: t.opening_hours || null,
+                };
+            }).filter(Boolean).sort((a, b) => a.dist - b.dist);
+        }
+
+        function haversine(lat1, lng1, lat2, lng2) {
+            const R = 6371, dL = (lat2 - lat1) * Math.PI / 180, dN = (lng2 - lng1) * Math.PI / 180;
+            const a = Math.sin(dL / 2) ** 2 + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dN / 2) ** 2;
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        }
+
+        function distLabel(d) { return d < 1 ? (d * 1000).toFixed(0) + 'm' : d.toFixed(2) + 'km'; }
+
+        // ── PINS ──
+        function placePins(clinics, panel) {
+            clinics.forEach((c, i) => {
+                const letter = typeLetters[c.type] || typeLetters.default;
+                const icon = L.divIcon({
+                    html: `<div style="background:#0f4028;border:1.5px solid #1f7a4d;border-radius:5px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#3dc47d;box-shadow:0 2px 8px rgba(0,0,0,0.5);font-family:Inter,sans-serif;">${letter}</div>`,
+                    iconSize: [30, 30], iconAnchor: [15, 15], className: ''
+                });
+                const m = L.marker([c.lat, c.lng], { icon }).addTo(map).bindPopup(`
+      <div class="popup-name">${c.name}</div>
+      <div class="popup-type">${typeLabels[c.type] || c.type}</div>
+      ${c.address ? `<div class="popup-row"><span class="lbl">Address</span><span>${c.address}</span></div>` : ''}
+      ${c.phone ? `<div class="popup-row"><span class="lbl">Phone</span><span>${c.phone}</span></div>` : ''}
+      ${c.hours ? `<div class="popup-row"><span class="lbl">Hours</span><span>${c.hours}</span></div>` : ''}
+      ${c.website ? `<div class="popup-row"><span class="lbl">Web</span><a href="${c.website}" target="_blank" style="color:#3dc47d;">${c.website}</a></div>` : ''}
+      <div class="popup-dist">${distLabel(c.dist)} away</div>
+    `);
+                m.on('click', () => highlightCard(i, panel));
+                clinicMarkers.push(m);
+            });
+        }
+
+        // ── RENDER RESULTS ──
+        function renderResults(clinics, panel) {
+            const isSpec = panel === 'specialized';
+            const container = document.getElementById(isSpec ? 'results-spec' : 'results-normal');
+            const emptyId = isSpec ? 'empty-spec' : 'empty-normal';
+
+            if (clinics.length === 0) {
+                container.innerHTML = `<div class="empty-state" id="${emptyId}"><div class="empty-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="M21 21l-4.35-4.35"/></svg></div><div class="empty-text">No facilities found nearby. Try increasing the radius.</div></div>`;
+                return;
+            }
+
+            container.innerHTML = `
+    <div class="results-header">
+      <span class="results-label">Nearby Clinics</span>
+      <span class="results-count">${clinics.length} found</span>
+    </div>
+    <div class="results-list" id="list-${panel}">
+      ${clinics.slice(0, 40).map((c, i) => `
+        <div class="clinic-card" id="card-${panel}-${i}" onclick="focusClinic(${i},'${panel}')">
+          <div class="card-icon" style="font-size:11px;font-weight:700;">${typeLetters[c.type] || '+'}</div>
+          <div class="card-body">
+            <div class="card-name">${c.name}</div>
+            <div class="card-type">${typeLabels[c.type] || c.type}</div>
+            <div class="card-dist">${distLabel(c.dist)} away</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+        }
+
+        function focusClinic(idx, panel) {
+            const c = allClinics[idx];
+            if (!c || !clinicMarkers[idx]) return;
+            map.setView([c.lat, c.lng], 16);
+            clinicMarkers[idx].openPopup();
+            highlightCard(idx, panel);
+        }
+
+        function highlightCard(idx, panel) {
+            document.querySelectorAll('.clinic-card').forEach(c => c.classList.remove('active-card'));
+            const card = document.getElementById(`card-${panel}-${idx}`);
+            if (card) { card.classList.add('active-card'); card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+        }
+
+        function showLoading(panel, show) {
+            const isSpec = panel === 'specialized';
+            document.getElementById(isSpec ? 'loading-spec' : 'loading-normal').classList.toggle('visible', show);
+            const r = document.getElementById(isSpec ? 'results-spec' : 'results-normal');
+            r.style.display = show ? 'none' : 'flex';
+        }
+
+        // ── INIT ──
+        window.addEventListener('load', () => initMap(25.7617, -80.1918)); // Miami default
+
+        document.addEventListener('keydown', e => {
+            if (e.key !== 'Enter') return;
+            const id = document.activeElement?.id || '';
+            searchClinics(id.includes('spec') || id === 'specialty' ? 'specialized' : 'normal');
+        });
+    </script>
+</body>
+
+</html>
