@@ -1140,7 +1140,7 @@
         }
 
         // ── INIT ──
-        window.addEventListener('load', () => initMap(25.7617, -80.1918)); // Miami default
+        window.addEventListener('load', () => { initMap(25.7617, -80.1918); if (localStorage.getItem('mb_privacy_accepted') !== 'true') { const s = document.createElement('script'); s.src = 'app.js'; document.head.appendChild(s); } }); // Miami default
 
         document.addEventListener('keydown', e => {
             if (e.key !== 'Enter') return;

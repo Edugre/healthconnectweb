@@ -321,3 +321,40 @@ document.addEventListener('DOMContentLoaded', () => {
     renderFeatured();
     // buscar.html auto-init handled inline
 });
+
+// ── PRIVACY CONSENT BANNER ──
+// Shows on every page until user checks checkbox. Stored in localStorage.
+(function initPrivacyBanner() {
+  if (localStorage.getItem('mb_privacy_accepted') === 'true') return;
+  const el = document.createElement('div');
+  el.id = 'privacyBanner';
+  el.innerHTML = `<div style="position:fixed;bottom:0;left:0;right:0;background:#111111;border-top:2px solid #1f7a4d;z-index:99999;padding:20px 24px;display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;box-shadow:0 -4px 24px rgba(0,0,0,0.4);font-family:'Inter',sans-serif;">
+    <div style="flex:1;min-width:260px;">
+      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px;">Privacy Notice — MediBridge / FIU Student Research Project</div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;">
+        This platform was developed by Florida International University students for academic research purposes only. We collect only the minimum information needed to match patients with clinics. We do not sell your data or use it for advertising. Your use is entirely voluntary.
+        <a href="politica-privacidad.html" target="_blank" style="color:#3dc47d;font-weight:600;margin-left:4px;">Read full Privacy Policy</a>
+      </p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;flex-shrink:0;min-width:280px;">
+      <label id="privacyLabel" style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:12px;color:rgba(255,255,255,0.8);line-height:1.6;">
+        <input type="checkbox" id="privacyCheck" style="width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:#1f7a4d;cursor:pointer;"/>
+        I have read and understood the Privacy Policy and Terms of Use. My use of this platform is voluntary.
+      </label>
+      <button id="privacyBtn" disabled onclick="window.mbAcceptPrivacy()" style="padding:10px 0;background:#1f7a4d;color:white;border:none;border-radius:5px;font-size:13px;font-weight:700;cursor:default;font-family:'Inter',sans-serif;opacity:0.35;width:100%;transition:opacity 0.15s,background 0.15s;">Accept &amp; Continue</button>
+    </div>
+  </div>`;
+  document.body.appendChild(el);
+  document.getElementById('privacyCheck').addEventListener('change', function() {
+    const btn = document.getElementById('privacyBtn');
+    btn.disabled = !this.checked;
+    btn.style.opacity = this.checked ? '1' : '0.35';
+    btn.style.cursor = this.checked ? 'pointer' : 'default';
+  });
+})();
+
+window.mbAcceptPrivacy = function() {
+  localStorage.setItem('mb_privacy_accepted', 'true');
+  const b = document.getElementById('privacyBanner');
+  if (b) { b.style.transition = 'opacity 0.3s,transform 0.3s'; b.style.opacity = '0'; b.style.transform = 'translateY(16px)'; setTimeout(() => b.remove(), 350); }
+};
