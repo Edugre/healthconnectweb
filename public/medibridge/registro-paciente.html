@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Registration — MediBridge</title>
+    <meta name="description"
+        content="Create your free MediBridge patient profile to get matched with affordable clinics in Miami." />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .register-hero {
+            background: linear-gradient(160deg, var(--green-900), var(--green-700));
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .register-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .register-hero p {
+            font-size: 17px;
+            opacity: 0.8;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .register-body {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        .form-section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gray-700);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin: 32px 0 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--green-200);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-600);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 16px;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: var(--font-body);
+            color: var(--gray-900);
+            background: var(--white);
+            outline: none;
+            transition: border-color 0.18s;
+            width: 100%;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--green-400);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 16px;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-700);
+            transition: all 0.18s;
+            background: white;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            accent-color: var(--green-500);
+            width: 16px;
+            height: 16px;
+        }
+
+        .checkbox-item:hover {
+            border-color: var(--green-400);
+            background: var(--green-50);
+        }
+
+        .checkbox-item:has(input:checked) {
+            border-color: var(--green-500);
+            background: var(--green-50);
+            color: var(--green-800);
+        }
+
+        .submit-area {
+            margin-top: 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .privacy-note {
+            font-size: 12px;
+            color: var(--gray-400);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .success-screen {
+            display: none;
+            text-align: center;
+            padding: 60px 24px;
+        }
+
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--green-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .success-icon svg {
+            color: var(--green-600);
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="index.html" class="nav-logo">
+                    <div class="nav-logo-icon">M</div>
+                    MediBridge
+                </a>
+                <ul class="nav-links">
+                    <li><a href="buscar.html">Find Care</a></li>
+                    <li><a href="problematica.html">The Problem</a></li>
+                    <li><a href="para-clinicas.html">For Clinics</a></li>
+                </ul>
+                <div class="nav-cta">
+                    <a href="registro-clinica.html" class="btn btn-secondary btn-sm">Clinic? Register here</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="register-hero">
+        <div class="container">
+            <div class="section-label"
+                style="background:rgba(255,255,255,0.15); color:var(--green-100); margin:0 auto 16px;">Free — Always
+            </div>
+            <h1>Create Your Patient Profile</h1>
+            <p>Tell us a little about yourself and we'll match you with the right clinic, pharmacy, or therapist in
+                Miami.</p>
+        </div>
+    </div>
+
+    <div class="register-body">
+        <form id="patientForm" onsubmit="submitPatient(event)">
+
+            <!-- PERSONAL INFO -->
+            <div class="form-section-title">Personal Information</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" placeholder="Maria" required />
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" placeholder="Garcia" required />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" placeholder="you@email.com" required />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="(305) 000-0000" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="zip">ZIP Code *</label>
+                    <input type="text" id="zip" placeholder="e.g. 33125" maxlength="5" required />
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" />
+                </div>
+            </div>
+
+            <!-- INSURANCE -->
+            <div class="form-section-title">Insurance Status</div>
+            <div class="form-group">
+                <label for="insurance">What is your insurance situation? *</label>
+                <select id="insurance" required>
+                    <option value="">Select one...</option>
+                    <option value="uninsured">I have no insurance</option>
+                    <option value="medicaid">I have Medicaid</option>
+                    <option value="medicare">I have Medicare</option>
+                    <option value="marketplace">I have Marketplace / ACA insurance</option>
+                    <option value="underinsured">I have insurance but can't afford copays</option>
+                    <option value="unsure">I'm not sure</option>
+                </select>
+            </div>
+
+            <!-- CARE NEEDED -->
+            <div class="form-section-title">Care You Need</div>
+            <div class="form-group">
+                <label>Select all that apply:</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="care" value="primary" />
+                        Primary Care
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="care" value="dental" />
+                        Dental
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="care" value="mental-health" />
+                        Mental Health / Therapy
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="care" value="pharmacy" />
+                        Medications / Pharmacy
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="care" value="womens" />
+                        Women's Health
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="care" value="pediatrics" />
+                        Pediatrics / Children
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="care" value="vision" />
+                        Vision
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="care" value="chronic" />
+                        Chronic Condition
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:8px;">
+                <label for="urgency">How urgent is your care need?</label>
+                <select id="urgency">
+                    <option value="today">I need care today</option>
+                    <option value="week">Within this week</option>
+                    <option value="month" selected>Within a month</option>
+                    <option value="nourgency">No specific urgency</option>
+                </select>
+            </div>
+
+            <!-- LANGUAGE -->
+            <div class="form-section-title">Language Preference</div>
+            <div class="form-group">
+                <label>Select your preferred language(s):</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="lang" value="english" checked />
+                        English
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="lang" value="spanish" />
+                        Spanish / Espanol
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="lang" value="creole" />
+                        Haitian Creole
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="lang" value="portuguese" />
+                        Portuguese
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="lang" value="other" />
+                        Other
+                    </label>
+                </div>
+            </div>
+
+            <!-- NOTIFICATIONS -->
+            <div class="form-section-title">Notifications</div>
+            <div class="form-group">
+                <label>How would you like to receive clinic updates?</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="notify" value="email" checked />
+                        Email
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="notify" value="sms" />
+                        Text message (SMS)
+                    </label>
+                </div>
+            </div>
+
+            <div class="submit-area">
+                <button type="submit" class="btn btn-primary btn-lg" style="justify-content:center; width:100%;">
+                    Create My Profile — Find Care Now
+                </button>
+                <p class="privacy-note">
+                    Your information is private and never sold. MediBridge is free for patients, always.<br />
+                    By registering you agree to our <a href="#" style="color:var(--green-600);">Privacy Policy</a>.
+                </p>
+                <p style="text-align:center; font-size:14px; color:var(--gray-500);">
+                    Are you a clinic? <a href="registro-clinica.html"
+                        style="color:var(--green-600); font-weight:600;">Register your clinic here</a>
+                </p>
+            </div>
+
+        </form>
+
+        <!-- SUCCESS STATE -->
+        <div class="success-screen" id="successScreen">
+            <div class="success-icon">
+                <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <h2 style="font-family:var(--font-display); font-size:28px; font-weight:800; margin-bottom:12px;">You're
+                registered!</h2>
+            <p style="font-size:16px; color:var(--gray-600); max-width:420px; margin:0 auto 32px; line-height:1.7;">
+                We'll match you with the best clinics for your needs in Miami. Check your email for your personalized
+                matches.
+            </p>
+            <a href="buscar.html" class="btn btn-primary btn-lg">Find Care Now</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="border-top:none; padding-top:0;">
+                <a href="index.html" class="nav-logo" style="color:white; text-decoration:none;">
+                    <div class="nav-logo-icon">M</div>
+                    MediBridge
+                </a>
+                <span style="font-size:13px;">Free for patients, always.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function submitPatient(e) {
+            e.preventDefault();
+            document.getElementById('patientForm').style.display = 'none';
+            document.getElementById('successScreen').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+
+</html>
