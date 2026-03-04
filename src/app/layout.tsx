@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import MediBridgeNav from "@/components/MediBridgeNav";
 
 export const metadata: Metadata = {
-  title: "HealthConnect - Sobre Nosotros",
-  description: "Navegando juntos hacia un futuro más saludable",
+  title: "MediBridge – Affordable Care in Miami",
+  description:
+    "MediBridge connects uninsured and underinsured Miami residents with free and sliding-scale clinics, pharmacies, and mental health services.",
 };
 
 export default function RootLayout({
@@ -13,9 +15,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="en">
       <body className="antialiased">
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          <MediBridgeNav />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

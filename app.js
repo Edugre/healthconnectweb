@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px;">Privacy Notice — MediBridge / FIU Student Research Project</div>
       <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;">
         This platform was developed by Florida International University students for academic research purposes only. We collect only the minimum information needed to match patients with clinics. We do not sell your data or use it for advertising. Your use is entirely voluntary.
-        <a href="politica-privacidad.html" target="_blank" style="color:#3dc47d;font-weight:600;margin-left:4px;">Read full Privacy Policy</a>
+        <a href="/privacy" target="_blank" style="color:#3dc47d;font-weight:600;margin-left:4px;">Read full Privacy Policy</a>
       </p>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;flex-shrink:0;min-width:280px;">

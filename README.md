@@ -1,5 +1,11 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Project structure
+
+- **`data/`** — CSV inputs/outputs for clinic data (FQHC export, mapped `clinics.csv`). See `data/README.md`.
+- **`scripts/`** — One-off scripts (e.g. `map_fqhc_to_clinics.py` to map FQHC CSV → clinics schema). See `scripts/README.md`.
+- **`public/`** — Static assets; `location-pin.svg` is used by the map. Source/reference icons live in `public/icons/`.
+
 ## Getting Started
 
 First, run the development server:
