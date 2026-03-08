@@ -196,7 +196,7 @@ export default function Home() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="section" style={{ background: 'var(--gray-100)' }}>
+      <section className="section" style={{ background: 'var(--color-gray-100)' }}>
         <div className="container">
           <div className="section-label">How It Works</div>
           <h2 className="section-title">Find care in 3 simple steps</h2>
@@ -678,7 +678,7 @@ export default function Home() {
             <Link
               href="/privacy"
               style={{
-                color: 'var(--green-400)',
+                color: 'var(--color-green-400)',
                 fontWeight: 600,
                 marginLeft: 6,
               }}

@@ -20,7 +20,7 @@ export default function PatientSignupPage() {
             className="section-label"
             style={{
               background: 'rgba(255,255,255,0.15)',
-              color: 'var(--green-100)',
+              color: 'var(--color-green-100)',
               margin: '0 auto 16px',
             }}
           >
@@ -215,7 +215,7 @@ export default function PatientSignupPage() {
                 By registering you agree to our{' '}
                 <Link
                   href="/privacy"
-                  style={{ color: 'var(--green-600)' }}
+                  style={{ color: 'var(--color-green-600)' }}
                 >
                   Privacy Policy
                 </Link>
@@ -225,14 +225,14 @@ export default function PatientSignupPage() {
                 style={{
                   textAlign: 'center',
                   fontSize: 14,
-                  color: 'var(--gray-500)',
+                  color: 'var(--color-gray-500)',
                 }}
               >
                 Are you a clinic?{' '}
                 <Link
                   href="/clinic-signup"
                   style={{
-                    color: 'var(--green-600)',
+                    color: 'var(--color-green-600)',
                     fontWeight: 600,
                   }}
                 >
@@ -272,7 +272,7 @@ export default function PatientSignupPage() {
             <p
               style={{
                 fontSize: 16,
-                color: 'var(--gray-600)',
+                color: 'var(--color-gray-600)',
                 maxWidth: 420,
                 margin: '0 auto 32px',
                 lineHeight: 1.7,

@@ -296,7 +296,7 @@ function SearchPageContent() {
               style={{
                 textAlign: 'center',
                 padding: '40px 20px',
-                color: 'var(--gray-500)',
+                color: 'var(--color-gray-500)',
               }}
             >
               <h3

@@ -76,17 +76,17 @@ export default function ClinicPage() {
       {/* Breadcrumb */}
       <div
         style={{
-          background: 'var(--gray-100)',
-          borderBottom: '1px solid var(--gray-200)',
+          background: 'var(--color-gray-100)',
+          borderBottom: '1px solid var(--color-gray-200)',
           padding: '10px 0',
         }}
       >
         <div className="container">
-          <span style={{ fontSize: 13, color: 'var(--gray-500)' }}>
+          <span style={{ fontSize: 13, color: 'var(--color-gray-500)' }}>
             <Link
               href="/"
               style={{
-                color: 'var(--gray-500)',
+                color: 'var(--color-gray-500)',
                 textDecoration: 'none',
               }}
             >
@@ -96,14 +96,14 @@ export default function ClinicPage() {
             <Link
               href="/search"
               style={{
-                color: 'var(--gray-500)',
+                color: 'var(--color-gray-500)',
                 textDecoration: 'none',
               }}
             >
               Find Care
             </Link>{' '}
             /{' '}
-            <span style={{ color: 'var(--gray-700)' }}>
+            <span style={{ color: 'var(--color-gray-700)' }}>
               {clinic?.name ?? 'Clinic'}
             </span>
           </span>
@@ -235,7 +235,7 @@ export default function ClinicPage() {
                 <p
                   style={{
                     fontSize: 15,
-                    color: 'var(--gray-600)',
+                    color: 'var(--color-gray-600)',
                     lineHeight: 1.8,
                   }}
                 >
@@ -348,12 +348,12 @@ export default function ClinicPage() {
                 <div
                   style={{
                     marginTop: 16,
-                    background: 'var(--green-50)',
-                    border: '1px solid var(--green-200)',
+                    background: 'var(--color-green-50)',
+                    border: '1px solid var(--color-green-200)',
                     borderRadius: 10,
                     padding: '12px 14px',
                     fontSize: 12,
-                    color: 'var(--green-800)',
+                    color: 'var(--color-green-800)',
                   }}
                 >
                   <strong>No insurance?</strong> This clinic may still serve
@@ -367,7 +367,7 @@ export default function ClinicPage() {
 
       {/* RELATED CLINICS placeholder */}
       <div
-        style={{ background: 'var(--gray-100)', padding: '48px 0' }}
+        style={{ background: 'var(--color-gray-100)', padding: '48px 0' }}
       >
         <div className="container">
           <h2
@@ -376,7 +376,7 @@ export default function ClinicPage() {
             Similar clinics nearby
           </h2>
           <div className="clinic-grid">
-            <p style={{ fontSize: 14, color: 'var(--gray-600)' }}>
+            <p style={{ fontSize: 14, color: 'var(--color-gray-600)' }}>
               Related clinics will appear here once we connect this page to the
               full clinic search backend.
             </p>

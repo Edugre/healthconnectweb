@@ -19,7 +19,7 @@ export default function ProblemPage() {
             className="section-label"
             style={{
               background: 'rgba(255,255,255,0.15)',
-              color: 'var(--green-100)',
+              color: 'var(--color-green-100)',
               margin: '0 auto 16px',
             }}
           >
@@ -74,7 +74,7 @@ export default function ProblemPage() {
             <div>
               <div
                 style={{
-                  background: 'var(--green-100)',
+                  background: 'var(--color-green-100)',
                   borderRadius: 'var(--radius-lg)',
                   height: 320,
                   display: 'flex',
@@ -109,8 +109,8 @@ export default function ProblemPage() {
               >
                 <div
                   style={{
-                    background: 'var(--green-50)',
-                    border: '1px solid var(--green-200)',
+                    background: 'var(--color-green-50)',
+                    border: '1px solid var(--color-green-200)',
                     borderRadius: 12,
                     padding: '16px 20px',
                     flex: 1,
@@ -121,22 +121,22 @@ export default function ProblemPage() {
                     style={{
                       display: 'block',
                       fontSize: 22,
-                      color: 'var(--green-700)',
+                      color: 'var(--color-green-700)',
                       fontFamily: 'var(--font-display)',
                     }}
                   >
                     40+
                   </strong>
                   <span
-                    style={{ fontSize: 13, color: 'var(--gray-600)' }}
+                    style={{ fontSize: 13, color: 'var(--color-gray-600)' }}
                   >
                     FQHCs in Miami-Dade
                   </span>
                 </div>
                 <div
                   style={{
-                    background: 'var(--green-50)',
-                    border: '1px solid var(--green-200)',
+                    background: 'var(--color-green-50)',
+                    border: '1px solid var(--color-green-200)',
                     borderRadius: 12,
                     padding: '16px 20px',
                     flex: 1,
@@ -147,14 +147,14 @@ export default function ProblemPage() {
                     style={{
                       display: 'block',
                       fontSize: 22,
-                      color: 'var(--green-700)',
+                      color: 'var(--color-green-700)',
                       fontFamily: 'var(--font-display)',
                     }}
                   >
                     $0
                   </strong>
                   <span
-                    style={{ fontSize: 13, color: 'var(--gray-600)' }}
+                    style={{ fontSize: 13, color: 'var(--color-gray-600)' }}
                   >
                     Cost at many community clinics
                   </span>
@@ -166,7 +166,7 @@ export default function ProblemPage() {
           <hr
             style={{
               border: 'none',
-              borderTop: '1px solid var(--gray-200)',
+              borderTop: '1px solid var(--color-gray-200)',
               margin: '32px 0',
             }}
           />
@@ -176,7 +176,7 @@ export default function ProblemPage() {
             <div>
               <div
                 style={{
-                  background: 'var(--gray-100)',
+                  background: 'var(--color-gray-100)',
                   borderRadius: 'var(--radius-lg)',
                   height: 320,
                   display: 'flex',
@@ -206,7 +206,7 @@ export default function ProblemPage() {
           <hr
             style={{
               border: 'none',
-              borderTop: '1px solid var(--gray-200)',
+              borderTop: '1px solid var(--color-gray-200)',
               margin: '32px 0',
             }}
           />
@@ -216,7 +216,7 @@ export default function ProblemPage() {
             <div>
               <div
                 style={{
-                  background: 'var(--green-50)',
+                  background: 'var(--color-green-50)',
                   borderRadius: 'var(--radius-lg)',
                   height: 320,
                   display: 'flex',
@@ -250,7 +250,7 @@ export default function ProblemPage() {
       {/* FIELD RESEARCH */}
       <section
         id="research"
-        style={{ background: 'var(--gray-100)', padding: '80px 0' }}
+        style={{ background: 'var(--color-gray-100)', padding: '80px 0' }}
       >
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
@@ -447,7 +447,7 @@ export default function ProblemPage() {
             <p
               style={{
                 fontSize: 17,
-                color: 'var(--gray-600)',
+                color: 'var(--color-gray-600)',
                 lineHeight: 1.8,
                 marginBottom: 40,
               }}

@@ -186,7 +186,7 @@ export default function ForClinicsPage() {
       <section
         id="how"
         className="section"
-        style={{ background: 'var(--gray-100)' }}
+        style={{ background: 'var(--color-gray-100)' }}
       >
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
@@ -473,7 +473,7 @@ export default function ForClinicsPage() {
                     style={{
                       fontSize: 14,
                       fontStyle: 'italic',
-                      color: 'var(--gray-700)',
+                      color: 'var(--color-gray-700)',
                       lineHeight: 1.7,
                       marginBottom: 10,
                     }}
@@ -536,7 +536,7 @@ export default function ForClinicsPage() {
                     style={{
                       fontSize: 14,
                       fontStyle: 'italic',
-                      color: 'var(--gray-700)',
+                      color: 'var(--color-gray-700)',
                       lineHeight: 1.7,
                       marginBottom: 10,
                     }}
@@ -596,7 +596,7 @@ export default function ForClinicsPage() {
       {/* PRICING */}
       <section
         id="pricing"
-        style={{ background: 'var(--green-900)', padding: '80px 0' }}
+        style={{ background: 'var(--color-green-900)', padding: '80px 0' }}
       >
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
@@ -604,7 +604,7 @@ export default function ForClinicsPage() {
               className="section-label"
               style={{
                 background: 'rgba(255,255,255,0.12)',
-                color: 'var(--green-100)',
+                color: 'var(--color-green-100)',
                 margin: '0 auto 16px',
               }}
             >
@@ -681,7 +681,7 @@ export default function ForClinicsPage() {
                   width: '100%',
                   justifyContent: 'center',
                   background: 'white',
-                  color: 'var(--green-800)',
+                  color: 'var(--color-green-800)',
                 }}
               >
                 Start 30-Day Free Trial
@@ -734,7 +734,7 @@ export default function ForClinicsPage() {
               <p
                 style={{
                   fontSize: 16,
-                  color: 'var(--gray-600)',
+                  color: 'var(--color-gray-600)',
                   marginBottom: 32,
                   lineHeight: 1.7,
                 }}
@@ -755,19 +755,19 @@ export default function ForClinicsPage() {
                     gap: 12,
                     alignItems: 'center',
                     fontSize: 14,
-                    color: 'var(--gray-600)',
+                    color: 'var(--color-gray-600)',
                   }}
                 >
                   <div
                     style={{
                       width: 24,
                       height: 24,
-                      background: 'var(--green-100)',
+                      background: 'var(--color-green-100)',
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: 'var(--green-700)',
+                      color: 'var(--color-green-700)',
                       fontWeight: 700,
                       flexShrink: 0,
                     }}
@@ -780,19 +780,19 @@ export default function ForClinicsPage() {
                     gap: 12,
                     alignItems: 'center',
                     fontSize: 14,
-                    color: 'var(--gray-600)',
+                    color: 'var(--color-gray-600)',
                   }}
                 >
                   <div
                     style={{
                       width: 24,
                       height: 24,
-                      background: 'var(--green-100)',
+                      background: 'var(--color-green-100)',
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: 'var(--green-700)',
+                      color: 'var(--color-green-700)',
                       fontWeight: 700,
                       flexShrink: 0,
                     }}
@@ -805,19 +805,19 @@ export default function ForClinicsPage() {
                     gap: 12,
                     alignItems: 'center',
                     fontSize: 14,
-                    color: 'var(--gray-600)',
+                    color: 'var(--color-gray-600)',
                   }}
                 >
                   <div
                     style={{
                       width: 24,
                       height: 24,
-                      background: 'var(--green-100)',
+                      background: 'var(--color-green-100)',
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: 'var(--green-700)',
+                      color: 'var(--color-green-700)',
                       fontWeight: 700,
                       flexShrink: 0,
                     }}
@@ -841,7 +841,7 @@ export default function ForClinicsPage() {
                       style={{
                         fontSize: 12,
                         fontWeight: 700,
-                        color: 'var(--gray-500)',
+                        color: 'var(--color-gray-500)',
                         textTransform: 'uppercase',
                         letterSpacing: 0.8,
                         display: 'block',
@@ -857,7 +857,7 @@ export default function ForClinicsPage() {
                       style={{
                         width: '100%',
                         padding: '12px 16px',
-                        border: '1.5px solid var(--gray-200)',
+                        border: '1.5px solid var(--color-gray-200)',
                         borderRadius: 10,
                         fontSize: 15,
                         fontFamily: 'var(--font-body)',
@@ -870,7 +870,7 @@ export default function ForClinicsPage() {
                       style={{
                         fontSize: 12,
                         fontWeight: 700,
-                        color: 'var(--gray-500)',
+                        color: 'var(--color-gray-500)',
                         textTransform: 'uppercase',
                         letterSpacing: 0.8,
                         display: 'block',
@@ -886,7 +886,7 @@ export default function ForClinicsPage() {
                       style={{
                         width: '100%',
                         padding: '12px 16px',
-                        border: '1.5px solid var(--gray-200)',
+                        border: '1.5px solid var(--color-gray-200)',
                         borderRadius: 10,
                         fontSize: 15,
                         fontFamily: 'var(--font-body)',
@@ -899,7 +899,7 @@ export default function ForClinicsPage() {
                       style={{
                         fontSize: 12,
                         fontWeight: 700,
-                        color: 'var(--gray-500)',
+                        color: 'var(--color-gray-500)',
                         textTransform: 'uppercase',
                         letterSpacing: 0.8,
                         display: 'block',
@@ -915,7 +915,7 @@ export default function ForClinicsPage() {
                       style={{
                         width: '100%',
                         padding: '12px 16px',
-                        border: '1.5px solid var(--gray-200)',
+                        border: '1.5px solid var(--color-gray-200)',
                         borderRadius: 10,
                         fontSize: 15,
                         fontFamily: 'var(--font-body)',
@@ -928,7 +928,7 @@ export default function ForClinicsPage() {
                       style={{
                         fontSize: 12,
                         fontWeight: 700,
-                        color: 'var(--gray-500)',
+                        color: 'var(--color-gray-500)',
                         textTransform: 'uppercase',
                         letterSpacing: 0.8,
                         display: 'block',
@@ -941,7 +941,7 @@ export default function ForClinicsPage() {
                       style={{
                         width: '100%',
                         padding: '12px 16px',
-                        border: '1.5px solid var(--gray-200)',
+                        border: '1.5px solid var(--color-gray-200)',
                         borderRadius: 10,
                         fontSize: 15,
                         fontFamily: 'var(--font-body)',
@@ -963,7 +963,7 @@ export default function ForClinicsPage() {
                       style={{
                         fontSize: 12,
                         fontWeight: 700,
-                        color: 'var(--gray-500)',
+                        color: 'var(--color-gray-500)',
                         textTransform: 'uppercase',
                         letterSpacing: 0.8,
                         display: 'block',
@@ -976,7 +976,7 @@ export default function ForClinicsPage() {
                       style={{
                         width: '100%',
                         padding: '12px 16px',
-                        border: '1.5px solid var(--gray-200)',
+                        border: '1.5px solid var(--color-gray-200)',
                         borderRadius: 10,
                         fontSize: 15,
                         fontFamily: 'var(--font-body)',
@@ -1006,8 +1006,8 @@ export default function ForClinicsPage() {
               ) : (
                 <div
                   style={{
-                    background: 'var(--green-50)',
-                    border: '1px solid var(--green-200)',
+                    background: 'var(--color-green-50)',
+                    border: '1px solid var(--color-green-200)',
                     borderRadius: 12,
                     padding: 24,
                     textAlign: 'center',
@@ -1021,7 +1021,7 @@ export default function ForClinicsPage() {
                     style={{
                       display: 'block',
                       fontSize: 16,
-                      color: 'var(--green-800)',
+                      color: 'var(--color-green-800)',
                       marginBottom: 6,
                     }}
                   >
@@ -1030,7 +1030,7 @@ export default function ForClinicsPage() {
                   <span
                     style={{
                       fontSize: 14,
-                      color: 'var(--gray-600)',
+                      color: 'var(--color-gray-600)',
                     }}
                   >
                     Our team will reach out within 24 hours to complete your

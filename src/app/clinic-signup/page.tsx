@@ -20,7 +20,7 @@ export default function ClinicSignupPage() {
             className="section-label"
             style={{
               background: 'rgba(255,255,255,0.12)',
-              color: 'var(--green-200)',
+              color: 'var(--color-green-200)',
               margin: '0 auto 16px',
             }}
           >
@@ -305,7 +305,7 @@ export default function ClinicSignupPage() {
                 By registering you agree to our{' '}
                 <Link
                   href="/privacy"
-                  style={{ color: 'var(--green-600)' }}
+                  style={{ color: 'var(--color-green-600)' }}
                 >
                   Privacy Policy
                 </Link>
@@ -344,7 +344,7 @@ export default function ClinicSignupPage() {
             <p
               style={{
                 fontSize: 16,
-                color: 'var(--gray-600)',
+                color: 'var(--color-gray-600)',
                 maxWidth: 420,
                 margin: '0 auto 32px',
                 lineHeight: 1.7,
