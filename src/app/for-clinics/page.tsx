@@ -14,13 +14,11 @@ export default function ForClinicsPage() {
   return (
     <>
       {/* HERO */}
-      <div
-        style={{
-          background:
-            'linear-gradient(160deg, var(--color-green-900), var(--color-green-700))',
-          color: 'white',
-          padding: '80px 0 60px',
-        }}
+      <div className="for-clinics-hero" style={{
+        background:
+          'linear-gradient(160deg, var(--color-green-900), var(--color-green-700))',
+        color: 'white',
+      }}
       >
         <div className="container">
           <div className="for-clinics-hero-grid">
@@ -270,14 +268,7 @@ export default function ForClinicsPage() {
       {/* HOW IT WORKS FOR CLINICS */}
       <section className="section">
         <div className="container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 60,
-              alignItems: 'center',
-            }}
-          >
+          <div className="two-col-responsive">
             <div>
               <div className="section-label">Simple Referral Workflow</div>
               <h2 className="section-title">How patient routing works</h2>
@@ -292,7 +283,7 @@ export default function ForClinicsPage() {
                 <div
                   style={{
                     display: 'flex',
-                    gap: 20,
+                    gap: 16,
                     alignItems: 'flex-start',
                   }}
                 >
@@ -300,6 +291,7 @@ export default function ForClinicsPage() {
                     className="step-num"
                     style={{
                       flexShrink: 0,
+                      minWidth: 40,
                       width: 40,
                       height: 40,
                       fontSize: 16,
@@ -307,7 +299,7 @@ export default function ForClinicsPage() {
                   >
                     1
                   </div>
-                  <div>
+                  <div style={{ minWidth: 0 }}>
                     <strong
                       style={{
                         display: 'block',
@@ -320,7 +312,8 @@ export default function ForClinicsPage() {
                     <span
                       style={{
                         fontSize: 14,
-                        color: 'var(--gray-500)',
+                        color: 'var(--color-gray-500)',
+                        lineHeight: 1.5,
                       }}
                     >
                       They enter ZIP, service type, and insurance status
@@ -330,7 +323,7 @@ export default function ForClinicsPage() {
                 <div
                   style={{
                     display: 'flex',
-                    gap: 20,
+                    gap: 16,
                     alignItems: 'flex-start',
                   }}
                 >
@@ -338,6 +331,7 @@ export default function ForClinicsPage() {
                     className="step-num"
                     style={{
                       flexShrink: 0,
+                      minWidth: 40,
                       width: 40,
                       height: 40,
                       fontSize: 16,
@@ -345,7 +339,7 @@ export default function ForClinicsPage() {
                   >
                     2
                   </div>
-                  <div>
+                  <div style={{ minWidth: 0 }}>
                     <strong
                       style={{
                         display: 'block',
@@ -358,7 +352,8 @@ export default function ForClinicsPage() {
                     <span
                       style={{
                         fontSize: 14,
-                        color: 'var(--gray-500)',
+                        color: 'var(--color-gray-500)',
+                        lineHeight: 1.5,
                       }}
                     >
                       Your clinic appears as a top result for qualifying
@@ -369,7 +364,7 @@ export default function ForClinicsPage() {
                 <div
                   style={{
                     display: 'flex',
-                    gap: 20,
+                    gap: 16,
                     alignItems: 'flex-start',
                   }}
                 >
@@ -377,6 +372,7 @@ export default function ForClinicsPage() {
                     className="step-num"
                     style={{
                       flexShrink: 0,
+                      minWidth: 40,
                       width: 40,
                       height: 40,
                       fontSize: 16,
@@ -384,7 +380,7 @@ export default function ForClinicsPage() {
                   >
                     3
                   </div>
-                  <div>
+                  <div style={{ minWidth: 0 }}>
                     <strong
                       style={{
                         display: 'block',
@@ -397,7 +393,8 @@ export default function ForClinicsPage() {
                     <span
                       style={{
                         fontSize: 14,
-                        color: 'var(--gray-500)',
+                        color: 'var(--color-gray-500)',
+                        lineHeight: 1.5,
                       }}
                     >
                       They call, follow your clinic, or visit directly
@@ -407,7 +404,7 @@ export default function ForClinicsPage() {
                 <div
                   style={{
                     display: 'flex',
-                    gap: 20,
+                    gap: 16,
                     alignItems: 'flex-start',
                   }}
                 >
@@ -415,6 +412,7 @@ export default function ForClinicsPage() {
                     className="step-num"
                     style={{
                       flexShrink: 0,
+                      minWidth: 40,
                       width: 40,
                       height: 40,
                       fontSize: 16,
@@ -422,7 +420,7 @@ export default function ForClinicsPage() {
                   >
                     4
                   </div>
-                  <div>
+                  <div style={{ minWidth: 0 }}>
                     <strong
                       style={{
                         display: 'block',
@@ -435,7 +433,8 @@ export default function ForClinicsPage() {
                     <span
                       style={{
                         fontSize: 14,
-                        color: 'var(--gray-500)',
+                        color: 'var(--color-gray-500)',
+                        lineHeight: 1.5,
                       }}
                     >
                       See views, connections, and outcome data
@@ -446,10 +445,11 @@ export default function ForClinicsPage() {
             </div>
             <div
               style={{
-                background: 'var(--green-50)',
-                border: '1px solid var(--green-200)',
+                background: 'var(--color-green-50)',
+                border: '1px solid var(--color-green-200)',
                 borderRadius: 20,
-                padding: 32,
+                padding: 28,
+                minWidth: 0,
               }}
             >
               <h3
@@ -493,19 +493,22 @@ export default function ForClinicsPage() {
                       style={{
                         width: 36,
                         height: 36,
-                        background: 'var(--green-200)',
+                        minWidth: 36,
+                        background: 'var(--color-green-200)',
                         borderRadius: '50%',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         fontSize: 16,
+                        flexShrink: 0,
                       }}
                     />
-                    <div>
+                    <div style={{ minWidth: 0 }}>
                       <strong
                         style={{
                           display: 'block',
                           fontSize: 13,
+                          color: 'var(--color-gray-900)',
                         }}
                       >
                         Operations Director
@@ -513,7 +516,7 @@ export default function ForClinicsPage() {
                       <span
                         style={{
                           fontSize: 12,
-                          color: 'var(--gray-500)',
+                          color: 'var(--color-gray-500)',
                         }}
                       >
                         Community Health Center, Miami
@@ -524,7 +527,8 @@ export default function ForClinicsPage() {
                 <hr
                   style={{
                     border: 'none',
-                    borderTop: '1px solid var(--green-200)',
+                    borderTop: '1px solid var(--color-green-200)',
+                    margin: 0,
                   }}
                 />
                 <div>
@@ -552,19 +556,22 @@ export default function ForClinicsPage() {
                       style={{
                         width: 36,
                         height: 36,
-                        background: 'var(--green-200)',
+                        minWidth: 36,
+                        background: 'var(--color-green-200)',
                         borderRadius: '50%',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         fontSize: 16,
+                        flexShrink: 0,
                       }}
                     />
-                    <div>
+                    <div style={{ minWidth: 0 }}>
                       <strong
                         style={{
                           display: 'block',
                           fontSize: 13,
+                          color: 'var(--color-gray-900)',
                         }}
                       >
                         Medical Director
@@ -572,7 +579,7 @@ export default function ForClinicsPage() {
                       <span
                         style={{
                           fontSize: 12,
-                          color: 'var(--gray-500)',
+                          color: 'var(--color-gray-500)',
                         }}
                       >
                         FQHC, Miami-Dade County
@@ -718,14 +725,7 @@ export default function ForClinicsPage() {
       {/* CONTACT / SIGN UP */}
       <section id="contact" className="section">
         <div className="container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 60,
-              alignItems: 'flex-start',
-            }}
-          >
+          <div className="two-col-responsive">
             <div>
               <div className="section-label">Get Started</div>
               <h2 className="section-title">

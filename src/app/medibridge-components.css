@@ -1181,6 +1181,18 @@ body.nav-mobile-open .nav-mobile-drawer {
   color: rgba(255, 255, 255, 0.6);
 }
 
+@media (max-width: 480px) {
+  .stat-item strong {
+    font-size: 30px;
+  }
+  .stats-grid {
+    gap: 24px;
+  }
+  .stats-strip {
+    padding: 36px 0;
+  }
+}
+
 /* ───── FILTERS ───── */
 .filters-bar {
   background: var(--color-gray-100);
@@ -1410,6 +1422,13 @@ footer {
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 40px;
   margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
 }
 
 .footer-brand p {
@@ -1742,6 +1761,55 @@ footer {
   margin-bottom: 16px;
 }
 
+/* ───── SORT BAR (search page) ───── */
+.sort-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.sort-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-gray-600);
+  flex-shrink: 0;
+}
+
+.sort-select select {
+  padding: 6px 12px;
+  border: 1.5px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 14px;
+  background: var(--color-white);
+  color: var(--color-gray-900);
+  cursor: pointer;
+  outline: none;
+}
+
+.sort-select select:focus {
+  border-color: var(--color-green-400);
+}
+
+@media (max-width: 480px) {
+  .sort-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .sort-select {
+    width: 100%;
+  }
+  .sort-select select {
+    flex: 1;
+  }
+}
+
 /* ───── PAGE HERO (generic) ───── */
 .page-hero {
   background: linear-gradient(135deg, var(--color-green-900), var(--color-green-700));
@@ -1752,7 +1820,7 @@ footer {
 
 .page-hero h1 {
   font-family: var(--font-display);
-  font-size: 40px;
+  font-size: clamp(24px, 6vw, 40px);
   font-weight: 800;
   margin-bottom: 12px;
 }
@@ -1976,5 +2044,42 @@ footer {
 @media (min-width: 768px) {
   .for-clinics-hero-grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ───── RESPONSIVE TWO-COLUMN HELPER ───── */
+/* Used by for-clinics page for HOW IT WORKS and CONTACT grids */
+.two-col-responsive {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+@media (min-width: 769px) {
+  .two-col-responsive {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+}
+
+/* For Clinics hero section padding on mobile */
+.for-clinics-hero {
+  padding: 80px 0 60px;
+}
+
+@media (max-width: 768px) {
+  .for-clinics-hero {
+    padding: 48px 0 40px;
+  }
+
+  .for-clinics-hero .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .for-clinics-hero > .container > .for-clinics-hero-grid > div:first-child p:last-child {
+    flex-direction: column;
   }
 }
