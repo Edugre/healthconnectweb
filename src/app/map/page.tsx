@@ -48,6 +48,7 @@ export default function MapPage() {
   const [clinicType, setClinicType] = useState<string>('');
   const [filtersModalOpen, setFiltersModalOpen] = useState(false);
   const clinicMarkersRef = useRef<any[]>([]);
+  const userMarkerRef = useRef<any | null>(null);
 
   useEffect(() => {
     if (filtersModalOpen) {
@@ -187,6 +188,29 @@ export default function MapPage() {
         };
         userCoordsRef.current = coords;
         mapRef.current.setView([coords.lat, coords.lng], 14);
+
+        // Place / update the "You are here" marker
+        const L = leafletRef.current;
+        if (userMarkerRef.current) {
+          userMarkerRef.current.remove();
+        }
+        const youIcon = L.divIcon({
+          className: '',
+          html: `<div style="
+            width:18px;height:18px;
+            background:#2563eb;
+            border:3px solid #fff;
+            border-radius:50%;
+            box-shadow:0 0 0 4px rgba(37,99,235,0.25),0 2px 8px rgba(0,0,0,0.25);
+            animation:youPulse 2s ease-in-out infinite;
+          "></div>`,
+          iconSize: [18, 18],
+          iconAnchor: [9, 9],
+        });
+        userMarkerRef.current = L.marker([coords.lat, coords.lng], { icon: youIcon })
+          .addTo(mapRef.current)
+          .bindPopup('<strong>You are here</strong>');
+
         // Re-apply current filters so radius filter uses new location
         void loadClinics({
           q: searchQuery.trim() || undefined,
