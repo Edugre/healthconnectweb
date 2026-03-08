@@ -26,8 +26,8 @@ function distanceKm(
   const a =
     Math.sin(dLat / 2) ** 2 +
     Math.cos((lat1 * Math.PI) / 180) *
-      Math.cos((lat2 * Math.PI) / 180) *
-      Math.sin(dLon / 2) ** 2;
+    Math.cos((lat2 * Math.PI) / 180) *
+    Math.sin(dLon / 2) ** 2;
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c;
 }
@@ -82,7 +82,7 @@ export default function MapPage() {
       const center: [number, number] = [25.7617, -80.1918];
       const map = L.map(mapContainerRef.current).setView(center, 12);
       L.tileLayer(
-        'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+        'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
         {
           attribution:
             '© OpenStreetMap © <a href="https://carto.com/">CARTO</a>',
@@ -120,8 +120,7 @@ export default function MapPage() {
       }).addTo(mapRef.current);
       marker.bindPopup(
         `<div class="popup-name">${c.name || 'Clinic'}</div>
-         <div class="popup-type">${c.clinic_type || ''}</div><a href="/clinic/${
-          c.id
+         <div class="popup-type">${c.clinic_type || ''}</div><a href="/clinic/${c.id
         }">View clinic →</a>`,
       );
       clinicMarkersRef.current.push(marker);
@@ -235,9 +234,8 @@ export default function MapPage() {
               Quick Search
             </button>
             <button
-              className={`tab ${
-                activePanel === 'specialized' ? 'active' : ''
-              }`}
+              className={`tab ${activePanel === 'specialized' ? 'active' : ''
+                }`}
               type="button"
               onClick={() => setActivePanel('specialized')}
             >

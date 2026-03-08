@@ -253,7 +253,7 @@ export default function PrivacyPage() {
             <strong>
               <a
                 href="mailto:medibridge@fiu.edu"
-                style={{ color: 'var(--green-700)' }}
+                style={{ color: 'var(--color-green-700)' }}
               >
                 medibridge@fiu.edu
               </a>
@@ -330,7 +330,7 @@ export default function PrivacyPage() {
               <a
                 href="mailto:medibridge@fiu.edu"
                 style={{
-                  color: 'var(--green-700)',
+                  color: 'var(--color-green-700)',
                   fontWeight: 600,
                 }}
               >
@@ -347,12 +347,12 @@ export default function PrivacyPage() {
         {/* CLOSING STATEMENT */}
         <div
           style={{
-            background: 'var(--gray-100)',
-            border: '1px solid var(--gray-200)',
+            background: 'var(--color-gray-100)',
+            border: '1px solid var(--color-gray-200)',
             borderRadius: 6,
             padding: '24px 28px',
             fontSize: 14,
-            color: 'var(--gray-600)',
+            color: 'var(--color-gray-600)',
             lineHeight: 1.8,
             marginTop: 8,
           }}

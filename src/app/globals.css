@@ -40,8 +40,8 @@ body {
 .sidebar {
   width: 360px;
   flex-shrink: 0;
-  background: #111111;
-  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  background: #ffffff;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -58,7 +58,7 @@ body {
   padding: 13px 8px;
   background: none;
   border: none;
-  color: #6b6b6b;
+  color: #888888;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -70,9 +70,9 @@ body {
 }
 
 .tab.active {
-  color: #3dc47d;
+  color: #1f7a4d;
   border-bottom-color: #1f7a4d;
-  background: rgba(31, 122, 77, 0.1);
+  background: rgba(31, 122, 77, 0.07);
 }
 
 .panel {
@@ -140,12 +140,12 @@ body {
   content: '';
   flex: 1;
   height: 1px;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .divider span {
   font-size: 10px;
-  color: #6b6b6b;
+  color: #999999;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
@@ -160,17 +160,17 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  color: #3dc47d;
+  color: #1f7a4d;
   margin-bottom: 5px;
 }
 
 .field input,
 .field select {
   width: 100%;
-  background: #1c1c1c;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #f5f5f5;
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 6px;
-  color: #ffffff;
+  color: #111111;
   padding: 9px 12px;
   font-size: 13px;
   height: 38px;
@@ -255,15 +255,15 @@ body {
 
 .empty-text {
   font-size: 12px;
-  color: #6b6b6b;
+  color: #888888;
   line-height: 1.6;
 }
 
 .data-note {
   padding: 8px 16px;
   font-size: 10px;
-  color: #2e2e2e;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  color: #aaaaaa;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
   flex-shrink: 0;
   line-height: 1.5;
 }
@@ -275,7 +275,7 @@ body {
 
 /* Wrapper used on /map to mimic static full-screen layout */
 .map-page {
-  background: #0a0a0a;
+  background: #f8f8f8;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -325,15 +325,15 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 14px 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     flex-shrink: 0;
-    background: #111111;
+    background: #ffffff;
   }
 
   .map-filters-modal-title {
     font-size: 18px;
     font-weight: 700;
-    color: #fff;
+    color: #111111;
     margin: 0;
   }
 
@@ -346,13 +346,13 @@ body {
     padding: 0;
     background: none;
     border: none;
-    color: #fff;
+    color: #111111;
     cursor: pointer;
     border-radius: 8px;
   }
 
   .map-filters-modal-close:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.06);
   }
 
   .map-page #map {
