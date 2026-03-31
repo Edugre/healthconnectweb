@@ -18,7 +18,7 @@ export default function PrivacyPage() {
           </div>
           <h1>Privacy Policy &amp; Terms of Use</h1>
           <div className="policy-meta">
-            <span>MediBridge</span>
+            <span>MedicBridges</span>
             <span>Last updated: March 2026</span>
             <span>
               Non-commercial. Non-profit. Educational purposes only.
@@ -349,7 +349,7 @@ export default function PrivacyPage() {
           style={{
             background: 'var(--color-gray-100)',
             border: '1px solid var(--color-gray-200)',
-            borderRadius: 6,
+            borderRadius: 0,
             padding: '24px 28px',
             fontSize: 14,
             color: 'var(--color-gray-600)',
@@ -375,7 +375,7 @@ export default function PrivacyPage() {
               style={{ color: 'white', textDecoration: 'none' }}
             >
               <div className="nav-logo-icon">M</div>
-              MediBridge
+              MedicBridges
             </Link>
             <span
               style={{

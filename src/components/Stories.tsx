@@ -374,7 +374,7 @@ export default function Stories() {
           </h1>
           <button
             onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-            className="px-4 py-2 bg-[#0F766E] text-white rounded-lg font-bold hover:bg-[#0D5A52] transition-colors"
+            className="px-4 py-2 bg-gradient-to-br from-[#25a063] to-[#0f4028] text-white rounded-none font-bold hover:from-[#3dc47d] hover:to-[#155234] transition-all"
           >
             {language === 'en' ? 'ES' : 'EN'}
           </button>
@@ -383,7 +383,7 @@ export default function Stories() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
           {stories.map((story) => {
             const isShareCard = story.id === SHARE_STORY_ID;
-            const cardClassName = `bg-gradient-to-br ${story.color} rounded-3xl shadow-xl p-8 ${
+            const cardClassName = `bg-gradient-to-br ${story.color} rounded-none shadow-xl p-8 ${
               isShareCard 
                 ? 'cursor-default border-4 border-[#0F766E]' 
                 : 'cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 border-white/50 group'
@@ -409,7 +409,7 @@ export default function Stories() {
                   </div>
                   <button 
                     onClick={handleShareStory}
-                    className="w-full bg-[#0F766E] text-white py-4 px-6 rounded-xl font-bold text-lg hover:bg-[#0D5A52] transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="w-full bg-gradient-to-br from-[#25a063] to-[#0f4028] text-white py-4 px-6 rounded-none font-bold text-lg hover:from-[#3dc47d] hover:to-[#155234] transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     {language === 'es' ? 'Compartir mi historia' : 'Share my story'}
                   </button>
@@ -422,7 +422,7 @@ export default function Stories() {
                   {/* Content positioned above overlay */}
                   <div className="relative">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="inline-block px-4 py-1 bg-[#0F766E] text-white text-sm font-bold rounded-full">
+                      <span className="inline-block px-4 py-1 bg-[#0F766E] text-white text-sm font-bold rounded-none">
                         {language === 'es' ? 'Entrevista' : 'Interview'} {story.id}
                       </span>
                     </div>
@@ -450,17 +450,17 @@ export default function Stories() {
 
         {selectedStory && selectedStory.id !== 9 && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[2000] flex items-center justify-center p-4" onClick={() => setSelectedStory(null)}>
-            <div className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
+            <div className="bg-white rounded-none shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
               <div className="p-6 bg-gradient-to-r from-[#0F766E] to-[#059669] text-white flex justify-between items-center">
                 <div>
-                  <span className="inline-block px-3 py-1 bg-white/20 text-white text-sm font-bold rounded-full mb-2">
+                  <span className="inline-block px-3 py-1 bg-white/20 text-white text-sm font-bold rounded-none mb-2">
                     {language === 'es' ? 'Entrevista' : 'Interview'} {selectedStory.id}
                   </span>
                   <h2 className="text-3xl font-bold">
                     {selectedStory.situation}
                   </h2>
                 </div>
-                <button onClick={() => setSelectedStory(null)} className="text-white hover:bg-white/20 rounded-full w-10 h-10 flex items-center justify-center text-2xl transition-colors">
+                <button onClick={() => setSelectedStory(null)} className="text-white hover:bg-white/20 rounded-none w-10 h-10 flex items-center justify-center text-2xl transition-colors">
                   ✕
                 </button>
               </div>
@@ -491,7 +491,7 @@ export default function Stories() {
                     </p>
                   </div>
                 ) : (
-                  <div className="animate-fadeIn bg-gray-50 p-8 rounded-2xl border border-gray-200 max-w-3xl mx-auto">
+                  <div className="animate-fadeIn bg-gray-50 p-8 rounded-none border border-gray-200 max-w-3xl mx-auto">
                     <pre className="font-mono text-sm whitespace-pre-wrap text-gray-700 leading-relaxed">
                       {selectedStory.transcript}
                     </pre>

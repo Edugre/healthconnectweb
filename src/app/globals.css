@@ -98,7 +98,7 @@ body {
 
 .panel-inner::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 .locate-btn {
@@ -106,7 +106,7 @@ body {
   padding: 11px 16px;
   background: #1f7a4d;
   border: none;
-  border-radius: 6px;
+  border-radius: 0;
   color: #ffffff;
   font-size: 13px;
   font-weight: 700;
@@ -169,7 +169,7 @@ body {
   width: 100%;
   background: #f5f5f5;
   border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 6px;
+  border-radius: 0;
   color: #111111;
   padding: 9px 12px;
   font-size: 13px;
@@ -189,7 +189,7 @@ body {
   padding: 11px;
   background: transparent;
   border: 1.5px solid #1f7a4d;
-  border-radius: 6px;
+  border-radius: 0;
   color: #3dc47d;
   font-size: 13px;
   font-weight: 700;
@@ -227,7 +227,7 @@ body {
   height: 26px;
   border: 2px solid rgba(255, 255, 255, 0.08);
   border-top-color: #1f7a4d;
-  border-radius: 50%;
+  border-radius: 0;
   animation: spin 0.8s linear infinite;
 }
 
@@ -257,7 +257,7 @@ body {
 .empty-icon {
   width: 48px;
   height: 48px;
-  border-radius: 50%;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.04);
   display: flex;
   align-items: center;
@@ -360,7 +360,7 @@ body {
     border: none;
     color: #111111;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 0;
   }
 
   .map-filters-modal-close:hover {
@@ -390,7 +390,7 @@ body {
     width: 56px;
     height: 56px;
     padding: 0 16px;
-    border-radius: 28px;
+    border-radius: 0;
     border: none;
     background: #1f7a4d;
     color: #fff;

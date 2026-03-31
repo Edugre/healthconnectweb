@@ -27,7 +27,7 @@ export default function AboutUs() {
       </div>
 
       {/* Ford Card - Below text on mobile, bottom right on desktop */}
-      <div className="mt-8 md:absolute md:bottom-8 md:right-4 lg:right-8 w-full md:w-auto max-w-lg md:max-w-2xl bg-white p-4 md:p-5 rounded-2xl shadow-xl border-2 border-[#0F766E]">
+      <div className="mt-8 md:absolute md:bottom-8 md:right-4 lg:right-8 w-full md:w-auto max-w-lg md:max-w-2xl bg-white p-4 md:p-5 rounded-none shadow-xl border-2 border-[#0F766E]">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-4">
           {/* Ford Logo */}
           <div className="flex-shrink-0">

@@ -29,7 +29,7 @@ export default function Mission() {
       <h2 className="text-2xl md:text-3xl text-[#0F766E] mb-3 text-center flex-shrink-0">
         {t.mission.title}
       </h2>
-      <div className="bg-[#D1FAE5] p-3 md:p-4 border-l-4 border-[#0F766E] rounded-lg my-3 italic text-sm md:text-base flex-shrink-0 text-[#334155]">
+      <div className="bg-[#D1FAE5] p-3 md:p-4 border-l-4 border-[#0F766E] rounded-none my-3 italic text-sm md:text-base flex-shrink-0 text-[#334155]">
         {t.mission.quote}
       </div>
 
@@ -39,7 +39,7 @@ export default function Mission() {
           return (
             <div
               key={item.key}
-              className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden transition-all duration-300"
+              className="bg-white rounded-none shadow-md border border-gray-200 overflow-hidden transition-all duration-300"
             >
               {/* Accordion Header */}
               <button

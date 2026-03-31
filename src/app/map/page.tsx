@@ -369,7 +369,7 @@ export default function MapPage() {
               </div>
             </div>
             <div className="data-note">
-              Map pins are powered by MediBridge&apos;s real clinic directory
+              Map pins are powered by MedicBridges&apos;s real clinic directory
               data.
             </div>
           </div>
@@ -500,7 +500,7 @@ export default function MapPage() {
               </div>
             </div>
             <div className="data-note">
-              Map pins are powered by MediBridge&apos;s real clinic directory
+              Map pins are powered by MedicBridges&apos;s real clinic directory
               data.
             </div>
           </div>

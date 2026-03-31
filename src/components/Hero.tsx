@@ -32,7 +32,7 @@ export default function Hero() {
         </p>
         <Link
           href="/historias"
-          className="inline-block px-8 md:px-12 py-3 md:py-4 bg-[#0F766E] text-white no-underline rounded-full text-lg md:text-xl font-semibold transition-all hover:-translate-y-1 hover:shadow-2xl hover:bg-[#0d5d57] drop-shadow-lg"
+          className="inline-block px-8 md:px-12 py-3 md:py-4 bg-gradient-to-br from-[#25a063] to-[#0f4028] text-white no-underline rounded-none text-lg md:text-xl font-semibold transition-all hover:-translate-y-1 hover:shadow-2xl hover:from-[#3dc47d] hover:to-[#155234] drop-shadow-lg"
         >
           {t.hero.storiesButton}
         </Link>

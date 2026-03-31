@@ -34,7 +34,7 @@ export default function Impact() {
         {sdgItems.map((item) => (
           <div
             key={item.key}
-            className="flex items-start gap-3 p-3 md:p-4 bg-white rounded-lg shadow-md"
+            className="flex items-start gap-3 p-3 md:p-4 bg-white rounded-none shadow-md"
           >
             <item.Icon className="w-6 h-6 md:w-8 md:h-8 text-[#0F766E] flex-shrink-0" />
             <div>
@@ -48,12 +48,12 @@ export default function Impact() {
       <h3 className="text-lg md:text-xl text-[#0F766E] mt-6 mb-3 flex-shrink-0">
         {t.impact.how.title}
       </h3>
-      <div className="bg-white p-4 md:p-6 rounded-2xl shadow-lg mb-4 flex-shrink-0">
+      <div className="bg-white p-4 md:p-6 rounded-none shadow-lg mb-4 flex-shrink-0">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
           {impactItems.map((item) => (
             <div
               key={item.key}
-              className="flex items-start gap-3 p-3 md:p-4 bg-white rounded-lg shadow-sm"
+              className="flex items-start gap-3 p-3 md:p-4 bg-white rounded-none shadow-sm"
             >
               <item.Icon className="w-6 h-6 md:w-8 md:h-8 text-[#0F766E] flex-shrink-0" />
               <div>

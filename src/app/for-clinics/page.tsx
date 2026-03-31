@@ -61,7 +61,7 @@ export default function ForClinicsPage() {
                   lineHeight: 1.7,
                 }}
               >
-                MediBridge routes pre-screened, Medicaid-eligible uninsured
+                MedicBridges routes pre-screened, Medicaid-eligible uninsured
                 patients directly to your clinic. Reduce no-shows, fill open
                 slots, and reduce your outreach costs.
               </p>
@@ -109,7 +109,7 @@ export default function ForClinicsPage() {
                 style={{
                   background: 'rgba(255,255,255,0.08)',
                   border: '1px solid rgba(255,255,255,0.15)',
-                  borderRadius: 12,
+                  borderRadius: 0,
                   padding: '24px 20px',
                   textAlign: 'center',
                 }}
@@ -133,7 +133,7 @@ export default function ForClinicsPage() {
                 style={{
                   background: 'rgba(255,255,255,0.08)',
                   border: '1px solid rgba(255,255,255,0.15)',
-                  borderRadius: 12,
+                  borderRadius: 0,
                   padding: '24px 20px',
                   textAlign: 'center',
                 }}
@@ -157,7 +157,7 @@ export default function ForClinicsPage() {
                 style={{
                   background: 'rgba(255,255,255,0.08)',
                   border: '1px solid rgba(255,255,255,0.15)',
-                  borderRadius: 12,
+                  borderRadius: 0,
                   padding: '24px 20px',
                   textAlign: 'center',
                 }}
@@ -194,7 +194,7 @@ export default function ForClinicsPage() {
               className="section-label"
               style={{ margin: '0 auto 16px' }}
             >
-              Why MediBridge
+              Why MedicBridges
             </div>
             <h2 className="section-title">Your competitive advantage</h2>
             <p
@@ -216,7 +216,7 @@ export default function ForClinicsPage() {
               <h3>Local Focus — Miami Only</h3>
               <p>
                 We don&apos;t spread thin nationally. Every patient on
-                MediBridge is in Miami-Dade. Your visibility is concentrated
+                MedicBridges is in Miami-Dade. Your visibility is concentrated
                 where it matters.
               </p>
             </div>
@@ -241,7 +241,7 @@ export default function ForClinicsPage() {
               <h3>Community Trust</h3>
               <p>
                 Built with patient interviews and community input. Users on
-                MediBridge are motivated, trust the platform, and follow
+                MedicBridges are motivated, trust the platform, and follow
                 through.
               </p>
             </div>
@@ -447,7 +447,7 @@ export default function ForClinicsPage() {
               style={{
                 background: 'var(--color-green-50)',
                 border: '1px solid var(--color-green-200)',
-                borderRadius: 20,
+                borderRadius: 0,
                 padding: 28,
                 minWidth: 0,
               }}
@@ -479,7 +479,7 @@ export default function ForClinicsPage() {
                     }}
                   >
                     &quot;We had open slots on Wednesdays that we couldn&apos;t
-                    fill through our usual outreach. MediBridge is exactly the
+                    fill through our usual outreach. MedicBridges is exactly the
                     kind of patient routing tool we&apos;ve needed.&quot;
                   </p>
                   <div
@@ -495,7 +495,7 @@ export default function ForClinicsPage() {
                         height: 36,
                         minWidth: 36,
                         background: 'var(--color-green-200)',
-                        borderRadius: '50%',
+                        borderRadius: 0'50%',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -558,7 +558,7 @@ export default function ForClinicsPage() {
                         height: 36,
                         minWidth: 36,
                         background: 'var(--color-green-200)',
-                        borderRadius: '50%',
+                        borderRadius: 0'50%',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -729,7 +729,7 @@ export default function ForClinicsPage() {
             <div>
               <div className="section-label">Get Started</div>
               <h2 className="section-title">
-                List your clinic on MediBridge
+                List your clinic on MedicBridges
               </h2>
               <p
                 style={{
@@ -763,7 +763,7 @@ export default function ForClinicsPage() {
                       width: 24,
                       height: 24,
                       background: 'var(--color-green-100)',
-                      borderRadius: '50%',
+                      borderRadius: 0'50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -788,7 +788,7 @@ export default function ForClinicsPage() {
                       width: 24,
                       height: 24,
                       background: 'var(--color-green-100)',
-                      borderRadius: '50%',
+                      borderRadius: 0'50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -813,7 +813,7 @@ export default function ForClinicsPage() {
                       width: 24,
                       height: 24,
                       background: 'var(--color-green-100)',
-                      borderRadius: '50%',
+                      borderRadius: 0'50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -858,7 +858,7 @@ export default function ForClinicsPage() {
                         width: '100%',
                         padding: '12px 16px',
                         border: '1.5px solid var(--color-gray-200)',
-                        borderRadius: 10,
+                        borderRadius: 0,
                         fontSize: 15,
                         fontFamily: 'var(--font-body)',
                         outline: 'none',
@@ -887,7 +887,7 @@ export default function ForClinicsPage() {
                         width: '100%',
                         padding: '12px 16px',
                         border: '1.5px solid var(--color-gray-200)',
-                        borderRadius: 10,
+                        borderRadius: 0,
                         fontSize: 15,
                         fontFamily: 'var(--font-body)',
                         outline: 'none',
@@ -916,7 +916,7 @@ export default function ForClinicsPage() {
                         width: '100%',
                         padding: '12px 16px',
                         border: '1.5px solid var(--color-gray-200)',
-                        borderRadius: 10,
+                        borderRadius: 0,
                         fontSize: 15,
                         fontFamily: 'var(--font-body)',
                         outline: 'none',
@@ -942,7 +942,7 @@ export default function ForClinicsPage() {
                         width: '100%',
                         padding: '12px 16px',
                         border: '1.5px solid var(--color-gray-200)',
-                        borderRadius: 10,
+                        borderRadius: 0,
                         fontSize: 15,
                         fontFamily: 'var(--font-body)',
                         outline: 'none',
@@ -977,7 +977,7 @@ export default function ForClinicsPage() {
                         width: '100%',
                         padding: '12px 16px',
                         border: '1.5px solid var(--color-gray-200)',
-                        borderRadius: 10,
+                        borderRadius: 0,
                         fontSize: 15,
                         fontFamily: 'var(--font-body)',
                         outline: 'none',
@@ -1008,7 +1008,7 @@ export default function ForClinicsPage() {
                   style={{
                     background: 'var(--color-green-50)',
                     border: '1px solid var(--color-green-200)',
-                    borderRadius: 12,
+                    borderRadius: 0,
                     padding: 24,
                     textAlign: 'center',
                     marginTop: 16,
@@ -1056,10 +1056,10 @@ export default function ForClinicsPage() {
               style={{ color: 'white', textDecoration: 'none' }}
             >
               <div className="nav-logo-icon">M</div>
-              MediBridge
+              MedicBridges
             </Link>
             <span style={{ fontSize: 13 }}>
-              © 2026 MediBridge — Miami, FL.
+              © 2026 MedicBridges — Miami, FL.
             </span>
           </div>
         </div>
