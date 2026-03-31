@@ -11,7 +11,7 @@ const links = [
   { href: '/for-clinics', label: 'For Clinics' },
 ] as const;
 
-export default function MediBridgeNav() {
+export default function MedicBridgesNav() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -42,7 +42,7 @@ export default function MediBridgeNav() {
           <div className={navInnerClass}>
             <Link href="/" className="nav-logo" onClick={() => setMobileOpen(false)}>
               <div className="nav-logo-icon">M</div>
-              MediBridge
+              MedicBridges
             </Link>
             <ul className="nav-links">
               {links.map(({ href, label }) => (

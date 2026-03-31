@@ -20,7 +20,7 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 bg-[#D1FAE5] px-[5%] py-4 flex flex-col md:flex-row justify-between items-center shadow-lg z-[1000] gap-4">
       <div className="flex items-center gap-2 text-2xl md:text-3xl font-bold text-[#334155]">
-        <span>HealthConnect</span>
+        <span>MedicBridges</span>
       </div>
       <div className="flex flex-wrap gap-4 md:gap-8 items-center justify-center">
         {isHomePage ? (
