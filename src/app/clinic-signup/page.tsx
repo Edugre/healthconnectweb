@@ -26,7 +26,7 @@ export default function ClinicSignupPage() {
           >
             For Healthcare Providers
           </div>
-          <h1>Register Your Clinic on MediBridge</h1>
+          <h1>Register Your Clinic on MedicBridges</h1>
           <p>
             Start reaching pre-screened Medicaid and uninsured patients in
             Miami. Get listed free — upgrade when you see results.
@@ -299,7 +299,7 @@ export default function ClinicSignupPage() {
                 Submit — We&apos;ll Reach Out in 24h →
               </button>
               <p className="privacy-note">
-                Your information is private and never sold. MediBridge is a
+                Your information is private and never sold. MedicBridges is a
                 non-commercial academic prototype.
                 <br />
                 By registering you agree to our{' '}
@@ -351,7 +351,7 @@ export default function ClinicSignupPage() {
               }}
             >
               Our team will reach out within 24 hours to complete your listing
-              and get your clinic live on MediBridge.
+              and get your clinic live on MedicBridges.
             </p>
             <Link href="/for-clinics" className="btn btn-primary btn-lg">
               Learn more about partnering
@@ -372,9 +372,9 @@ export default function ClinicSignupPage() {
               style={{ color: 'white', textDecoration: 'none' }}
             >
               <div className="nav-logo-icon">M</div>
-              MediBridge
+              MedicBridges
             </Link>
-            <span style={{ fontSize: 13 }}>© 2026 MediBridge — Miami, FL.</span>
+            <span style={{ fontSize: 13 }}>© 2026 MedicBridges — Miami, FL.</span>
           </div>
         </div>
       </footer>

@@ -396,10 +396,10 @@ export default function ClinicPage() {
               style={{ color: 'white', textDecoration: 'none' }}
             >
               <div className="nav-logo-icon">M</div>
-              MediBridge
+              MedicBridges
             </Link>
             <span style={{ fontSize: 13 }}>
-              © 2026 MediBridge — Miami, FL.
+              © 2026 MedicBridges — Miami, FL.
             </span>
           </div>
         </div>

@@ -63,9 +63,9 @@
 }
 
 .btn-primary {
-  background: var(--color-green-500);
+  background: var(--color-green-600);
   color: var(--color-white);
-  box-shadow: var(--shadow-green);
+  box-shadow: 0 4px 14px rgba(107, 112, 63, 0.25);
 }
 
 .btn-primary:hover {
@@ -73,9 +73,14 @@
 }
 
 .btn-secondary {
-  background: var(--color-white);
-  color: var(--color-green-600);
-  border: 2px solid var(--color-green-300);
+  background: transparent;
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.medicbridges-dark .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .btn-secondary:hover {
@@ -741,9 +746,9 @@ body.nav-mobile-open .nav-mobile-drawer {
 
 /* ───── HERO ───── */
 .hero {
-  background: linear-gradient(160deg, var(--color-green-900) 0%, var(--color-green-700) 50%, var(--color-green-600) 100%);
+  background: transparent;
   color: var(--color-white);
-  padding: 100px 0 80px;
+  padding: 120px 0 100px;
   position: relative;
   overflow: hidden;
 }
