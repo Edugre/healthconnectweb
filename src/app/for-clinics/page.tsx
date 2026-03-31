@@ -12,7 +12,7 @@ export default function ForClinicsPage() {
   }
 
   return (
-    <main className="medicbridges-light-sage">
+    <>
       {/* HERO */}
       <div className="for-clinics-hero" style={{
         background:
@@ -61,7 +61,7 @@ export default function ForClinicsPage() {
                   lineHeight: 1.7,
                 }}
               >
-                MedicBridges routes pre-screened, Medicaid-eligible uninsured
+                MediBridge routes pre-screened, Medicaid-eligible uninsured
                 patients directly to your clinic. Reduce no-shows, fill open
                 slots, and reduce your outreach costs.
               </p>
@@ -182,7 +182,7 @@ export default function ForClinicsPage() {
         </div>
       </div>
 
-      {/* WHY MEDICBRIDGES */}
+      {/* WHY MEDIBRIDGE */}
       <section
         id="how"
         className="section"
@@ -194,7 +194,7 @@ export default function ForClinicsPage() {
               className="section-label"
               style={{ margin: '0 auto 16px' }}
             >
-              Why MedicBridges
+              Why MediBridge
             </div>
             <h2 className="section-title">Your competitive advantage</h2>
             <p
@@ -216,7 +216,7 @@ export default function ForClinicsPage() {
               <h3>Local Focus — Miami Only</h3>
               <p>
                 We don&apos;t spread thin nationally. Every patient on
-                MedicBridges is in Miami-Dade. Your visibility is concentrated
+                MediBridge is in Miami-Dade. Your visibility is concentrated
                 where it matters.
               </p>
             </div>
@@ -241,7 +241,7 @@ export default function ForClinicsPage() {
               <h3>Community Trust</h3>
               <p>
                 Built with patient interviews and community input. Users on
-                MedicBridges are motivated, trust the platform, and follow
+                MediBridge are motivated, trust the platform, and follow
                 through.
               </p>
             </div>
@@ -479,7 +479,7 @@ export default function ForClinicsPage() {
                     }}
                   >
                     &quot;We had open slots on Wednesdays that we couldn&apos;t
-                    fill through our usual outreach. MedicBridges is exactly the
+                    fill through our usual outreach. MediBridge is exactly the
                     kind of patient routing tool we&apos;ve needed.&quot;
                   </p>
                   <div
@@ -729,7 +729,7 @@ export default function ForClinicsPage() {
             <div>
               <div className="section-label">Get Started</div>
               <h2 className="section-title">
-                List your clinic on MedicBridges
+                List your clinic on MediBridge
               </h2>
               <p
                 style={{
@@ -1056,15 +1056,15 @@ export default function ForClinicsPage() {
               style={{ color: 'white', textDecoration: 'none' }}
             >
               <div className="nav-logo-icon">M</div>
-              MedicBridges
+              MediBridge
             </Link>
             <span style={{ fontSize: 13 }}>
-              © 2026 MedicBridges — Miami, FL.
+              © 2026 MediBridge — Miami, FL.
             </span>
           </div>
         </div>
       </footer>
-    </main>
+    </>
   );
 }
 

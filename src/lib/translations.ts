@@ -17,7 +17,7 @@ export const translations = {
     },
     about: {
       title: "Quiénes Somos",
-      para1: "MedicBridges es una plataforma impulsada por inteligencia artificial dedicada a transformar el acceso a la atención médica para comunidades desatendidas. Nacimos de una necesidad urgente: millones de familias latinas, inmigrantes y personas sin seguro enfrentan barreras insuperables al buscar atención médica de calidad.",
+      para1: "HealthConnect es una plataforma impulsada por inteligencia artificial dedicada a transformar el acceso a la atención médica para comunidades desatendidas. Nacimos de una necesidad urgente: millones de familias latinas, inmigrantes y personas sin seguro enfrentan barreras insuperables al buscar atención médica de calidad.",
       para2: "Somos un equipo de tecnólogos, profesionales de la salud y defensores comunitarios unidos por una visión compartida: un sistema de salud donde el origen, el idioma o el estatus de seguro nunca sean obstáculos para recibir atención."
     },
     ford: {
@@ -96,7 +96,7 @@ export const translations = {
                     contactMessage: "Si eres un paciente buscando atención, un proveedor médico comprometido con la equidad, o un aliado que cree en nuestro trabajo, queremos conectar contigo."
                 },
     footer: {
-      text: "© 2026 MedicBridges. Construyendo puentes hacia la salud equitativa.",
+      text: "© 2026 HealthConnect. Construyendo puentes hacia la salud equitativa.",
       ford: "Participante orgulloso del Ford Philanthropy Challenge 2025"
     },
     stories: {
@@ -104,7 +104,7 @@ export const translations = {
       subtitle: "Próximamente: Historias reales de nuestra comunidad",
       placeholder: "Esta sección contendrá historias inspiradoras de personas que han navegado el sistema de salud. El contenido se agregará pronto."
     },
-    pageTitle: "Sobre Nosotros - MedicBridges"
+    pageTitle: "Sobre Nosotros - HealthConnect"
   },
   en: {
     nav: {
@@ -122,7 +122,7 @@ export const translations = {
     },
     about: {
       title: "About Us",
-      para1: "MedicBridges is an AI-powered platform dedicated to transforming healthcare access for underserved communities. We were born from an urgent need: millions of Latino families, immigrants, and uninsured individuals face insurmountable barriers when seeking quality healthcare.",
+      para1: "HealthConnect is an AI-powered platform dedicated to transforming healthcare access for underserved communities. We were born from an urgent need: millions of Latino families, immigrants, and uninsured individuals face insurmountable barriers when seeking quality healthcare.",
       para2: "We are a team of technologists, healthcare professionals, and community advocates united by a shared vision: a healthcare system where origin, language, or insurance status never stand in the way of receiving care."
     },
     ford: {
@@ -201,7 +201,7 @@ export const translations = {
                     contactMessage: "Whether you're a patient seeking care, a healthcare provider committed to equity, or an ally who believes in our work, we want to connect with you."
                 },
     footer: {
-      text: "© 2026 MedicBridges. Building bridges to equitable health.",
+      text: "© 2026 HealthConnect. Building bridges to equitable health.",
       ford: "Proud participant in the Ford Philanthropy Challenge 2025"
     },
     stories: {
@@ -209,7 +209,7 @@ export const translations = {
       subtitle: "Coming Soon: Real stories from our community",
       placeholder: "This section will feature inspiring stories from people who have navigated the healthcare system. Content will be added soon."
     },
-    pageTitle: "About Us - MedicBridges"
+    pageTitle: "About Us - HealthConnect"
   }
 } as const;
 

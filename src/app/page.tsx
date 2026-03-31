@@ -35,7 +35,7 @@ export default function Home() {
   }
 
   return (
-    <main className="medicbridges-dark">
+    <>
       {/* HERO */}
       <section className="hero">
         <div className="container">
@@ -57,7 +57,7 @@ export default function Home() {
               near you — in minutes.
             </h1>
             <p className="hero-sub">
-              MedicBridges connects you with free clinics, low-cost pharmacies,
+              MediBridge connects you with free clinics, low-cost pharmacies,
               and mental health services in Miami. No insurance? No problem.
             </p>
 
@@ -232,7 +232,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* JOIN MEDICBRIDGES — simple CTA */}
+      {/* JOIN MEDIBRIDGE — simple CTA */}
       <section className="section" style={{ background: 'var(--color-white)' }}>
         <div className="container">
           <h2
@@ -246,7 +246,7 @@ export default function Home() {
               letterSpacing: '0.05em',
             }}
           >
-            Join MedicBridges
+            Join MediBridge
           </h2>
           <div
             className="home-join-cta-grid"
@@ -355,7 +355,7 @@ export default function Home() {
             </div>
             <div className="stat-item">
               <strong>$0</strong>
-              <p>Cost for patients to use MedicBridges, always</p>
+              <p>Cost for patients to use MediBridge, always</p>
             </div>
           </div>
         </div>
@@ -586,7 +586,7 @@ export default function Home() {
                 style={{ color: 'white', textDecoration: 'none' }}
               >
                 <div className="nav-logo-icon">M</div>
-                MedicBridges
+                MediBridge
               </Link>
               <p>
                 Connecting Miami&apos;s underserved communities with free and
@@ -634,14 +634,14 @@ export default function Home() {
                   <Link href="/problem#research">Our Research</Link>
                 </li>
                 <li>
-                  <a href="mailto:hello@medicbridges.care">Contact</a>
+                  <a href="mailto:hello@medibridge.care">Contact</a>
                 </li>
               </ul>
             </div>
           </div>
           <div className="footer-bottom">
             <span>
-              © 2026 MedicBridges — Florida International University Student
+              © 2026 MediBridge — Florida International University Student
               Research Project, Miami, FL.
             </span>
             <div style={{ display: 'flex', gap: 16 }}>
@@ -670,7 +670,7 @@ export default function Home() {
             <strong style={{ color: 'rgba(255,255,255,0.6)' }}>
               Privacy Notice:
             </strong>{' '}
-            MedicBridges is a non-commercial academic prototype developed by
+            MediBridge is a non-commercial academic prototype developed by
             students at Florida International University. We collect only the
             minimum information necessary to match patients with clinics. We do
             not sell your data, use it for advertising, or share it without your
@@ -688,6 +688,6 @@ export default function Home() {
           </p>
         </div>
       </footer>
-    </main>
+    </>
   );
 }
