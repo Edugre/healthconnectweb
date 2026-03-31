@@ -37,14 +37,14 @@ export default function CTA() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-base text-[#334155]">
             <a
-              href="mailto:info@medicbridges.org"
+              href="mailto:info@healthconnect.org"
               className="flex items-center gap-2 hover:text-[#0F766E] transition-colors"
             >
               <Mail className="w-4 h-4" />
-              info@medicbridges.org
+              info@healthconnect.org
             </a>
             <a
-              href="https://www.medicbridges.org"
+              href="https://www.healthconnect.org"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 hover:text-[#0F766E] transition-colors"

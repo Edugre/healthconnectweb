@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function PrivacyPage() {
   return (
-    <main className="medicbridges-light-mint">
+    <>
       {/* HERO */}
       <div className="policy-hero">
         <div className="container">
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
           </div>
           <h1>Privacy Policy &amp; Terms of Use</h1>
           <div className="policy-meta">
-            <span>MedicBridges</span>
+            <span>MediBridge</span>
             <span>Last updated: March 2026</span>
             <span>
               Non-commercial. Non-profit. Educational purposes only.
@@ -252,10 +252,10 @@ export default function PrivacyPage() {
             To exercise any of these rights, contact us at:{' '}
             <strong>
               <a
-                href="mailto:medicbridges@fiu.edu"
+                href="mailto:medibridge@fiu.edu"
                 style={{ color: 'var(--color-green-700)' }}
               >
-                medicbridges@fiu.edu
+                medibridge@fiu.edu
               </a>
             </strong>
           </p>
@@ -328,13 +328,13 @@ export default function PrivacyPage() {
             <li>
               Email:{' '}
               <a
-                href="mailto:medicbridges@fiu.edu"
+                href="mailto:medibridge@fiu.edu"
                 style={{
                   color: 'var(--color-green-700)',
                   fontWeight: 600,
                 }}
               >
-                medicbridges@fiu.edu
+                medibridge@fiu.edu
               </a>
             </li>
             <li>
@@ -375,7 +375,7 @@ export default function PrivacyPage() {
               style={{ color: 'white', textDecoration: 'none' }}
             >
               <div className="nav-logo-icon">M</div>
-              MedicBridges
+              MediBridge
             </Link>
             <span
               style={{
@@ -389,7 +389,7 @@ export default function PrivacyPage() {
           </div>
         </div>
       </footer>
-    </main>
+    </>
   );
 }
 

@@ -1,25 +1,19 @@
 @import "./fonts.css";
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
-@import "./medicbridges-theme.css";
-@import "./medicbridges-components.css";
+@import "./medibridge-theme.css";
+@import "./medibridge-components.css";
 
 :root {
-  --bg-primary: #f7f8f2;
-  --bg-secondary: #ffffff;
-  --text-primary: #2c2e1d;
-  --cta-primary: #6b703f;
-  --cta-secondary: #879155;
-  --cta-secondary-bg: #edefe5;
-  --success: #65a30d;
-  --error: #ef4444;
+  --bg-primary: #d1fae5;
+  --bg-secondary: #f8fafc;
+  --text-primary: #334155;
+  --cta-primary: #0f766e;
+  --cta-secondary: #0f766e;
+  --cta-secondary-bg: #d1fae5;
+  --success: #22c55e;
+  --error: #f87171;
   --badge: #facc15;
-  
-  /* Gradient Definitions */
-  --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2c2e1d 100%);
-  --gradient-mint: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-  --gradient-sage: linear-gradient(135deg, #f7fee7 0%, #ecfccb 100%);
-  --gradient-emerald: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
 }
 
 html {
@@ -34,21 +28,6 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
-
-.medicbridges-dark {
-  background: var(--gradient-dark);
-  color: white;
-}
-
-.medicbridges-dark h1, 
-.medicbridges-dark h2, 
-.medicbridges-dark h3 {
-  color: white;
-}
-
-.medicbridges-light-mint { background: var(--gradient-mint); }
-.medicbridges-light-sage { background: var(--gradient-sage); }
-.medicbridges-light-emerald { background: var(--gradient-emerald); }
 
 /* Map layout & sidebar styles (adapted from mapa.html) */
 .app {

@@ -11,7 +11,7 @@ export default function ProblemPage() {
   }
 
   return (
-    <main className="medicbridges-light-emerald">
+    <>
       {/* PAGE HERO */}
       <div className="page-hero">
         <div className="container">
@@ -442,7 +442,7 @@ export default function ProblemPage() {
               The Solution
             </div>
             <h2 className="section-title">
-              That&apos;s why we built MedicBridges.
+              That&apos;s why we built MediBridge.
             </h2>
             <p
               style={{
@@ -489,15 +489,15 @@ export default function ProblemPage() {
               style={{ color: 'white', textDecoration: 'none' }}
             >
               <div className="nav-logo-icon">M</div>
-              MedicBridges
+              MediBridge
             </Link>
             <span style={{ fontSize: 13 }}>
-              © 2026 MedicBridges — Miami, FL.
+              © 2026 MediBridge — Miami, FL.
             </span>
           </div>
         </div>
       </footer>
-    </main>
+    </>
   );
 }
 
