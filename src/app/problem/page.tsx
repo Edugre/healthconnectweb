@@ -75,7 +75,7 @@ export default function ProblemPage() {
               <div
                 style={{
                   background: 'var(--color-green-100)',
-                  borderRadius: 0'var(--radius-lg)',
+                  borderRadius: 0,
                   height: 320,
                   display: 'flex',
                   alignItems: 'center',
@@ -177,7 +177,7 @@ export default function ProblemPage() {
               <div
                 style={{
                   background: 'var(--color-gray-100)',
-                  borderRadius: 0'var(--radius-lg)',
+                  borderRadius: 0,
                   height: 320,
                   display: 'flex',
                   alignItems: 'center',
@@ -217,7 +217,7 @@ export default function ProblemPage() {
               <div
                 style={{
                   background: 'var(--color-green-50)',
-                  borderRadius: 0'var(--radius-lg)',
+                  borderRadius: 0,
                   height: 320,
                   display: 'flex',
                   alignItems: 'center',
