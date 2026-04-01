@@ -25,8 +25,8 @@
   --color-black: #0a0a0a;
   --color-white: #ffffff;
   /* Fonts */
-  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Raleway", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "FF Tisa Sans", "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "FF Tisa Sans", "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
   /* Radius — sharp edges */
   --radius-sm: 0px;
   --radius-md: 0px;

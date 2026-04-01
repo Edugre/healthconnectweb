@@ -552,6 +552,12 @@
   font-weight: 800;
   font-size: 22px;
   color: var(--color-black);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.nav-logo:hover {
+  color: var(--color-green-600);
+  transform: scale(1.04);
 }
 
 .nav-logo-icon {
@@ -930,6 +936,32 @@ body.nav-mobile-open .nav-mobile-drawer {
   font-weight: 800;
   margin: 0 auto 20px;
   font-family: var(--font-display);
+}
+
+/* Animated step numbers in "Find care in 3 simple steps" */
+@keyframes stepNumPulse {
+  0%, 60%, 100% {
+    background: var(--color-green-500);
+    transform: scale(1);
+    box-shadow: none;
+  }
+  30% {
+    background: var(--color-green-400);
+    transform: scale(1.18);
+    box-shadow: 0 0 0 6px rgba(37, 160, 99, 0.25);
+  }
+}
+
+.steps .step:nth-child(1) .step-num {
+  animation: stepNumPulse 3s ease-in-out 0s infinite;
+}
+
+.steps .step:nth-child(2) .step-num {
+  animation: stepNumPulse 3s ease-in-out 1s infinite;
+}
+
+.steps .step:nth-child(3) .step-num {
+  animation: stepNumPulse 3s ease-in-out 2s infinite;
 }
 
 .step h3 {
@@ -1351,10 +1383,11 @@ body.nav-mobile-open .nav-mobile-drawer {
 
 .pricing-card {
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-lg);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
   padding: 32px 28px;
-  transition: all 0.2s;
+  transition: all 0.25s ease;
+  cursor: default;
 }
 
 .pricing-card.featured {
@@ -1363,8 +1396,25 @@ body.nav-mobile-open .nav-mobile-drawer {
   box-shadow: var(--shadow-green);
 }
 
-.pricing-card:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+/* Basic / Free plan: blue border on hover */
+.pricing-grid .pricing-card:nth-child(1):hover {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25), 0 8px 32px rgba(59, 130, 246, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Featured / middle plan: silver border on hover */
+.pricing-card.featured:hover {
+  border-color: #c0c0c0;
+  box-shadow: 0 0 0 2px rgba(192, 192, 192, 0.4), 0 8px 32px rgba(192, 192, 192, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Partner / third plan: gold border on hover */
+.pricing-grid .pricing-card:nth-child(3):hover {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.35), 0 8px 32px rgba(212, 175, 55, 0.2);
+  transform: translateY(-4px);
 }
 
 .pricing-tier {
@@ -1418,6 +1468,73 @@ body.nav-mobile-open .nav-mobile-drawer {
 .pricing-card.featured .pricing-features li::before {
   color: white;
 }
+
+/* ───── COVER CARDS (What We Cover section) ───── */
+@keyframes coverDotBounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-7px);
+  }
+}
+
+.cover-card {
+  text-align: center;
+  padding: 24px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--color-green-200);
+  background: #d1fae5;
+  transition: all 0.25s ease;
+  position: relative;
+  margin-top: 14px;
+}
+
+.cover-card::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--color-green-500);
+  border-radius: 50%;
+  animation: coverDotBounce 1.6s ease-in-out infinite;
+  transition: width 0.2s, height 0.2s, top 0.2s;
+}
+
+.cover-card:hover {
+  border-color: var(--color-green-400);
+  box-shadow: 0 6px 24px rgba(31, 122, 77, 0.15);
+  transform: translateY(-2px);
+}
+
+.cover-card:hover::before {
+  width: 18px;
+  height: 18px;
+  top: -14px;
+  background: var(--color-green-400);
+}
+
+.cover-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.cover-card p {
+  font-size: 13px;
+  color: var(--color-gray-600);
+  line-height: 1.6;
+}
+
+/* Stagger the bounce animation so cards animate at different times */
+.cover-card:nth-child(2)::before { animation-delay: 0.27s; }
+.cover-card:nth-child(3)::before { animation-delay: 0.53s; }
+.cover-card:nth-child(4)::before { animation-delay: 0.8s; }
+.cover-card:nth-child(5)::before { animation-delay: 1.07s; }
+.cover-card:nth-child(6)::before { animation-delay: 1.33s; }
 
 /* ───── FOOTER ───── */
 footer {

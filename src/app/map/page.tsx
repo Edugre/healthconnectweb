@@ -286,19 +286,7 @@ export default function MapPage() {
                   </>
                 ) : (
                   <>
-                    <svg
-                      width="14"
-                      height="14"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 111.314 0z"
-                      />
-                    </svg>
+                    <span role="img" aria-label="location" style={{ fontSize: 16, lineHeight: 1 }}>📍</span>
                     Use My Current Location
                   </>
                 )}
@@ -393,19 +381,7 @@ export default function MapPage() {
                   </>
                 ) : (
                   <>
-                    <svg
-                      width="14"
-                      height="14"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 111.314 0z"
-                      />
-                    </svg>
+                    <span role="img" aria-label="location" style={{ fontSize: 16, lineHeight: 1 }}>📍</span>
                     Use My Current Location
                   </>
                 )}
