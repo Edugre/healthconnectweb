@@ -209,7 +209,7 @@ export default function PatientSignupPage() {
                 Create My Profile — Find Care Now
               </button>
               <p className="privacy-note">
-                Your information is private and never sold. MediBridge is free
+                Your information is private and never sold. MedicBridges is free
                 for patients, always.
                 <br />
                 By registering you agree to our{' '}
@@ -300,7 +300,7 @@ export default function PatientSignupPage() {
               style={{ color: 'white', textDecoration: 'none' }}
             >
               <div className="nav-logo-icon">M</div>
-              MediBridge
+              MedicBridges
             </Link>
             <span style={{ fontSize: 13 }}>Free for patients, always.</span>
           </div>

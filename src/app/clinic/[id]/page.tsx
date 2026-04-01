@@ -176,7 +176,7 @@ export default function ClinicPage() {
                   style={{
                     background: 'rgba(255,255,255,0.12)',
                     border: '1px solid rgba(255,255,255,0.2)',
-                    borderRadius: 12,
+                    borderRadius: 0,
                     padding: '14px 20px',
                     display: 'flex',
                     alignItems: 'center',
@@ -204,7 +204,7 @@ export default function ClinicPage() {
                   style={{
                     background: 'rgba(255,255,255,0.12)',
                     border: '1px solid rgba(255,255,255,0.2)',
-                    borderRadius: 12,
+                    borderRadius: 0,
                     padding: '14px 20px',
                   }}
                 >
@@ -350,7 +350,7 @@ export default function ClinicPage() {
                     marginTop: 16,
                     background: 'var(--color-green-50)',
                     border: '1px solid var(--color-green-200)',
-                    borderRadius: 10,
+                    borderRadius: 0,
                     padding: '12px 14px',
                     fontSize: 12,
                     color: 'var(--color-green-800)',
@@ -396,10 +396,10 @@ export default function ClinicPage() {
               style={{ color: 'white', textDecoration: 'none' }}
             >
               <div className="nav-logo-icon">M</div>
-              MediBridge
+              MedicBridges
             </Link>
             <span style={{ fontSize: 13 }}>
-              © 2026 MediBridge — Miami, FL.
+              © 2026 MedicBridges — Miami, FL.
             </span>
           </div>
         </div>

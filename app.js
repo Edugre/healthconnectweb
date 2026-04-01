@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
   el.id = 'privacyBanner';
   el.innerHTML = `<div style="position:fixed;bottom:0;left:0;right:0;background:#111111;border-top:2px solid #1f7a4d;z-index:99999;padding:20px 24px;display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;box-shadow:0 -4px 24px rgba(0,0,0,0.4);font-family:'Inter',sans-serif;">
     <div style="flex:1;min-width:260px;">
-      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px;">Privacy Notice — MediBridge / FIU Student Research Project</div>
+      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px;">Privacy Notice — MedicBridges / FIU Student Research Project</div>
       <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;">
         This platform was developed by Florida International University students for academic research purposes only. We collect only the minimum information needed to match patients with clinics. We do not sell your data or use it for advertising. Your use is entirely voluntary.
         <a href="/privacy" target="_blank" style="color:#3dc47d;font-weight:600;margin-left:4px;">Read full Privacy Policy</a>

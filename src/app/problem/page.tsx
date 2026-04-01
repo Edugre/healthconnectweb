@@ -75,7 +75,7 @@ export default function ProblemPage() {
               <div
                 style={{
                   background: 'var(--color-green-100)',
-                  borderRadius: 'var(--radius-lg)',
+                  borderRadius: 0,
                   height: 320,
                   display: 'flex',
                   alignItems: 'center',
@@ -111,7 +111,7 @@ export default function ProblemPage() {
                   style={{
                     background: 'var(--color-green-50)',
                     border: '1px solid var(--color-green-200)',
-                    borderRadius: 12,
+                    borderRadius: 0,
                     padding: '16px 20px',
                     flex: 1,
                     minWidth: 140,
@@ -137,7 +137,7 @@ export default function ProblemPage() {
                   style={{
                     background: 'var(--color-green-50)',
                     border: '1px solid var(--color-green-200)',
-                    borderRadius: 12,
+                    borderRadius: 0,
                     padding: '16px 20px',
                     flex: 1,
                     minWidth: 140,
@@ -177,7 +177,7 @@ export default function ProblemPage() {
               <div
                 style={{
                   background: 'var(--color-gray-100)',
-                  borderRadius: 'var(--radius-lg)',
+                  borderRadius: 0,
                   height: 320,
                   display: 'flex',
                   alignItems: 'center',
@@ -217,7 +217,7 @@ export default function ProblemPage() {
               <div
                 style={{
                   background: 'var(--color-green-50)',
-                  borderRadius: 'var(--radius-lg)',
+                  borderRadius: 0,
                   height: 320,
                   display: 'flex',
                   alignItems: 'center',
@@ -442,7 +442,7 @@ export default function ProblemPage() {
               The Solution
             </div>
             <h2 className="section-title">
-              That&apos;s why we built MediBridge.
+              That&apos;s why we built MedicBridges.
             </h2>
             <p
               style={{
@@ -489,10 +489,10 @@ export default function ProblemPage() {
               style={{ color: 'white', textDecoration: 'none' }}
             >
               <div className="nav-logo-icon">M</div>
-              MediBridge
+              MedicBridges
             </Link>
             <span style={{ fontSize: 13 }}>
-              © 2026 MediBridge — Miami, FL.
+              © 2026 MedicBridges — Miami, FL.
             </span>
           </div>
         </div>

@@ -3,7 +3,7 @@
    Green, White, Black
    =========================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Raleway:wght@400;500;600;700;800;900&display=swap');
 
 :root {
   --green-900: #0a2e1a;
@@ -29,14 +29,14 @@
   --gray-100: #f4f4f4;
   --white: #ffffff;
 
-  --font-body: 'Inter', sans-serif;
-  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Raleway', sans-serif;
 
-  --radius-sm: 3px;
-  --radius-md: 6px;
-  --radius-lg: 10px;
-  --radius-xl: 16px;
-  --radius-full: 999px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-full: 0px;
 
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.10);
@@ -116,25 +116,27 @@ body {
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  border-radius: 8px;
+  border-radius: 0;
   font-family: var(--font-body);
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
   border: none;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.22s ease;
   white-space: nowrap;
 }
 
 .btn-primary {
-  background: var(--green-500);
+  background: linear-gradient(135deg, var(--green-400) 0%, var(--green-700) 100%);
   color: var(--white);
   box-shadow: var(--shadow-green);
 }
 
 .btn-primary:hover {
-  background: var(--green-600);
+  background: linear-gradient(135deg, var(--green-300) 0%, var(--green-600) 100%);
+  box-shadow: 0 6px 28px rgba(31, 122, 77, 0.35);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
@@ -146,6 +148,7 @@ body {
 .btn-secondary:hover {
   background: var(--green-50);
   border-color: var(--green-500);
+  transform: translateY(-2px);
 }
 
 .btn-dark {
@@ -155,6 +158,7 @@ body {
 
 .btn-dark:hover {
   background: var(--gray-800);
+  transform: translateY(-2px);
 }
 
 .btn-lg {
@@ -253,7 +257,7 @@ body {
 .form-group textarea {
   padding: 12px 16px;
   border: 1.5px solid var(--gray-200);
-  border-radius: 8px;
+  border-radius: 0;
   font-size: 15px;
   font-family: var(--font-body);
   color: var(--gray-900);
@@ -288,7 +292,7 @@ body {
   gap: 8px;
   padding: 9px 16px;
   border: 1.5px solid var(--gray-200);
-  border-radius: 8px;
+  border-radius: 0;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
@@ -338,7 +342,7 @@ body {
   width: 72px;
   height: 72px;
   background: var(--green-100);
-  border-radius: 50%;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -401,7 +405,7 @@ body {
   background: var(--green-50);
   border: 1px solid var(--green-300);
   border-left: 4px solid var(--green-500);
-  border-radius: 6px;
+  border-radius: 0;
   padding: 24px 28px;
   margin-bottom: 48px;
 }
@@ -467,7 +471,7 @@ body {
   background: var(--gray-100);
   border: 1px solid var(--gray-200);
   border-left: 4px solid var(--gray-400);
-  border-radius: 4px;
+  border-radius: 0;
   padding: 16px 20px;
   margin: 16px 0;
   font-size: 14px;
@@ -496,7 +500,7 @@ body {
 .toc {
   background: var(--gray-100);
   border: 1px solid var(--gray-200);
-  border-radius: 6px;
+  border-radius: 0;
   padding: 20px 24px;
   margin-bottom: 40px;
 }
@@ -543,7 +547,7 @@ body {
 
 .plan-card {
   border: 2px solid var(--gray-200);
-  border-radius: 10px;
+  border-radius: 0;
   padding: 18px;
   cursor: pointer;
   transition: all 0.18s;
@@ -616,7 +620,7 @@ body {
   width: 36px;
   height: 36px;
   background: var(--green-500);
-  border-radius: 8px;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -637,7 +641,7 @@ body {
   font-size: 14px;
   font-weight: 500;
   padding: 8px 14px;
-  border-radius: 4px;
+  border-radius: 0;
   transition: all 0.18s;
 }
 
@@ -817,7 +821,7 @@ body.nav-mobile-open .nav-mobile-drawer {
   right: -100px;
   width: 600px;
   height: 600px;
-  border-radius: 50%;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -828,7 +832,7 @@ body.nav-mobile-open .nav-mobile-drawer {
   left: -60px;
   width: 400px;
   height: 400px;
-  border-radius: 50%;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.03);
 }
 
@@ -848,7 +852,7 @@ body.nav-mobile-open .nav-mobile-drawer {
   font-size: 13px;
   font-weight: 600;
   padding: 6px 16px;
-  border-radius: 4px;
+  border-radius: 0;
   margin-bottom: 28px;
   backdrop-filter: blur(8px);
 }
@@ -1014,7 +1018,7 @@ body.nav-mobile-open .nav-mobile-drawer {
   color: var(--green-600);
   background: var(--green-50);
   padding: 5px 14px;
-  border-radius: 4px;
+  border-radius: 0;
   margin-bottom: 16px;
 }
 
@@ -1097,7 +1101,7 @@ body.nav-mobile-open .nav-mobile-drawer {
   font-size: 11px;
   font-weight: 600;
   padding: 3px 10px;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 .badge-green {
@@ -1150,7 +1154,7 @@ body.nav-mobile-open .nav-mobile-drawer {
   font-size: 11px;
   font-weight: 500;
   padding: 3px 10px;
-  border-radius: 4px;
+  border-radius: 0;
   background: var(--gray-100);
   color: var(--gray-700);
 }
@@ -1174,7 +1178,7 @@ body.nav-mobile-open .nav-mobile-drawer {
 .dot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: 0;
   display: inline-block;
 }
 
@@ -1202,7 +1206,7 @@ body.nav-mobile-open .nav-mobile-drawer {
   font-size: 12px;
   font-weight: 600;
   padding: 6px 14px;
-  border-radius: 4px;
+  border-radius: 0;
   border: 1.5px solid var(--gray-200);
   background: var(--white);
   cursor: pointer;
@@ -1360,7 +1364,7 @@ body.nav-mobile-open .nav-mobile-drawer {
 .quote-avatar {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--green-100);
   display: flex;
   align-items: center;
@@ -1719,7 +1723,7 @@ footer {
   width: 40px;
   height: 40px;
   background: var(--green-500);
-  border-radius: 50%;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;

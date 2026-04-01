@@ -25,7 +25,7 @@ export default function CTA() {
         </div>
         <button
           onClick={() => setShowForm(true)}
-          className="px-8 md:px-12 py-3 md:py-4 bg-[#0F766E] text-white border-none rounded-full text-lg md:text-xl font-semibold cursor-pointer transition-all hover:-translate-y-1 hover:shadow-2xl hover:bg-[#0d5d57]"
+          className="px-8 md:px-12 py-3 md:py-4 bg-gradient-to-br from-[#25a063] to-[#0f4028] text-white border-none rounded-none text-lg md:text-xl font-semibold cursor-pointer transition-all hover:-translate-y-1 hover:shadow-2xl hover:from-[#3dc47d] hover:to-[#155234]"
         >
           {t.cta.button}
         </button>
@@ -37,14 +37,14 @@ export default function CTA() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-base text-[#334155]">
             <a
-              href="mailto:info@healthconnect.org"
+              href="mailto:info@medicbridges.org"
               className="flex items-center gap-2 hover:text-[#0F766E] transition-colors"
             >
               <Mail className="w-4 h-4" />
-              info@healthconnect.org
+              info@medicbridges.org
             </a>
             <a
-              href="https://www.healthconnect.org"
+              href="https://www.medicbridges.org"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 hover:text-[#0F766E] transition-colors"
@@ -61,13 +61,13 @@ export default function CTA() {
           onClick={() => setShowForm(false)}
         >
           <div
-            className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] overflow-hidden relative shadow-2xl"
+            className="bg-white rounded-none w-full max-w-4xl max-h-[90vh] overflow-hidden relative shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setShowForm(false)}
-              className="absolute top-4 right-4 z-10 p-2 hover:bg-gray-100 rounded-full transition-colors bg-white shadow-md"
+              className="absolute top-4 right-4 z-10 p-2 hover:bg-gray-100 rounded-none transition-colors bg-white shadow-md"
               aria-label="Close form"
             >
               <X className="w-6 h-6 text-[#334155]" />
