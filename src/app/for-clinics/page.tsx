@@ -213,7 +213,7 @@ export default function ForClinicsPage() {
           >
             <div className="step" style={{ textAlign: 'left', padding: 28 }}>
               <div style={{ fontSize: 32, marginBottom: 14 }} />
-              <h3>Local Focus — Miami Only</h3>
+              <h3>Local Focus: Miami Only</h3>
               <p>
                 We don&apos;t spread thin nationally. Every patient on
                 MedicBridges is in Miami-Dade. Your visibility is concentrated
@@ -225,7 +225,7 @@ export default function ForClinicsPage() {
               <h3>Medicaid Specialization</h3>
               <p>
                 Built exclusively for Medicaid, sliding-scale, and uninsured
-                patients — the population your clinic is designed to serve.
+                patients, the population your clinic is designed to serve.
               </p>
             </div>
             <div className="step" style={{ textAlign: 'left', padding: 28 }}>
@@ -250,7 +250,7 @@ export default function ForClinicsPage() {
               <h3>No Long-Term Contracts</h3>
               <p>
                 Start with a free listing. Upgrade when you see results. No
-                commitments, no risk — designed for community health budgets.
+                commitments, no risk, designed for community health budgets.
               </p>
             </div>
             <div className="step" style={{ textAlign: 'left', padding: 28 }}>
@@ -624,7 +624,7 @@ export default function ForClinicsPage() {
             </p>
           </div>
           <div className="pricing-grid">
-            <div className="pricing-card">
+            <div className="pricing-card pricing-card--dark">
               <div className="pricing-tier">Basic</div>
               <div className="pricing-price">Free</div>
               <div className="pricing-sub">Always free to get started</div>
@@ -636,13 +636,7 @@ export default function ForClinicsPage() {
               </ul>
               <a
                 href="#contact"
-                className="btn btn-primary"
-                style={{
-                  marginTop: 28,
-                  width: '100%',
-                  justifyContent: 'center',
-                  background: 'linear-gradient(135deg, #6b7280 0%, #374151 100%)',
-                }}
+                className="btn btn-primary pricing-btn"
               >
                 Get Listed Free
               </a>
@@ -673,19 +667,12 @@ export default function ForClinicsPage() {
               </ul>
               <a
                 href="#contact"
-                className="btn btn-primary"
-                style={{
-                  marginTop: 28,
-                  width: '100%',
-                  justifyContent: 'center',
-                  background: 'linear-gradient(135deg, #ffffff 0%, #e5e7eb 100%)',
-                  color: 'var(--color-green-800)',
-                }}
+                className="btn btn-primary pricing-btn"
               >
                 Start 30-Day Free Trial
               </a>
             </div>
-            <div className="pricing-card">
+            <div className="pricing-card pricing-card--dark">
               <div className="pricing-tier">Partner</div>
               <div className="pricing-price">
                 $299 <span>/mo</span>
@@ -703,13 +690,7 @@ export default function ForClinicsPage() {
               </ul>
               <a
                 href="#contact"
-                className="btn btn-primary"
-                style={{
-                  marginTop: 28,
-                  width: '100%',
-                  justifyContent: 'center',
-                  background: 'linear-gradient(135deg, var(--color-green-400) 0%, var(--color-green-700) 100%)',
-                }}
+                className="btn btn-primary pricing-btn"
               >
                 Contact Us
               </a>
@@ -736,7 +717,7 @@ export default function ForClinicsPage() {
                 }}
               >
                 Fill out this short form and we&apos;ll reach out within 24
-                hours to get your clinic listed — free, no commitment.
+                hours to get your clinic listed, free, no commitment.
               </p>
               <div
                 style={{
@@ -1055,7 +1036,7 @@ export default function ForClinicsPage() {
               MedicBridges
             </Link>
             <span style={{ fontSize: 13 }}>
-              © 2026 MedicBridges — Miami, FL.
+              © 2026 MedicBridges · Miami, FL.
             </span>
           </div>
         </div>

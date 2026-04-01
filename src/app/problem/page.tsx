@@ -28,7 +28,7 @@ export default function ProblemPage() {
           <h1>
             Healthcare exists.
             <br />
-            But for millions — it&apos;s invisible.
+            But for millions <em style={{ fontStyle: 'italic' }}>it&apos;s invisible.</em>
           </h1>
           <p>
             We went directly to the community to understand why. This is what we
@@ -94,7 +94,7 @@ export default function ProblemPage() {
                 exist.
               </p>
               <p>
-                The problem isn&apos;t supply — it&apos;s information. When you
+                The problem isn&apos;t supply: it&apos;s information. When you
                 don&apos;t know where to go, the ER becomes your primary care
                 doctor. That costs the system $1,200+ per visit when a community
                 clinic would cost $0.
@@ -231,7 +231,7 @@ export default function ProblemPage() {
               <h2>Mental health care is the most invisible of all.</h2>
               <p>
                 For underserved communities in Miami, finding free or affordable
-                therapy is nearly impossible — not because services don&apos;t
+                therapy is nearly impossible, not because services don&apos;t
                 exist, but because the information is fragmented, buried in
                 government websites, or simply unavailable in Spanish or Haitian
                 Creole.
@@ -239,7 +239,7 @@ export default function ProblemPage() {
               <p>
                 Over 60% of Miami adults with mental health conditions receive
                 no treatment. Language barriers, stigma, and cost are all
-                factors — but lack of visible access is the first barrier to
+                factors, but lack of visible access is the first barrier to
                 break.
               </p>
             </div>
@@ -283,7 +283,7 @@ export default function ProblemPage() {
                 <div className="quote-avatar" />
                 <div className="quote-author-info">
                   <strong>Patient Interview #1</strong>
-                  <span>Little Havana — Primary Care</span>
+                  <span>Little Havana · Primary Care</span>
                 </div>
               </div>
               {/* Audio Player (placeholder) */}
@@ -316,7 +316,7 @@ export default function ProblemPage() {
                   )}
                 </button>
                 <div className="audio-info">
-                  <strong>Patient Interview — Little Havana</strong>
+                  <strong>Patient Interview · Little Havana</strong>
                   <span>Spanish · 2:14 · Uninsured, age 34</span>
                 </div>
               </div>
@@ -334,7 +334,7 @@ export default function ProblemPage() {
                 <div className="quote-avatar" />
                 <div className="quote-author-info">
                   <strong>Patient Interview #2</strong>
-                  <span>Hialeah — Chronic Condition</span>
+                  <span>Hialeah · Chronic Condition</span>
                 </div>
               </div>
               <div className="audio-player" style={{ marginTop: 16 }}>
@@ -366,7 +366,7 @@ export default function ProblemPage() {
                   )}
                 </button>
                 <div className="audio-info">
-                  <strong>Patient Interview — Hialeah</strong>
+                  <strong>Patient Interview · Hialeah</strong>
                   <span>Spanish/English · 3:07 · Medicaid, age 52</span>
                 </div>
               </div>
@@ -377,14 +377,14 @@ export default function ProblemPage() {
               <p className="quote-text">
                 Mental health in my community is not talked about. I was
                 ashamed. But when I found out there was a free therapist who
-                speaks Creole — someone who would understand me — I called the
+                speaks Creole, someone who would understand me, and I called the
                 same day.
               </p>
               <div className="quote-author">
                 <div className="quote-avatar" />
                 <div className="quote-author-info">
                   <strong>Patient Interview #3</strong>
-                  <span>Little Haiti — Mental Health</span>
+                  <span>Little Haiti · Mental Health</span>
                 </div>
               </div>
               <div className="audio-player" style={{ marginTop: 16 }}>
@@ -416,7 +416,7 @@ export default function ProblemPage() {
                   )}
                 </button>
                 <div className="audio-info">
-                  <strong>Patient Interview — Little Haiti</strong>
+                  <strong>Patient Interview · Little Haiti</strong>
                   <span>Haitian Creole · 1:58 · Uninsured, age 28</span>
                 </div>
               </div>
@@ -492,7 +492,7 @@ export default function ProblemPage() {
               MedicBridges
             </Link>
             <span style={{ fontSize: 13 }}>
-              © 2026 MedicBridges — Miami, FL.
+              © 2026 MedicBridges · Miami, FL.
             </span>
           </div>
         </div>

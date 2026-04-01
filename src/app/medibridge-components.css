@@ -783,7 +783,8 @@ body.nav-mobile-open .nav-mobile-drawer {
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 760px;
+  max-width: 100%;
+  width: 100%;
 }
 
 .hero-badge {
@@ -832,7 +833,7 @@ body.nav-mobile-open .nav-mobile-drawer {
   align-items: center;
   gap: 8px;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
-  max-width: 680px;
+  max-width: 760px;
 }
 
 .search-field {
@@ -2218,5 +2219,173 @@ footer {
 
   .for-clinics-hero>.container>.for-clinics-hero-grid>div:first-child p:last-child {
     flex-direction: column;
+  }
+}
+/* ───── ADVANCED SEARCH LINK (hero) ───── */
+.advanced-search-link:hover {
+  color: #ffffff !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ───── FOR-CLINICS TEASER CARDS (home page — lime / live / lacoste green) ───── */
+.clinic-teaser-card {
+  border-radius: 0;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  cursor: default;
+}
+
+.clinic-teaser-card--1 {
+  background: var(--color-lime-green);
+  border-color: var(--color-lime-green-border);
+}
+
+.clinic-teaser-card--2 {
+  background: var(--color-live-green);
+  border-color: var(--color-live-green-border);
+}
+
+.clinic-teaser-card--3 {
+  background: var(--color-lacoste-green);
+  border-color: var(--color-lacoste-green-border);
+}
+
+.clinic-teaser-card--1:hover,
+.clinic-teaser-card--2:hover,
+.clinic-teaser-card--3:hover {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.35), 0 6px 24px rgba(212, 175, 55, 0.2);
+  transform: translateY(-2px);
+}
+
+.clinic-teaser-card__title {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.clinic-teaser-card--1 .clinic-teaser-card__title,
+.clinic-teaser-card--2 .clinic-teaser-card__title {
+  color: var(--color-green-900);
+}
+
+.clinic-teaser-card--3 .clinic-teaser-card__title {
+  color: var(--color-white);
+}
+
+.clinic-teaser-card__sub {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.clinic-teaser-card--1 .clinic-teaser-card__sub,
+.clinic-teaser-card--2 .clinic-teaser-card__sub {
+  color: rgba(10, 46, 26, 0.75);
+}
+
+.clinic-teaser-card--3 .clinic-teaser-card__sub {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ───── PRICING CARDS — dark-bg text white, button at bottom ───── */
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-card--dark {
+  color: var(--color-white);
+}
+
+.pricing-card--dark .pricing-tier,
+.pricing-card--dark .pricing-price,
+.pricing-card--dark .pricing-sub,
+.pricing-card--dark .pricing-features li {
+  color: var(--color-white);
+}
+
+.pricing-features {
+  flex: 1;
+}
+
+.pricing-btn {
+  margin-top: 28px;
+  width: 100%;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-green-400) 0%, var(--color-green-700) 100%) !important;
+  color: #ffffff !important;
+  align-self: stretch;
+}
+
+.pricing-btn:hover {
+  background: linear-gradient(135deg, var(--color-green-300) 0%, var(--color-green-600) 100%) !important;
+}
+
+/* ───── SEARCH PAGE — connected search bar with persistent border ───── */
+.search-bar-full {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  align-items: stretch;
+  border: 2px solid var(--color-green-400);
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.search-bar-full input {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 20px;
+  border: none;
+  border-right: 2px solid var(--color-green-400);
+  border-radius: 0;
+  font-size: 15px;
+  font-family: var(--font-body);
+  outline: none;
+  background: #ffffff;
+}
+
+.search-bar-submit {
+  border-radius: 0 !important;
+  flex-shrink: 0;
+}
+
+/* ───── GLOBAL ITALIC ACCENTS ───── */
+.section-sub,
+.hero-sub,
+.page-hero p,
+.problem-text p {
+  font-style: italic;
+}
+
+/* ───── BODY GLOBAL ITALIC for descriptions (subtle) ───── */
+.search-hero p {
+  font-style: italic;
+}
+
+@media (max-width: 480px) {
+  .search-bar-full {
+    flex-wrap: wrap;
+    border: none;
+    gap: 12px;
+    background: transparent;
+  }
+
+  .search-bar-full input {
+    width: 100%;
+    border: 2px solid var(--color-green-400);
+    border-radius: 0;
+  }
+
+  .search-bar-submit {
+    width: 100%;
+    justify-content: center;
+    border: 2px solid var(--color-green-400) !important;
   }
 }

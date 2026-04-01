@@ -49,12 +49,13 @@ export default function Home() {
               >
                 <path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 14a6 6 0 110-12 6 6 0 010 12zm0-9a1 1 0 100 2 1 1 0 000-2z" />
               </svg>
-              Miami, Florida — Free for Patients
+              Miami, Florida · Free for Patients
             </div>
             <h1>
               Find <em>affordable care</em>
               <br />
-              near you — in minutes.
+              near you{' '}
+              <span style={{ fontStyle: 'italic', fontFamily: 'var(--font-accent)' }}>in minutes.</span>
             </h1>
             <p className="hero-sub">
               MedicBridges connects you with free clinics, low-cost pharmacies,
@@ -149,22 +150,25 @@ export default function Home() {
               </div>
             </div>
 
-            <div style={{ marginTop: 16 }}>
+            <div style={{ marginTop: 20 }}>
               <Link
                 href="/search"
+                className="advanced-search-link"
                 style={{
-                  color: 'rgba(255,255,255,0.65)',
-                  fontSize: 13,
+                  color: 'rgba(255,255,255,0.8)',
+                  fontSize: 15,
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: 6,
+                  gap: 7,
                   textDecoration: 'none',
+                  fontWeight: 600,
                   transition: 'color 0.18s',
+                  padding: '4px 0',
                 }}
               >
                 <svg
-                  width="14"
-                  height="14"
+                  width="16"
+                  height="16"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -201,7 +205,7 @@ export default function Home() {
           <div className="section-label">How It Works</div>
           <h2 className="section-title">Find care in 3 simple steps</h2>
           <p className="section-sub">
-            No forms. No confusion. Just answers — in your language.
+            No forms. No confusion. Just answers in your language.
           </p>
           <div className="steps">
             <div className="step">
@@ -251,32 +255,33 @@ export default function Home() {
           <div
             className="home-join-cta-grid"
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))',
-              gap: 48,
-              maxWidth: 720,
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              gap: 20,
               margin: '0 auto',
-              alignItems: 'start',
+              alignItems: 'stretch',
             }}
           >
             <div style={{ textAlign: 'center' }}>
               <h3
                 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: 14,
+                  fontSize: 13,
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em',
-                  color: 'var(--color-black)',
-                  marginBottom: 20,
+                  color: 'var(--color-gray-500)',
+                  marginBottom: 12,
                 }}
               >
                 For Patients
               </h3>
               <Link
                 href="/patient-signup"
-                className="btn btn-primary btn-lg"
-                style={{ justifyContent: 'center' }}
+                className="btn btn-primary"
+                style={{ justifyContent: 'center', padding: '18px 40px', fontSize: 17, fontWeight: 700 }}
               >
                 Register Now — It&apos;s Free
               </Link>
@@ -285,20 +290,20 @@ export default function Home() {
               <h3
                 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: 14,
+                  fontSize: 13,
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em',
-                  color: 'var(--color-black)',
-                  marginBottom: 20,
+                  color: 'var(--color-gray-500)',
+                  marginBottom: 12,
                 }}
               >
                 For Clinics &amp; Providers
               </h3>
               <Link
                 href="/for-clinics#contact"
-                className="btn btn-secondary btn-lg"
-                style={{ justifyContent: 'center' }}
+                className="btn btn-primary"
+                style={{ justifyContent: 'center', padding: '18px 40px', fontSize: 17, fontWeight: 700 }}
               >
                 Register Your Clinic
               </Link>
@@ -325,7 +330,7 @@ export default function Home() {
               <div className="section-label">Featured in Miami</div>
               <h2 className="section-title">Top-matched clinics near you</h2>
             </div>
-            <Link href="/search" className="btn btn-secondary">
+            <Link href="/search" className="btn btn-secondary btn-lg">
               See all clinics →
             </Link>
           </div>
@@ -440,99 +445,36 @@ export default function Home() {
               </p>
             </div>
             <div className="home-for-clinics-teaser-cards">
-              <div
-                style={{
-                  background: 'rgba(255,255,255,0.08)',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  borderRadius: 0,
-                  padding: '20px 24px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 16,
-                }}
-              >
+              <div className="clinic-teaser-card clinic-teaser-card--1">
                 <div style={{ fontSize: 28 }} />
                 <div>
-                  <strong
-                    style={{
-                      display: 'block',
-                      color: 'white',
-                      fontSize: 15,
-                    }}
-                  >
+                  <strong className="clinic-teaser-card__title">
                     More visibility
                   </strong>
-                  <span
-                    style={{
-                      fontSize: 13,
-                      color: 'rgba(255,255,255,0.6)',
-                    }}
-                  >
+                  <span className="clinic-teaser-card__sub">
                     Appear in searches by qualifying patients in your area
                   </span>
                 </div>
               </div>
-              <div
-                style={{
-                  background: 'rgba(255,255,255,0.08)',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  borderRadius: 0,
-                  padding: '20px 24px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 16,
-                }}
-              >
+              <div className="clinic-teaser-card clinic-teaser-card--2">
                 <div style={{ fontSize: 28 }} />
                 <div>
-                  <strong
-                    style={{
-                      display: 'block',
-                      color: 'white',
-                      fontSize: 15,
-                    }}
-                  >
+                  <strong className="clinic-teaser-card__title">
                     Pre-screened leads
                   </strong>
-                  <span
-                    style={{
-                      fontSize: 13,
-                      color: 'rgba(255,255,255,0.6)',
-                    }}
-                  >
+                  <span className="clinic-teaser-card__sub">
                     Patients matched to your eligibility criteria before they
                     arrive
                   </span>
                 </div>
               </div>
-              <div
-                style={{
-                  background: 'rgba(255,255,255,0.08)',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  borderRadius: 0,
-                  padding: '20px 24px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 16,
-                }}
-              >
+              <div className="clinic-teaser-card clinic-teaser-card--3">
                 <div style={{ fontSize: 28 }} />
                 <div>
-                  <strong
-                    style={{
-                      display: 'block',
-                      color: 'white',
-                      fontSize: 15,
-                    }}
-                  >
+                  <strong className="clinic-teaser-card__title">
                     No long-term contracts
                   </strong>
-                  <span
-                    style={{
-                      fontSize: 13,
-                      color: 'rgba(255,255,255,0.6)',
-                    }}
-                  >
+                  <span className="clinic-teaser-card__sub">
                     Start free. Upgrade when you see the results.
                   </span>
                 </div>
@@ -624,7 +566,7 @@ export default function Home() {
           </div>
           <div className="footer-bottom">
             <span>
-              © 2026 MedicBridges — Florida International University Student
+              © 2026 MedicBridges · Florida International University Student
               Research Project, Miami, FL.
             </span>
             <div style={{ display: 'flex', gap: 16 }}>

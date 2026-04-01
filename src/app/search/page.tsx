@@ -95,8 +95,7 @@ function SearchPageContent() {
               onChange={(e) => setQuery(e.target.value)}
             />
             <button
-              className="btn btn-primary"
-              style={{ padding: '12px 24px' }}
+              className="btn btn-primary search-bar-submit"
               type="submit"
               disabled={loading}
             >

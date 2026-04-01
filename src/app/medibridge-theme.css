@@ -11,6 +11,15 @@
   --color-green-700: #155234;
   --color-green-800: #0f4028;
   --color-green-900: #0a2e1a;
+  /* Lime / Live / Lacoste greens for teaser cards */
+  --color-lime-green: #a3e635;
+  --color-lime-green-border: #84cc16;
+  --color-live-green: #22c55e;
+  --color-live-green-border: #16a34a;
+  --color-lacoste-green: #064e3b;
+  --color-lacoste-green-border: #065f46;
+  /* Accent */
+  --color-gold: #D4AF37;
   /* Gray + black/white */
   --color-gray-50: #fafafa;
   --color-gray-100: #f4f4f4;
@@ -27,6 +36,7 @@
   /* Fonts */
   --font-body: "Montserrat", "FF Tisa Sans", "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Montserrat", "FF Tisa Sans", "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-accent: Georgia, "Times New Roman", serif;
   /* Radius — sharp edges */
   --radius-sm: 0px;
   --radius-md: 0px;
