@@ -269,9 +269,9 @@ export default function ForClinicsPage() {
       <section className="section">
         <div className="container">
           <div className="two-col-responsive">
-            <div>
+            <div style={{ textAlign: 'left' }}>
               <div className="section-label">Simple Referral Workflow</div>
-              <h2 className="section-title">How patient routing works</h2>
+              <h2 className="section-title" style={{ textAlign: 'left' }}>How patient routing works</h2>
               <div
                 style={{
                   display: 'flex',
@@ -636,14 +636,12 @@ export default function ForClinicsPage() {
               </ul>
               <a
                 href="#contact"
-                className="btn btn-secondary"
+                className="btn btn-primary"
                 style={{
                   marginTop: 28,
                   width: '100%',
                   justifyContent: 'center',
-                  background: 'rgba(255,255,255,0.08)',
-                  borderColor: 'rgba(255,255,255,0.2)',
-                  color: 'white',
+                  background: 'linear-gradient(135deg, #6b7280 0%, #374151 100%)',
                 }}
               >
                 Get Listed Free
@@ -675,12 +673,12 @@ export default function ForClinicsPage() {
               </ul>
               <a
                 href="#contact"
-                className="btn btn-dark"
+                className="btn btn-primary"
                 style={{
                   marginTop: 28,
                   width: '100%',
                   justifyContent: 'center',
-                  background: 'white',
+                  background: 'linear-gradient(135deg, #ffffff 0%, #e5e7eb 100%)',
                   color: 'var(--color-green-800)',
                 }}
               >
@@ -705,14 +703,12 @@ export default function ForClinicsPage() {
               </ul>
               <a
                 href="#contact"
-                className="btn btn-secondary"
+                className="btn btn-primary"
                 style={{
                   marginTop: 28,
                   width: '100%',
                   justifyContent: 'center',
-                  background: 'rgba(255,255,255,0.08)',
-                  borderColor: 'rgba(255,255,255,0.2)',
-                  color: 'white',
+                  background: 'linear-gradient(135deg, var(--color-green-400) 0%, var(--color-green-700) 100%)',
                 }}
               >
                 Contact Us

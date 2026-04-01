@@ -378,49 +378,32 @@ export default function Home() {
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
               gap: 20,
+              paddingTop: 8,
             }}
           >
-            <div className="step" style={{ padding: '24px 16px' }}>
-              <div style={{ fontSize: 32, marginBottom: 12 }} />
-              <h3 style={{ fontSize: 15 }}>Primary Care</h3>
-              <p style={{ fontSize: 13 }}>
-                General checkups, chronic conditions, preventative care
-              </p>
+            <div className="cover-card">
+              <h3>Primary Care</h3>
+              <p>General checkups, chronic conditions, preventative care</p>
             </div>
-            <div className="step" style={{ padding: '24px 16px' }}>
-              <div style={{ fontSize: 32, marginBottom: 12 }} />
-              <h3 style={{ fontSize: 15 }}>Free Medications</h3>
-              <p style={{ fontSize: 13 }}>
-                On-site dispensing, free generics, medication programs
-              </p>
+            <div className="cover-card">
+              <h3>Free Medications</h3>
+              <p>On-site dispensing, free generics, medication programs</p>
             </div>
-            <div className="step" style={{ padding: '24px 16px' }}>
-              <div style={{ fontSize: 32, marginBottom: 12 }} />
-              <h3 style={{ fontSize: 15 }}>Mental Health</h3>
-              <p style={{ fontSize: 13 }}>
-                Free therapy, psychiatry, crisis support, counseling
-              </p>
+            <div className="cover-card">
+              <h3>Mental Health</h3>
+              <p>Free therapy, psychiatry, crisis support, counseling</p>
             </div>
-            <div className="step" style={{ padding: '24px 16px' }}>
-              <div style={{ fontSize: 32, marginBottom: 12 }} />
-              <h3 style={{ fontSize: 15 }}>Dental</h3>
-              <p style={{ fontSize: 13 }}>
-                Cleanings, extractions, sliding-scale dental care
-              </p>
+            <div className="cover-card">
+              <h3>Dental</h3>
+              <p>Cleanings, extractions, sliding-scale dental care</p>
             </div>
-            <div className="step" style={{ padding: '24px 16px' }}>
-              <div style={{ fontSize: 32, marginBottom: 12 }} />
-              <h3 style={{ fontSize: 15 }}>Women&apos;s Health</h3>
-              <p style={{ fontSize: 13 }}>
-                OB-GYN, family planning, prenatal care
-              </p>
+            <div className="cover-card">
+              <h3>Women&apos;s Health</h3>
+              <p>OB-GYN, family planning, prenatal care</p>
             </div>
-            <div className="step" style={{ padding: '24px 16px' }}>
-              <div style={{ fontSize: 32, marginBottom: 12 }} />
-              <h3 style={{ fontSize: 15 }}>Vaccinations</h3>
-              <p style={{ fontSize: 13 }}>
-                Free immunizations, flu shots, travel vaccines
-              </p>
+            <div className="cover-card">
+              <h3>Vaccinations</h3>
+              <p>Free immunizations, flu shots, travel vaccines</p>
             </div>
           </div>
         </div>
