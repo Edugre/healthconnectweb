@@ -190,6 +190,14 @@ export default function Home() {
                 </strong>
                 <span>Miami clinics listed</span>
               </div>
+              <div className="hero-stat">
+                <strong>$0</strong>
+                <span>Cost for patients</span>
+              </div>
+              <div className="hero-stat">
+                <strong>3 min</strong>
+                <span>Average time to match</span>
+              </div>
             </div>
           </div>
         </div>
@@ -232,88 +240,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* JOIN MEDIBRIDGE — simple CTA */}
-      <section className="section" style={{ background: 'var(--color-white)' }}>
-        <div className="container">
-          <h2
-            className="section-title"
-            style={{
-              textAlign: 'center',
-              color: 'var(--color-black)',
-              marginBottom: 48,
-              fontSize: 'clamp(22px, 4vw, 28px)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-            }}
-          >
-            Join MedicBridges
-          </h2>
-          <div
-            className="home-join-cta-grid"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))',
-              gap: 24,
-              maxWidth: 720,
-              margin: '0 auto',
-              alignItems: 'start',
-            }}
-          >
-            <div style={{ textAlign: 'center' }}>
-              <h3
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 14,
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: 'var(--color-black)',
-                  marginBottom: 20,
-                }}
-              >
-                For Patients
-              </h3>
-              <Link
-                href="/patient-signup"
-                className="btn btn-primary btn-lg"
-                style={{ justifyContent: 'center', borderRadius: 8 }}
-              >
-                Register Now — It&apos;s Free
-              </Link>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <h3
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 14,
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: 'var(--color-black)',
-                  marginBottom: 20,
-                }}
-              >
-                For Clinics &amp; Providers
-              </h3>
-              <Link
-                href="/for-clinics#contact"
-                className="btn btn-secondary btn-lg"
-                style={{
-                  justifyContent: 'center',
-                  borderRadius: 8,
-                  background: 'linear-gradient(135deg, #d1d5db 0%, #6b7280 100%)',
-                  color: 'white',
-                  border: 'none',
-                }}
-              >
-                Register Your Clinic
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED CLINICS (static shell for now) */}
+      {/* FEATURED CLINICS */}
       <section className="section">
         <div className="container">
           <div
@@ -331,16 +258,7 @@ export default function Home() {
               <div className="section-label">Featured in Miami</div>
               <h2 className="section-title">Top-matched clinics near you</h2>
             </div>
-            <Link
-              href="/search"
-              className="btn btn-primary btn-lg"
-              style={{
-                background: 'linear-gradient(135deg, #3dc47d 0%, #25a063 50%, #1f7a4d 100%)',
-                color: 'white',
-                borderRadius: 8,
-                boxShadow: '0 4px 20px rgba(37, 160, 99, 0.3)',
-              }}
-            >
+            <Link href="/search" className="btn btn-secondary">
               See all clinics →
             </Link>
           </div>
@@ -371,6 +289,305 @@ export default function Home() {
             <div className="stat-item">
               <strong>$0</strong>
               <p>Cost for patients to use MedicBridges, always</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* COMMUNITY VOICES */}
+      <section className="section">
+        <div className="container">
+          <div className="section-label">Community Voices</div>
+          <h2 className="section-title">Real patients. Real stories.</h2>
+          <p className="section-sub">
+            From our interviews with patients at Miami community clinics.
+          </p>
+          <div className="quotes-grid">
+            <div className="quote-card">
+              <span className="quote-mark">&ldquo;</span>
+              <p className="quote-text">
+                I didn&apos;t know I could see a doctor without insurance. I
+                thought the ER was my only option. Now I have a regular primary
+                care doctor who speaks Spanish.
+              </p>
+              <div className="quote-author">
+                <div className="quote-avatar" />
+                <div className="quote-author-info">
+                  <strong>María, 34</strong>
+                  <span>Little Havana, Miami</span>
+                </div>
+              </div>
+            </div>
+            <div className="quote-card">
+              <span className="quote-mark">&ldquo;</span>
+              <p className="quote-text">
+                I needed medication every month and I couldn&apos;t afford it.
+                I found out through this clinic that there&apos;s a program
+                where I get it for free. Changed my life.
+              </p>
+              <div className="quote-author">
+                <div className="quote-avatar" />
+                <div className="quote-author-info">
+                  <strong>Carlos, 52</strong>
+                  <span>Hialeah, Miami</span>
+                </div>
+              </div>
+            </div>
+            <div className="quote-card">
+              <span className="quote-mark">&ldquo;</span>
+              <p className="quote-text">
+                Mental health is still taboo in my family, but I found a free
+                therapist who speaks Creole. For the first time I felt
+                understood and not judged.
+              </p>
+              <div className="quote-author">
+                <div className="quote-avatar" />
+                <div className="quote-author-info">
+                  <strong>Nadège, 28</strong>
+                  <span>Little Haiti, Miami</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* REGISTER NOW CTA */}
+      <section style={{ background: 'var(--color-black)', padding: '72px 0' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <div
+              className="section-label"
+              style={{
+                background: 'rgba(255,255,255,0.1)',
+                color: 'var(--color-green-200)',
+                margin: '0 auto 16px',
+              }}
+            >
+              Join MedicBridges
+            </div>
+            <h2 className="section-title" style={{ color: 'white' }}>
+              Ready to get started?
+            </h2>
+            <p
+              style={{
+                color: 'rgba(255,255,255,0.6)',
+                fontSize: 17,
+                maxWidth: 480,
+                margin: '0 auto',
+              }}
+            >
+              Whether you need care or you provide it, MedicBridges is here to
+              connect you.
+            </p>
+          </div>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(380px, 100%), 1fr))',
+              gap: 24,
+              maxWidth: 860,
+              margin: '0 auto',
+            }}
+          >
+            {/* PATIENT CARD */}
+            <div
+              style={{
+                background: 'var(--color-green-900)',
+                border: '1px solid var(--color-green-700)',
+                borderRadius: 16,
+                padding: '36px 32px',
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 13,
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: 1,
+                  color: 'var(--color-green-400)',
+                  marginBottom: 12,
+                }}
+              >
+                For Patients
+              </div>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 24,
+                  fontWeight: 800,
+                  color: 'white',
+                  marginBottom: 12,
+                }}
+              >
+                Find care you can afford.
+              </h3>
+              <p
+                style={{
+                  fontSize: 14,
+                  color: 'rgba(255,255,255,0.65)',
+                  lineHeight: 1.7,
+                  marginBottom: 28,
+                }}
+              >
+                Create a free profile and get matched with clinics, pharmacies,
+                and mental health services in Miami based on your needs,
+                language, and insurance status.
+              </p>
+              <ul
+                style={{
+                  listStyle: 'none',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 10,
+                  marginBottom: 28,
+                }}
+              >
+                {[
+                  'Always free — no hidden costs',
+                  'Matched to clinics that accept you',
+                  'Follow clinics and get updates',
+                ].map((item) => (
+                  <li
+                    key={item}
+                    style={{
+                      fontSize: 14,
+                      color: 'rgba(255,255,255,0.75)',
+                      display: 'flex',
+                      gap: 10,
+                      alignItems: 'center',
+                    }}
+                  >
+                    <span
+                      style={{
+                        width: 18,
+                        height: 18,
+                        background: 'var(--color-green-500)',
+                        borderRadius: '50%',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: 10,
+                        color: 'white',
+                        fontWeight: 700,
+                        flexShrink: 0,
+                      }}
+                    >
+                      ✓
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/patient-signup"
+                className="btn btn-primary btn-lg"
+                style={{ width: '100%', justifyContent: 'center' }}
+              >
+                Register Now — It&apos;s Free
+              </Link>
+            </div>
+            {/* CLINIC CARD */}
+            <div
+              style={{
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.12)',
+                borderRadius: 16,
+                padding: '36px 32px',
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 13,
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: 1,
+                  color: 'var(--color-gray-400)',
+                  marginBottom: 12,
+                }}
+              >
+                For Clinics &amp; Providers
+              </div>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 24,
+                  fontWeight: 800,
+                  color: 'white',
+                  marginBottom: 12,
+                }}
+              >
+                Reach patients who need you.
+              </h3>
+              <p
+                style={{
+                  fontSize: 14,
+                  color: 'rgba(255,255,255,0.65)',
+                  lineHeight: 1.7,
+                  marginBottom: 28,
+                }}
+              >
+                List your clinic and get pre-screened Medicaid and uninsured
+                patients routed directly to you. No long-term contracts. Start
+                free today.
+              </p>
+              <ul
+                style={{
+                  listStyle: 'none',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 10,
+                  marginBottom: 28,
+                }}
+              >
+                {[
+                  'Basic listing is free, always',
+                  'Pre-screened, eligible patients only',
+                  'Listed in 24 hours',
+                ].map((item) => (
+                  <li
+                    key={item}
+                    style={{
+                      fontSize: 14,
+                      color: 'rgba(255,255,255,0.75)',
+                      display: 'flex',
+                      gap: 10,
+                      alignItems: 'center',
+                    }}
+                  >
+                    <span
+                      style={{
+                        width: 18,
+                        height: 18,
+                        background: 'rgba(255,255,255,0.15)',
+                        borderRadius: '50%',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: 10,
+                        color: 'white',
+                        fontWeight: 700,
+                        flexShrink: 0,
+                      }}
+                    >
+                      ✓
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/for-clinics#contact"
+                className="btn btn-lg"
+                style={{
+                  width: '100%',
+                  justifyContent: 'center',
+                  background: 'white',
+                  color: 'var(--color-green-900)',
+                }}
+              >
+                Register Your Clinic
+              </Link>
             </div>
           </div>
         </div>
@@ -459,7 +676,7 @@ export default function Home() {
                 style={{
                   background: 'rgba(255,255,255,0.08)',
                   border: '1px solid rgba(255,255,255,0.12)',
-                  borderRadius: 0,
+                  borderRadius: 16,
                   padding: '20px 24px',
                   display: 'flex',
                   alignItems: 'center',
@@ -491,7 +708,7 @@ export default function Home() {
                 style={{
                   background: 'rgba(255,255,255,0.08)',
                   border: '1px solid rgba(255,255,255,0.12)',
-                  borderRadius: 0,
+                  borderRadius: 16,
                   padding: '20px 24px',
                   display: 'flex',
                   alignItems: 'center',
@@ -524,7 +741,7 @@ export default function Home() {
                 style={{
                   background: 'rgba(255,255,255,0.08)',
                   border: '1px solid rgba(255,255,255,0.12)',
-                  borderRadius: 0,
+                  borderRadius: 16,
                   padding: '20px 24px',
                   display: 'flex',
                   alignItems: 'center',
