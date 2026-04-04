@@ -3,6 +3,13 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
+const darkPricingCardStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  background: 'linear-gradient(160deg, var(--color-green-800) 0%, var(--color-green-900) 100%)',
+  border: '2px solid rgba(255,255,255,0.15)',
+};
+
 export default function ForClinicsPage() {
   const [submitted, setSubmitted] = useState(false);
 
@@ -632,7 +639,7 @@ export default function ForClinicsPage() {
             </p>
           </div>
           <div className="pricing-grid">
-            <div className="pricing-card" style={{ display: 'flex', flexDirection: 'column', background: 'linear-gradient(160deg, var(--color-green-800) 0%, var(--color-green-900) 100%)', border: '2px solid rgba(255,255,255,0.15)' }}>
+            <div className="pricing-card" style={darkPricingCardStyle}>
               <div className="pricing-tier" style={{ color: 'rgba(255,255,255,0.7)' }}>Basic</div>
               <div className="pricing-price" style={{ color: 'white' }}>Free</div>
               <div className="pricing-sub" style={{ color: 'rgba(255,255,255,0.6)' }}>Always free to get started</div>
@@ -693,7 +700,7 @@ export default function ForClinicsPage() {
                 Start 30-Day Free Trial
               </a>
             </div>
-            <div className="pricing-card" style={{ display: 'flex', flexDirection: 'column', background: 'linear-gradient(160deg, var(--color-green-800) 0%, var(--color-green-900) 100%)', border: '2px solid rgba(255,255,255,0.15)' }}>
+            <div className="pricing-card" style={darkPricingCardStyle}>
               <div className="pricing-tier" style={{ color: 'rgba(255,255,255,0.7)' }}>Partner</div>
               <div className="pricing-price" style={{ color: 'white' }}>
                 $299 <span style={{ color: 'rgba(255,255,255,0.6)' }}>/mo</span>
