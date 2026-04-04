@@ -3,6 +3,13 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
+const darkPricingCardStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  background: 'linear-gradient(160deg, var(--color-green-800) 0%, var(--color-green-900) 100%)',
+  border: '2px solid rgba(255,255,255,0.15)',
+};
+
 export default function ForClinicsPage() {
   const [submitted, setSubmitted] = useState(false);
 
@@ -295,6 +302,8 @@ export default function ForClinicsPage() {
                       width: 40,
                       height: 40,
                       fontSize: 16,
+                      margin: 0,
+                      borderRadius: '50%',
                     }}
                   >
                     1
@@ -335,6 +344,8 @@ export default function ForClinicsPage() {
                       width: 40,
                       height: 40,
                       fontSize: 16,
+                      margin: 0,
+                      borderRadius: '50%',
                     }}
                   >
                     2
@@ -376,6 +387,8 @@ export default function ForClinicsPage() {
                       width: 40,
                       height: 40,
                       fontSize: 16,
+                      margin: 0,
+                      borderRadius: '50%',
                     }}
                   >
                     3
@@ -416,6 +429,8 @@ export default function ForClinicsPage() {
                       width: 40,
                       height: 40,
                       fontSize: 16,
+                      margin: 0,
+                      borderRadius: '50%',
                     }}
                   >
                     4
@@ -495,14 +510,14 @@ export default function ForClinicsPage() {
                         height: 36,
                         minWidth: 36,
                         background: 'var(--color-green-200)',
-                        borderRadius: 0,
+                        borderRadius: '50%',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         fontSize: 16,
                         flexShrink: 0,
                       }}
-                    />
+                    >👩‍⚕️</div>
                     <div style={{ minWidth: 0 }}>
                       <strong
                         style={{
@@ -558,14 +573,14 @@ export default function ForClinicsPage() {
                         height: 36,
                         minWidth: 36,
                         background: 'var(--color-green-200)',
-                        borderRadius: 0,
+                        borderRadius: '50%',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         fontSize: 16,
                         flexShrink: 0,
                       }}
-                    />
+                    >🩺</div>
                     <div style={{ minWidth: 0 }}>
                       <strong
                         style={{
@@ -624,11 +639,11 @@ export default function ForClinicsPage() {
             </p>
           </div>
           <div className="pricing-grid">
-            <div className="pricing-card">
-              <div className="pricing-tier">Basic</div>
-              <div className="pricing-price">Free</div>
-              <div className="pricing-sub">Always free to get started</div>
-              <ul className="pricing-features">
+            <div className="pricing-card" style={darkPricingCardStyle}>
+              <div className="pricing-tier" style={{ color: 'rgba(255,255,255,0.7)' }}>Basic</div>
+              <div className="pricing-price" style={{ color: 'white' }}>Free</div>
+              <div className="pricing-sub" style={{ color: 'rgba(255,255,255,0.6)' }}>Always free to get started</div>
+              <ul className="pricing-features" style={{ flex: 1, color: 'rgba(255,255,255,0.85)' }}>
                 <li>Listed in the directory</li>
                 <li>Basic profile (name, address, phone)</li>
                 <li>Services and hours displayed</li>
@@ -647,7 +662,7 @@ export default function ForClinicsPage() {
                 Get Listed Free
               </a>
             </div>
-            <div className="pricing-card featured">
+            <div className="pricing-card featured" style={{ display: 'flex', flexDirection: 'column' }}>
               <div
                 className="pricing-tier"
                 style={{ color: 'rgba(255,255,255,0.8)' }}
@@ -663,7 +678,7 @@ export default function ForClinicsPage() {
               >
                 Most popular for FQHCs
               </div>
-              <ul className="pricing-features">
+              <ul className="pricing-features" style={{ flex: 1 }}>
                 <li>Everything in Basic</li>
                 <li>Top placement in search results</li>
                 <li>AI matching enabled</li>
@@ -685,15 +700,15 @@ export default function ForClinicsPage() {
                 Start 30-Day Free Trial
               </a>
             </div>
-            <div className="pricing-card">
-              <div className="pricing-tier">Partner</div>
-              <div className="pricing-price">
-                $299 <span>/mo</span>
+            <div className="pricing-card" style={darkPricingCardStyle}>
+              <div className="pricing-tier" style={{ color: 'rgba(255,255,255,0.7)' }}>Partner</div>
+              <div className="pricing-price" style={{ color: 'white' }}>
+                $299 <span style={{ color: 'rgba(255,255,255,0.6)' }}>/mo</span>
               </div>
-              <div className="pricing-sub">
+              <div className="pricing-sub" style={{ color: 'rgba(255,255,255,0.6)' }}>
                 For health networks &amp; hospitals
               </div>
-              <ul className="pricing-features">
+              <ul className="pricing-features" style={{ flex: 1, color: 'rgba(255,255,255,0.85)' }}>
                 <li>Everything in Featured</li>
                 <li>Priority patient routing</li>
                 <li>Full intake form integration</li>
@@ -759,15 +774,16 @@ export default function ForClinicsPage() {
                       width: 24,
                       height: 24,
                       background: 'var(--color-green-100)',
-                      borderRadius: 0,
+                      borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       color: 'var(--color-green-700)',
                       fontWeight: 700,
                       flexShrink: 0,
+                      fontSize: 13,
                     }}
-                  />
+                  >✓</div>
                   Setup in under 24 hours
                 </div>
                 <div
@@ -784,15 +800,16 @@ export default function ForClinicsPage() {
                       width: 24,
                       height: 24,
                       background: 'var(--color-green-100)',
-                      borderRadius: 0,
+                      borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       color: 'var(--color-green-700)',
                       fontWeight: 700,
                       flexShrink: 0,
+                      fontSize: 13,
                     }}
-                  />
+                  >✓</div>
                   No credit card required for Basic
                 </div>
                 <div
@@ -809,15 +826,16 @@ export default function ForClinicsPage() {
                       width: 24,
                       height: 24,
                       background: 'var(--color-green-100)',
-                      borderRadius: 0,
+                      borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       color: 'var(--color-green-700)',
                       fontWeight: 700,
                       flexShrink: 0,
+                      fontSize: 13,
                     }}
-                  />
+                  >✓</div>
                   Cancel or change plans anytime
                 </div>
               </div>
