@@ -253,7 +253,7 @@ export default function Home() {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))',
-              gap: 48,
+              gap: 24,
               maxWidth: 720,
               margin: '0 auto',
               alignItems: 'start',
@@ -276,7 +276,7 @@ export default function Home() {
               <Link
                 href="/patient-signup"
                 className="btn btn-primary btn-lg"
-                style={{ justifyContent: 'center' }}
+                style={{ justifyContent: 'center', borderRadius: 8 }}
               >
                 Register Now — It&apos;s Free
               </Link>
@@ -298,7 +298,13 @@ export default function Home() {
               <Link
                 href="/for-clinics#contact"
                 className="btn btn-secondary btn-lg"
-                style={{ justifyContent: 'center' }}
+                style={{
+                  justifyContent: 'center',
+                  borderRadius: 8,
+                  background: 'linear-gradient(135deg, #d1d5db 0%, #6b7280 100%)',
+                  color: 'white',
+                  border: 'none',
+                }}
               >
                 Register Your Clinic
               </Link>
@@ -325,7 +331,16 @@ export default function Home() {
               <div className="section-label">Featured in Miami</div>
               <h2 className="section-title">Top-matched clinics near you</h2>
             </div>
-            <Link href="/search" className="btn btn-secondary">
+            <Link
+              href="/search"
+              className="btn btn-primary btn-lg"
+              style={{
+                background: 'linear-gradient(135deg, #3dc47d 0%, #25a063 50%, #1f7a4d 100%)',
+                color: 'white',
+                borderRadius: 8,
+                boxShadow: '0 4px 20px rgba(37, 160, 99, 0.3)',
+              }}
+            >
               See all clinics →
             </Link>
           </div>
