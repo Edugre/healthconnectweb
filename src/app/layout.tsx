@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import MedicBridgesNav from "@/components/MediBridgeNav";
+import MedicBridgesNav from "@/components/MedicBridgesNav";
 
 export const metadata: Metadata = {
   title: "MedicBridges – Affordable Care in Miami",

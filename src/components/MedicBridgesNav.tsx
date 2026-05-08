@@ -11,7 +11,7 @@ const links = [
   { href: '/for-clinics', label: 'For Clinics' },
 ] as const;
 
-export default function MediBridgeNav() {
+export default function MedicBridgesNav() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
