@@ -51,7 +51,7 @@ export default function ProblemPage() {
                 margin: '0 auto 14px',
               }}
             >
-              Get Us Off the Ground
+              To Get Us Off the Ground
             </div>
             <p
               style={{
