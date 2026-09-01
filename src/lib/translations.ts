@@ -22,7 +22,7 @@ export const translations = {
     },
     ford: {
       title: "Ford Philanthropy Challenge",
-      text: "Estamos orgullosamente compitiendo en el <strong>Ford Philanthropy Challenge</strong>, una iniciativa que apoya innovaciones que transforman comunidades. Esta oportunidad nos impulsa a escalar nuestro impacto y llevar atención médica equitativa a quienes más lo necesitan."
+      text: "Hemos ganado dos premios que suman más de <strong>$21,000</strong>, incluyendo reconocimiento a nivel nacional en el <strong>Ford Philanthropy Challenge</strong>. Este logro nos impulsa a escalar nuestro impacto y llevar atención médica equitativa a quienes más lo necesitan."
     },
     mission: {
       title: "Nuestra Misión",
@@ -127,7 +127,7 @@ export const translations = {
     },
     ford: {
       title: "Ford Philanthropy Challenge",
-      text: "We are proudly competing in the <strong>Ford Philanthropy Challenge</strong>, an initiative that supports innovations that transform communities. This opportunity drives us to scale our impact and bring equitable healthcare to those who need it most."
+      text: "We have won two prizes totaling over <strong>$21,000</strong>, including national-level recognition in the <strong>Ford Philanthropy Challenge</strong>. This achievement drives us to scale our impact and bring equitable healthcare to those who need it most."
     },
     mission: {
       title: "Our Mission",
@@ -212,4 +212,3 @@ export const translations = {
     pageTitle: "About Us - MedicBridges"
   }
 } as const;
-
