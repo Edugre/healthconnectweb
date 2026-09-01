@@ -34,6 +34,42 @@ export default function ProblemPage() {
             We went directly to the community to understand why. This is what we
             found.
           </p>
+          <div
+            style={{
+              maxWidth: 760,
+              margin: '28px auto 0',
+              padding: '24px',
+              border: '1px solid rgba(255,255,255,0.24)',
+              background: 'rgba(255,255,255,0.08)',
+            }}
+          >
+            <div
+              className="section-label"
+              style={{
+                background: 'rgba(255,255,255,0.16)',
+                color: 'var(--color-green-100)',
+                margin: '0 auto 14px',
+              }}
+            >
+              Get Us Off the Ground
+            </div>
+            <p
+              style={{
+                maxWidth: '100%',
+                margin: 0,
+                opacity: 0.95,
+                lineHeight: 1.8,
+                fontSize: 17,
+              }}
+            >
+              MedicBridges got its start with support from two competition wins,
+              the Blackstone Launchpad competition and a national philanthropy
+              competition — together bringing in more than $22,000 in seed
+              funding. That early support helped us turn this project from an
+              idea into reality. We&apos;re now working to raise more, so we can
+              extend our impact to communities across the United States.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -500,4 +536,3 @@ export default function ProblemPage() {
     </>
   );
 }
-
