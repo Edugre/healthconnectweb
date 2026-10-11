@@ -267,7 +267,7 @@ export default function ProblemPage() {
               <h2>Mental health care is the most invisible of all.</h2>
               <p>
                 For underserved communities in Miami, finding free or affordable
-                therapy is nearly impossible — not because services don&apos;t
+                therapy is nearly impossible, not because services don&apos;t
                 exist, but because the information is fragmented, buried in
                 government websites, or simply unavailable in Spanish or Haitian
                 Creole.
@@ -275,7 +275,7 @@ export default function ProblemPage() {
               <p>
                 Over 60% of Miami adults with mental health conditions receive
                 no treatment. Language barriers, stigma, and cost are all
-                factors — but lack of visible access is the first barrier to
+                factors, but lack of visible access is the first barrier to
                 break.
               </p>
             </div>
@@ -489,7 +489,7 @@ export default function ProblemPage() {
               }}
             >
               One platform that aggregates every free clinic, sliding-scale
-              provider, community pharmacy, and mental health service in Miami —
+              provider, community pharmacy, and mental health service in Miami
               and matches you to the right one, in your language, based on your
               situation.
             </p>
