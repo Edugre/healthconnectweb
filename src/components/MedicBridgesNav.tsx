@@ -1,119 +1,477 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 
-const links = [
-  { href: '/search', label: 'Find Care' },
-  { href: '/map', label: 'Live Map' },
-  { href: '/problem', label: 'The Problem' },
-  { href: '/for-clinics', label: 'For Clinics' },
-] as const;
+type Clinic = {
+  id: string;
+  name: string;
+  address_line1?: string;
+  city?: string;
+  state?: string;
+  zip?: string;
+  description?: string;
+  phone?: string;
+  hours?: string;
+  languages?: string[];
+  care_types?: string[];
+  uninsured_accepted?: boolean;
+  medicaid_accepted?: boolean;
+  medicare_accepted?: boolean;
+  sliding_scale?: boolean;
+  is_340b?: boolean;
+};
 
-export default function MedicBridgesNav() {
-  const pathname = usePathname();
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const isMapPage = pathname === '/map';
-  const navInnerClass = isMapPage ? 'nav-inner nav-inner--fullwidth' : 'nav-inner';
+export default function ClinicPage() {
+  const params = useParams<{ id: string }>();
+  const id = params.id;
+  const [clinic, setClinic] = useState<Clinic | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.classList.add('nav-mobile-open');
-    } else {
-      document.body.classList.remove('nav-mobile-open');
-    }
-    return () => document.body.classList.remove('nav-mobile-open');
-  }, [mobileOpen]);
+    if (!id) return;
 
-  useEffect(() => {
-    function onResize() {
-      if (window.innerWidth > 768) setMobileOpen(false);
+    async function loadClinic() {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch(`/api/clinics/search?clinicId=${encodeURIComponent(id)}`);
+        const json = await res.json();
+        if (!res.ok) {
+          setError(json.error || 'Clinic not found');
+          setClinic(null);
+        } else {
+          const first: Clinic | undefined = (json.clinics || [])[0];
+          if (!first) {
+            setError('Clinic not found');
+          } else {
+            setClinic(first);
+          }
+        }
+      } catch {
+        setError('Failed to load clinic');
+      } finally {
+        setLoading(false);
+      }
     }
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
+
+    void loadClinic();
+  }, [id]);
+
+  const fullAddress = clinic
+    ? `${clinic.address_line1 ?? ''}${clinic.city ? `, ${clinic.city}` : ''}${
+        clinic.state ? `, ${clinic.state}` : ''
+      }${clinic.zip ? ` ${clinic.zip}` : ''}`
+    : '';
+
+  const mapUrl = clinic
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        fullAddress || 'Miami, FL',
+      )}`
+    : '#';
+  const phoneDial = clinic?.phone?.replace(/\D/g, '') ?? '';
+  const callHref = phoneDial ? `tel:${phoneDial}` : null;
 
   return (
     <>
-      <nav className={`nav ${isMapPage ? 'nav--map' : ''}`}>
-        <div className={isMapPage ? 'nav-inner-wrap' : 'container'}>
-          <div className={navInnerClass}>
-            <Link href="/" className="nav-logo" onClick={() => setMobileOpen(false)}>
-              <div className="nav-logo-icon">M</div>
-              MedicBridges
-            </Link>
-            <ul className="nav-links">
-              {links.map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className={pathname === href ? 'active' : undefined}
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="nav-cta">
-              <Link href="/patient-signup" className="btn btn-primary btn-sm">
-                Register Free
-              </Link>
-            </div>
-            <button
-              type="button"
-              className="nav-hamburger"
-              aria-label="Menu"
-              aria-expanded={mobileOpen}
-              onClick={() => setMobileOpen((o) => !o)}
-            >
-              {mobileOpen ? (
-                <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
-                  <path strokeLinecap="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
-                  <path strokeLinecap="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile overlay + drawer */}
+      {/* Breadcrumb */}
       <div
-        className="nav-mobile-overlay"
-        aria-hidden="true"
-        onClick={() => setMobileOpen(false)}
-      />
-      <div className="nav-mobile-drawer" role="dialog" aria-label="Main menu">
-        <div className="nav-mobile-drawer-inner">
-          <ul className="nav-mobile-links">
-            {links.map(({ href, label }) => (
-              <li key={href}>
-                <Link
-                  href={href}
-                  className={pathname === href ? 'active' : undefined}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="nav-mobile-cta">
+        style={{
+          background: 'var(--color-gray-100)',
+          borderBottom: '1px solid var(--color-gray-200)',
+          padding: '10px 0',
+        }}
+      >
+        <div className="container">
+          <span style={{ fontSize: 13, color: 'var(--color-gray-500)' }}>
             <Link
-              href="/patient-signup"
-              className="btn btn-primary btn-lg"
-              onClick={() => setMobileOpen(false)}
+              href="/"
+              style={{
+                color: 'var(--color-gray-500)',
+                textDecoration: 'none',
+              }}
             >
-              Register Free
-            </Link>
+              Home
+            </Link>{' '}
+            /{' '}
+            <Link
+              href="/search"
+              style={{
+                color: 'var(--color-gray-500)',
+                textDecoration: 'none',
+              }}
+            >
+              Find Care
+            </Link>{' '}
+            /{' '}
+            <span style={{ color: 'var(--color-gray-700)' }}>
+              {clinic?.name ?? 'Clinic'}
+            </span>
+          </span>
+        </div>
+      </div>
+
+      {/* PROFILE HERO */}
+      <div className="profile-hero">
+        <div className="container">
+          {loading ? (
+            <p>Loading clinic...</p>
+          ) : error ? (
+            <p>{error}</p>
+          ) : clinic ? (
+            <>
+              <div className="profile-header">
+                <div className="profile-avatar">
+                  <span>{clinic.name?.charAt(0) ?? 'C'}</span>
+                </div>
+                <div className="profile-info">
+                  <div
+                    style={{
+                      display: 'flex',
+                      gap: 8,
+                      flexWrap: 'wrap',
+                      marginBottom: 10,
+                    }}
+                  >
+                    {clinic.sliding_scale && (
+                      <span className="badge badge-gray">Sliding-Scale</span>
+                    )}
+                    {clinic.uninsured_accepted && (
+                      <span className="badge badge-green">Uninsured OK</span>
+                    )}
+                    {clinic.medicaid_accepted && (
+                      <span className="badge badge-green">Medicaid</span>
+                    )}
+                    {clinic.medicare_accepted && (
+                      <span className="badge badge-green">Medicare</span>
+                    )}
+                  </div>
+                  <h1>{clinic.name}</h1>
+                  <p>{fullAddress}</p>
+                </div>
+                <div className="profile-actions">
+                  <button className="btn btn-primary" type="button">
+                    Follow for Updates
+                  </button>
+                  {clinic.phone && (
+                    <a
+                      href={`tel:${clinic.phone.replace(/\D/g, '')}`}
+                      className="btn btn-dark btn-lg"
+                    >
+                      Call Now
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* Simple availability placeholders for now */}
+              <div
+                style={{
+                  display: 'flex',
+                  gap: 24,
+                  marginTop: 32,
+                  flexWrap: 'wrap',
+                }}
+              >
+                <div
+                  style={{
+                    background: 'rgba(255,255,255,0.12)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    borderRadius: 0,
+                    padding: '14px 20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 12,
+                  }}
+                >
+                  <div
+                    className="dot dot-green"
+                    style={{ width: 12, height: 12 }}
+                  />
+                  <div>
+                    <strong
+                      style={{ display: 'block', fontSize: 14 }}
+                    >
+                      Availability
+                    </strong>
+                    <span
+                      style={{ fontSize: 12, opacity: 0.7 }}
+                    >
+                      Call clinic for current wait times
+                    </span>
+                  </div>
+                </div>
+                <div
+                  style={{
+                    background: 'rgba(255,255,255,0.12)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    borderRadius: 0,
+                    padding: '14px 20px',
+                  }}
+                >
+                  <strong
+                    style={{ display: 'block', fontSize: 14 }}
+                  >
+                    {clinic.hours ?? 'Hours not specified'}
+                  </strong>
+                  <span
+                    style={{ fontSize: 12, opacity: 0.7 }}
+                  >
+                    Operating hours
+                  </span>
+                </div>
+              </div>
+            </>
+          ) : null}
+        </div>
+      </div>
+
+      {/* PROFILE BODY */}
+      <div className="section-sm">
+        <div className="container">
+          <div className="profile-grid">
+            <div>
+              <div className="info-card">
+                <h3>About This Clinic</h3>
+                <p
+                  style={{
+                    fontSize: 15,
+                    color: 'var(--color-gray-600)',
+                    lineHeight: 1.8,
+                  }}
+                >
+                  {clinic?.description ||
+                    'This clinic profile will soon include a detailed description pulled from our clinic database.'}
+                </p>
+              </div>
+
+              <div className="info-card">
+                <h3>Services Offered</h3>
+                <div className="services-list">
+                  {(clinic?.care_types ?? []).map((s) => (
+                    <span key={s} className="tag">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="info-card">
+                <h3>Languages Spoken</h3>
+                <div className="services-list">
+                  {(clinic?.languages ?? []).map((l) => (
+                    <span key={l} className="tag">
+                      {l}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="info-card">
+                <h3>Contact &amp; Location</h3>
+                <div className="info-row">
+                  <svg
+                    width="18"
+                    height="18"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                  <div>
+                    <strong>{clinic?.phone ?? 'Phone not available'}</strong>
+                    <span>Call to confirm availability</span>
+                  </div>
+                </div>
+                <div className="info-row">
+                  <svg
+                    width="18"
+                    height="18"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <circle
+                      cx="12"
+                      cy="11"
+                      r="3"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  <div>
+                    <strong>{fullAddress || 'Address not available'}</strong>
+                    <span>Miami, FL</span>
+                  </div>
+                </div>
+                <a
+                  href={mapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn btn-secondary"
+                  style={{
+                    width: '100%',
+                    justifyContent: 'center',
+                    marginTop: 12,
+                  }}
+                >
+                  Get Directions
+                </a>
+              </div>
+
+              <div className="info-card">
+                <h3>Insurance Accepted</h3>
+                <div className="services-list">
+                  {clinic?.uninsured_accepted && (
+                    <span className="tag">Uninsured patients</span>
+                  )}
+                  {clinic?.medicaid_accepted && (
+                    <span className="tag">Medicaid</span>
+                  )}
+                  {clinic?.medicare_accepted && (
+                    <span className="tag">Medicare</span>
+                  )}
+                  {clinic?.sliding_scale && (
+                    <span className="tag">Sliding-scale fees</span>
+                  )}
+                </div>
+                <div
+                  style={{
+                    marginTop: 16,
+                    background: 'var(--color-green-50)',
+                    border: '1px solid var(--color-green-200)',
+                    borderRadius: 0,
+                    padding: '12px 14px',
+                    fontSize: 12,
+                    color: 'var(--color-green-800)',
+                  }}
+                >
+                  <strong>No insurance?</strong> This clinic may still serve
+                  you. Call to ask about sliding-scale or free care.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* RELATED CLINICS placeholder */}
+      <div
+        style={{ background: 'var(--color-gray-100)', padding: '48px 0' }}
+      >
+        <div className="container">
+          <h2
+            style={{ fontSize: 22, fontWeight: 700, marginBottom: 24 }}
+          >
+            Similar clinics nearby
+          </h2>
+          <div className="clinic-grid">
+            <p style={{ fontSize: 14, color: 'var(--color-gray-600)' }}>
+              Related clinics will appear here once we connect this page to the
+              full clinic search backend.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* 340B NOTICE — always visible at the bottom of the page.
+          Wording is specific when the clinic is flagged is_340b, general otherwise. */}
+      <div className="container" style={{ padding: '24px 0' }}>
+        <aside
+          role="note"
+          aria-label="340B program notice"
+          style={{
+            padding: '14px 16px',
+            border: '1px solid #b6c8e6',
+            borderLeft: '4px solid #2f5fb3',
+            borderRadius: 12,
+            background: '#f1f6ff',
+            color: '#1f2a44',
+            fontSize: 14,
+            lineHeight: 1.5,
+          }}
+        >
+          <strong>340B Program notice.</strong>{' '}
+          {clinic?.is_340b
+            ? 'This clinic appears in the federal 340B program list.'
+            : 'Some clinics listed on MedicBridges appear in the federal 340B program list.'}{' '}
+          Participation does not guarantee a discount or that a clinic will
+          accept you. MedicBridges suggests asking the clinic about discounts or
+          sliding-fee options before your visit. MedicBridges is not responsible
+          for any denial of service. MedicBridges is not affiliated with or
+          endorsed by HRSA or the U.S. government. Source:{' '}
+          <a
+            href="https://340bopais.hrsa.gov/help/reports/dailyreports.htm"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#1f4a99', textDecoration: 'underline' }}
+          >
+            HRSA 340B OPAIS
+          </a>
+          .
+        </aside>
+      </div>
+
+      <footer>
+        <div className="container">
+          <div
+            className="footer-bottom"
+            style={{ borderTop: 'none', paddingTop: 0 }}
+          >
+            <Link
+              href="/"
+              className="nav-logo"
+              style={{ color: 'white', textDecoration: 'none' }}
+            >
+              <div className="nav-logo-icon">M</div>
+              MedicBridges
+            </Link>
+            <span style={{ fontSize: 13 }}>
+              © 2026 MedicBridges — Miami, FL.
+            </span>
+          </div>
+        </div>
+      </footer>
+      {callHref && (
+        <a
+          href={callHref}
+          aria-label="Call clinic now"
+          title="Call clinic now"
+          style={{
+            position: 'fixed',
+            right: 20,
+            bottom: 20,
+            width: 64,
+            height: 64,
+            borderRadius: '9999px',
+            background: 'var(--color-green-700)',
+            color: 'white',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textDecoration: 'none',
+            boxShadow: '0 12px 24px rgba(0, 0, 0, 0.2)',
+            zIndex: 1200,
+            fontSize: 28,
+            lineHeight: 1,
+          }}
+        >
+          ☎
+        </a>
+      )}
     </>
   );
 }
