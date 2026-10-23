@@ -29,6 +29,15 @@ export default function ClinicPage() {
   const [clinic, setClinic] = useState<Clinic | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  // 340B notice: open by default; starts collapsed on small screens so it
+  // doesn't cover the page, and users can expand or collapse it.
+  const [noticeOpen, setNoticeOpen] = useState(true);
+
+  useEffect(() => {
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      setNoticeOpen(false);
+    }
+  }, []);
 
   useEffect(() => {
     if (!id) return;
@@ -387,44 +396,6 @@ export default function ClinicPage() {
         </div>
       </div>
 
-      {/* 340B NOTICE — always visible at the bottom of the page.
-          Wording is specific when the clinic is flagged is_340b, general otherwise. */}
-      <div className="container" style={{ padding: '24px 0' }}>
-        <aside
-          role="note"
-          aria-label="340B program notice"
-          style={{
-            padding: '14px 16px',
-            border: '1px solid #b6c8e6',
-            borderLeft: '4px solid #2f5fb3',
-            borderRadius: 12,
-            background: '#f1f6ff',
-            color: '#1f2a44',
-            fontSize: 14,
-            lineHeight: 1.5,
-          }}
-        >
-          <strong>340B Program notice.</strong>{' '}
-          {clinic?.is_340b
-            ? 'This clinic appears in the federal 340B program list.'
-            : 'Some clinics listed on MedicBridges appear in the federal 340B program list.'}{' '}
-          Participation does not guarantee a discount or that a clinic will
-          accept you. MedicBridges suggests asking the clinic about discounts or
-          sliding-fee options before your visit. MedicBridges is not responsible
-          for any denial of service. MedicBridges is not affiliated with or
-          endorsed by HRSA or the U.S. government. Source:{' '}
-          <a
-            href="https://340bopais.hrsa.gov/help/reports/dailyreports.htm"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: '#1f4a99', textDecoration: 'underline' }}
-          >
-            HRSA 340B OPAIS
-          </a>
-          .
-        </aside>
-      </div>
-
       <footer>
         <div className="container">
           <div
@@ -443,8 +414,72 @@ export default function ClinicPage() {
               © 2026 MedicBridges — Miami, FL.
             </span>
           </div>
+          {/* Spacer so the fixed 340B notice never covers the footer content */}
+          <div aria-hidden="true" style={{ height: 88 }} />
         </div>
       </footer>
+
+      {/* 340B NOTICE — fixed to the bottom of the screen, visible at all times.
+          Wording is specific when the clinic is flagged is_340b, general otherwise. */}
+      <style>{`
+        .clinic-340b-notice {
+          position: fixed;
+          left: 12px;
+          right: 96px;
+          bottom: 12px;
+          max-width: 680px;
+          z-index: 1100;
+          background: #f1f6ff;
+          color: #1f2a44;
+          border: 1px solid #b6c8e6;
+          border-left: 4px solid #2f5fb3;
+          border-radius: 12px;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+          font-size: 13px;
+          line-height: 1.45;
+        }
+        .clinic-340b-notice summary {
+          cursor: pointer;
+          padding: 8px 12px;
+          font-weight: 600;
+        }
+        .clinic-340b-notice .clinic-340b-body { padding: 0 12px 10px; }
+        .clinic-340b-notice a { color: #1f4a99; text-decoration: underline; }
+      `}</style>
+      <aside
+        className="clinic-340b-notice"
+        role="note"
+        aria-label="340B program notice"
+      >
+        <details
+          open={noticeOpen}
+          onToggle={(e) =>
+            setNoticeOpen((e.currentTarget as HTMLDetailsElement).open)
+          }
+        >
+          <summary>
+            340B Program notice: participation does not guarantee a discount.
+          </summary>
+          <div className="clinic-340b-body">
+            {clinic?.is_340b
+              ? 'This clinic appears in the federal 340B program list.'
+              : 'Some clinics listed on MedicBridges appear in the federal 340B program list.'}{' '}
+            Participation does not guarantee a discount or that a clinic will
+            accept you. MedicBridges suggests asking the clinic about discounts
+            or sliding-fee options before your visit. MedicBridges is not
+            responsible for any denial of service. MedicBridges is not
+            affiliated with or endorsed by HRSA or the U.S. government. Source:{' '}
+            <a
+              href="https://340bopais.hrsa.gov/help/reports/dailyreports.htm"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              HRSA 340B OPAIS
+            </a>
+            .
+          </div>
+        </details>
+      </aside>
       {callHref && (
         <a
           href={callHref}
