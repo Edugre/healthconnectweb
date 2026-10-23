@@ -20,6 +20,7 @@ type Clinic = {
   medicaid_accepted?: boolean;
   medicare_accepted?: boolean;
   sliding_scale?: boolean;
+  is_340b?: boolean;
 };
 
 export default function ClinicPage() {
@@ -384,6 +385,44 @@ export default function ClinicPage() {
             </p>
           </div>
         </div>
+      </div>
+
+      {/* 340B NOTICE — always visible at the bottom of the page.
+          Wording is specific when the clinic is flagged is_340b, general otherwise. */}
+      <div className="container" style={{ padding: '24px 0' }}>
+        <aside
+          role="note"
+          aria-label="340B program notice"
+          style={{
+            padding: '14px 16px',
+            border: '1px solid #b6c8e6',
+            borderLeft: '4px solid #2f5fb3',
+            borderRadius: 12,
+            background: '#f1f6ff',
+            color: '#1f2a44',
+            fontSize: 14,
+            lineHeight: 1.5,
+          }}
+        >
+          <strong>340B Program notice.</strong>{' '}
+          {clinic?.is_340b
+            ? 'This clinic appears in the federal 340B program list.'
+            : 'Some clinics listed on MedicBridges appear in the federal 340B program list.'}{' '}
+          Participation does not guarantee a discount or that a clinic will
+          accept you. MedicBridges suggests asking the clinic about discounts or
+          sliding-fee options before your visit. MedicBridges is not responsible
+          for any denial of service. MedicBridges is not affiliated with or
+          endorsed by HRSA or the U.S. government. Source:{' '}
+          <a
+            href="https://340bopais.hrsa.gov/help/reports/dailyreports.htm"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#1f4a99', textDecoration: 'underline' }}
+          >
+            HRSA 340B OPAIS
+          </a>
+          .
+        </aside>
       </div>
 
       <footer>
