@@ -70,6 +70,8 @@ export default function ClinicPage() {
         fullAddress || 'Miami, FL',
       )}`
     : '#';
+  const phoneDial = clinic?.phone?.replace(/\D/g, '') ?? '';
+  const callHref = phoneDial ? `tel:${phoneDial}` : null;
 
   return (
     <>
@@ -404,7 +406,33 @@ export default function ClinicPage() {
           </div>
         </div>
       </footer>
+      {callHref && (
+        <a
+          href={callHref}
+          aria-label="Call clinic now"
+          title="Call clinic now"
+          style={{
+            position: 'fixed',
+            right: 20,
+            bottom: 20,
+            width: 64,
+            height: 64,
+            borderRadius: '9999px',
+            background: 'var(--color-green-700)',
+            color: 'white',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textDecoration: 'none',
+            boxShadow: '0 12px 24px rgba(0, 0, 0, 0.2)',
+            zIndex: 1200,
+            fontSize: 28,
+            lineHeight: 1,
+          }}
+        >
+          ☎
+        </a>
+      )}
     </>
   );
 }
-
