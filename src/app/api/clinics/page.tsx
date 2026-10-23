@@ -46,7 +46,7 @@ function valueContains340B(value: unknown): boolean {
   return false;
 }
 
-function is340BClinic(clinic: any): boolean {
+function is340BClinic(clinic: Record<string, unknown> | null | undefined): boolean {
   if (!clinic || typeof clinic !== 'object') return false;
   const explicitFlags = [
     clinic.is_340b,
