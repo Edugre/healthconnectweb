@@ -49,6 +49,15 @@ export default function MapPage() {
   const [filtersModalOpen, setFiltersModalOpen] = useState(false);
   const clinicMarkersRef = useRef<any[]>([]);
   const userMarkerRef = useRef<any | null>(null);
+  // 340B notice: open by default; starts collapsed on small screens so it
+  // doesn't cover the map, and users can expand or collapse it.
+  const [noticeOpen, setNoticeOpen] = useState(true);
+
+  useEffect(() => {
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      setNoticeOpen(false);
+    }
+  }, []);
 
   useEffect(() => {
     if (filtersModalOpen) {
@@ -498,7 +507,70 @@ export default function MapPage() {
           <span>Filters</span>
         </button>
       </div>
+
+      {/* 340B notice: fixed at the bottom of the page, shown by default.
+          Placed outside .app so it doesn't depend on the map layout. */}
+      <style>{`
+        .map-340b-notice {
+          position: fixed;
+          left: 50%;
+          bottom: 12px;
+          transform: translateX(-50%);
+          width: calc(100% - 24px);
+          max-width: 680px;
+          z-index: 1100;
+          background: #f1f6ff;
+          color: #1f2a44;
+          border: 1px solid #b6c8e6;
+          border-left: 4px solid #2f5fb3;
+          border-radius: 12px;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+          font-size: 13px;
+          line-height: 1.45;
+        }
+        .map-340b-notice summary {
+          cursor: pointer;
+          padding: 8px 12px;
+          font-weight: 600;
+        }
+        .map-340b-notice .map-340b-body { padding: 0 12px 10px; }
+        .map-340b-notice a { color: #1f4a99; text-decoration: underline; }
+        @media (max-width: 768px) {
+          .map-340b-notice { bottom: 84px; }
+        }
+      `}</style>
+      <aside
+        className="map-340b-notice"
+        role="note"
+        aria-label="340B program notice"
+      >
+        <details
+          open={noticeOpen}
+          onToggle={(e) =>
+            setNoticeOpen((e.currentTarget as HTMLDetailsElement).open)
+          }
+        >
+          <summary>
+            340B Program notice: participation does not guarantee a discount.
+          </summary>
+          <div className="map-340b-body">
+            Some clinics on the map appear in the federal 340B program list.
+            Participation does not guarantee a discount or that a clinic will
+            accept you. MedicBridges suggests asking the clinic about discounts
+            or sliding-fee options before your visit. MedicBridges is not
+            responsible for any denial of service. MedicBridges is not
+            affiliated with or endorsed by HRSA or the U.S. government. Source:{' '}
+            <a
+              href="https://340bopais.hrsa.gov/help/reports/dailyreports.htm"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              HRSA 340B OPAIS
+            </a>
+            .
+          </div>
+        </details>
+      </aside>
     </div>
   );
 }
-
