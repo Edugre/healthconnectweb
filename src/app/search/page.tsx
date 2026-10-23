@@ -3,17 +3,47 @@
 import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 type Clinic = any;
 
+function valueContains340B(value: unknown): boolean {
+  if (typeof value === 'string') return /\b340b\b/i.test(value);
+  if (typeof value === 'number' || typeof value === 'boolean' || value == null) {
+    return false;
+  }
+  if (Array.isArray(value)) return value.some((item) => valueContains340B(item));
+  if (typeof value === 'object') {
+    return Object.values(value as Record<string, unknown>).some((item) =>
+      valueContains340B(item),
+    );
+  }
+  return false;
+}
+
+function is340BClinic(clinic: Clinic): boolean {
+  if (!clinic || typeof clinic !== 'object') return false;
+  const explicitFlags = [
+    clinic.is_340b,
+    clinic.has_340b,
+    clinic.program_340b,
+    clinic.participates_340b,
+    clinic.participatesIn340B,
+    clinic.meds_340b,
+  ];
+  if (explicitFlags.some((flag) => flag === true)) return true;
+  return valueContains340B(clinic);
+}
+
 function SearchPageContent() {
   const searchParams = useSearchParams();
+  const { language: uiLanguage } = useLanguage();
 
   const [query, setQuery] = useState('');
   const [zip, setZip] = useState('');
   const [clinicType, setClinicType] = useState('');
   const [insurance, setInsurance] = useState('');
-  const [language, setLanguage] = useState('');
+  const [languageFilter, setLanguageFilter] = useState('');
   const [sortBy, setSortBy] = useState<'featured' | 'availability' | 'name'>(
     'featured',
   );
@@ -49,7 +79,7 @@ function SearchPageContent() {
     if (query) params.set('q', query);
     if (effectiveClinicType) params.set('clinicType', effectiveClinicType);
     if (insurance) params.set('insurance', insurance);
-    if (language) params.set('language', language);
+    if (languageFilter) params.set('language', languageFilter);
 
     try {
       const res = await fetch(`/api/clinics/search?${params.toString()}`);
@@ -160,8 +190,8 @@ function SearchPageContent() {
             <div className="filter-group">
               <label>Language</label>
               <select
-                value={language}
-                onChange={(e) => setLanguage(e.target.value)}
+                value={languageFilter}
+                onChange={(e) => setLanguageFilter(e.target.value)}
               >
                 <option value="">Any language</option>
                 <option value="Spanish">Spanish</option>
@@ -194,7 +224,7 @@ function SearchPageContent() {
                   setZip('');
                   setClinicType('');
                   setInsurance('');
-                  setLanguage('');
+                  setLanguageFilter('');
                   setClinics([]);
                   setError(null);
                 }}
@@ -244,50 +274,55 @@ function SearchPageContent() {
                 return 0;
               })
               .map((clinic: any) => (
-                <Link
-                  key={clinic.id}
-                  href={`/clinic/${clinic.id}`}
-                  className="clinic-card"
-                >
-                  <div className="clinic-card-header">
-                    <div className="clinic-avatar">
-                      <span>{clinic.name?.charAt(0) || 'C'}</span>
+                <div key={clinic.id} className="clinic-card-with-disclaimer">
+                  <Link href={`/clinic/${clinic.id}`} className="clinic-card">
+                    <div className="clinic-card-header">
+                      <div className="clinic-avatar">
+                        <span>{clinic.name?.charAt(0) || 'C'}</span>
+                      </div>
+                      <div className="clinic-badges">
+                        {clinic.sliding_scale && (
+                          <span className="badge badge-green">Sliding scale</span>
+                        )}
+                        {clinic.uninsured_accepted && (
+                          <span className="badge badge-gray">Uninsured OK</span>
+                        )}
+                      </div>
                     </div>
-                    <div className="clinic-badges">
-                      {clinic.sliding_scale && (
-                        <span className="badge badge-green">Sliding scale</span>
-                      )}
-                      {clinic.uninsured_accepted && (
-                        <span className="badge badge-gray">Uninsured OK</span>
-                      )}
+                    <div className="clinic-card-body">
+                      <h3>{clinic.name}</h3>
+                      <div className="clinic-card-address">
+                        <span>
+                          {clinic.address_line1
+                            ? `${clinic.address_line1}, `
+                            : ''}
+                          {clinic.city}, {clinic.state} {clinic.zip}
+                        </span>
+                      </div>
+                      <div className="clinic-tags">
+                        {Array.isArray(clinic.languages) &&
+                          clinic.languages.map((lang: string) => (
+                            <span key={lang} className="tag">
+                              {lang}
+                            </span>
+                          ))}
+                      </div>
+                      <div className="clinic-meta">
+                        <span className="wait-time">
+                          {/* Placeholder metadata until we model real availability */}
+                          Cost &amp; insurance details available
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="clinic-card-body">
-                    <h3>{clinic.name}</h3>
-                    <div className="clinic-card-address">
-                      <span>
-                        {clinic.address_line1
-                          ? `${clinic.address_line1}, `
-                          : ''}
-                        {clinic.city}, {clinic.state} {clinic.zip}
-                      </span>
+                  </Link>
+                  {is340BClinic(clinic) && (
+                    <div className="clinic-340b-disclaimer" role="note">
+                      {uiLanguage === 'es'
+                        ? 'Participa en el programa 340B. Esta clínica aparece en la lista federal del programa 340B. Participar no garantiza un descuento ni que la clínica te atienda. MedicBridges te sugiere preguntar a la clínica por descuentos o por tarifas según tu ingreso antes de ir. MedicBridges no se hace responsable si te niegan el servicio. Fuente: HRSA 340B OPAIS.'
+                        : '340B Program participant. This clinic appears in the federal 340B program list. Participation does not guarantee a discount or that the clinic will accept you. MedicBridges suggests asking the clinic about discounts or sliding-fee options before your visit. MedicBridges is not responsible for any denial of service. Source: HRSA 340B OPAIS.'}
                     </div>
-                    <div className="clinic-tags">
-                      {Array.isArray(clinic.languages) &&
-                        clinic.languages.map((lang: string) => (
-                          <span key={lang} className="tag">
-                            {lang}
-                          </span>
-                        ))}
-                    </div>
-                    <div className="clinic-meta">
-                      <span className="wait-time">
-                        {/* Placeholder metadata until we model real availability */}
-                        Cost &amp; insurance details available
-                      </span>
-                    </div>
-                  </div>
-                </Link>
+                  )}
+                </div>
               ))}
           </div>
 
@@ -327,4 +362,3 @@ export default function SearchPage() {
     </Suspense>
   );
 }
-
