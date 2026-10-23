@@ -316,7 +316,10 @@ export default function ClinicSearch() {
               )}
             </div>
             {is340BClinic(clinic) && (
-              <div className="clinic-340b-disclaimer" role="note">
+              <div
+                className="mt-2 rounded-xl border border-blue-200 border-l-4 border-l-blue-700 bg-blue-50 px-4 py-3 text-sm leading-relaxed text-slate-800"
+                role="note"
+              >
                 {uiLanguage === 'es'
                   ? 'Participa en el programa 340B. Esta clínica aparece en la lista federal del programa 340B. Participar no garantiza un descuento ni que la clínica te atienda. MedicBridges te sugiere preguntar a la clínica por descuentos o por tarifas según tu ingreso antes de ir. MedicBridges no se hace responsable si te niegan el servicio. Fuente: HRSA 340B OPAIS.'
                   : '340B Program participant. This clinic appears in the federal 340B program list. Participation does not guarantee a discount or that the clinic will accept you. MedicBridges suggests asking the clinic about discounts or sliding-fee options before your visit. MedicBridges is not responsible for any denial of service. Source: HRSA 340B OPAIS.'}
@@ -331,6 +334,44 @@ export default function ClinicSearch() {
           </p>
         )}
       </div>
+
+      {/* 340B notice: always visible at the bottom of the page, whether or not
+          any result carries a 340B flag */}
+      <aside
+        role="note"
+        aria-label="340B"
+        className="rounded-xl border border-blue-200 border-l-4 border-l-blue-700 bg-blue-50 px-4 py-3 text-sm leading-relaxed text-slate-800"
+      >
+        {uiLanguage === 'es' ? (
+          <>
+            <strong>Aviso sobre el programa 340B.</strong> Algunas clínicas de
+            MedicBridges aparecen en la lista federal del programa 340B.
+            Participar no garantiza un descuento ni que la clínica te atienda.
+            MedicBridges te sugiere preguntar a la clínica por descuentos o por
+            tarifas según tu ingreso antes de ir. MedicBridges no se hace
+            responsable si te niegan el servicio. MedicBridges no está afiliada
+            ni respaldada por HRSA ni por el gobierno de EE. UU. Fuente:{' '}
+          </>
+        ) : (
+          <>
+            <strong>340B Program notice.</strong> Some clinics listed on
+            MedicBridges appear in the federal 340B program list. Participation
+            does not guarantee a discount or that a clinic will accept you.
+            MedicBridges suggests asking the clinic about discounts or
+            sliding-fee options before your visit. MedicBridges is not
+            responsible for any denial of service. MedicBridges is not
+            affiliated with or endorsed by HRSA or the U.S. government. Source:{' '}
+          </>
+        )}
+        <a
+          href="https://340bopais.hrsa.gov/help/reports/dailyreports.htm"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-800 underline"
+        >
+          HRSA 340B OPAIS
+        </a>
+        .
+      </aside>
     </section>
   );
-}
